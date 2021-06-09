@@ -1,0 +1,44 @@
+\documentclass[10pt,fleqn]{article} % Default font size and left-justified equations
+\usepackage[%
+    pdftitle={Exercices de SII},
+    pdfauthor={Xavier Pessoles}]{hyperref}
+
+\input{../../Style/packages}
+\input{../../Style/new_style}
+\input{../../Style/macros_SII}
+\input{../../Style/environment}
+
+
+\newcommand{\macrocomp}{macro_competences}
+\newcommand{\comp}{competences}
+\newcommand{\td}{fichier_td}
+\newcommand{\repExo}{dossier}
+\newcommand{\repStyle}{../../Style}
+
+\def\xxYCartouche{-2.25cm}
+\def\xxYongletGarde{.5cm}
+\def\xxYOnget{.9cm}
+
+\begin{document}
+
+\def\xxcompetences{}
+\def\xxfigures{}
+
+\graphicspath{{\repStyle/png/}}
+
+\setlength{\columnseprule}{.1pt}
+
+%% MODELISER
+% Page de garde
+
+\input{../../Style/Entete_Themes_Info}
+\input{../../Style/pagegarde_livret_exos}
+\pagestyle{fancy}
+\thispagestyle{plain}
+\input{S1_Themes_Full}
+
+
+\end{document}
+
+
+
