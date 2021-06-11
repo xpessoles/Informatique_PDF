@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.9.26)  10 JUN 2021 13:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.9.26)  11 JUN 2021 22:58
 entering extended mode
 **./S1_Themes_Full_PDF.tex
 (S1_Themes_Full_PDF.tex
@@ -2015,30 +2015,30 @@ urfingPorquerolles.tex
 LaTeX Font Info:    Font shape `T1/pag/b/n' in size <10> not available
 (Font)              Font shape `T1/pag/db/n' tried instead on input line 4.
 LaTeX Font Info:    Font shape `T1/mdput/m/it' will be
-(Font)              scaled to size 9.40002pt on input line 8.
+(Font)              scaled to size 9.40002pt on input line 7.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 10.
+(mdframed)              on input line 9.
 
-Underfull \hbox (badness 10000) in paragraph at lines 10--12
+Underfull \hbox (badness 10000) in paragraph at lines 9--11
 
  []
 
 LaTeX Font Info:    Trying to load font information for TS1+mdput on input line
- 12.
+ 11.
 ("C:\Program Files\MiKTeX 2.9\tex/latex/mathdesign/mdput\ts1mdput.fd"
 File: ts1mdput.fd 2013/08/29 Fontinst v1.933 font definitions for TS1/mdput.
 )
 LaTeX Font Info:    Font shape `TS1/mdput/m/n' will be
-(Font)              scaled to size 9.40002pt on input line 12.
+(Font)              scaled to size 9.40002pt on input line 11.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `mdput' (encoding: TS1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `T1/mdput/m/n' will be
-(Font)              scaled to size 6.58002pt on input line 24.
+(Font)              scaled to size 6.58002pt on input line 23.
 LaTeX Font Info:    Font shape `T1/mdput/m/n' will be
-(Font)              scaled to size 4.70001pt on input line 24.
+(Font)              scaled to size 4.70001pt on input line 23.
 <../../Informatique/S1_Themes/03_UtilisationModules/01_SurfingPorquerolles/imag
 es/fig_00.pdf, id=20, 462.52798pt x 346.89601pt>
 File: ../../Informatique/S1_Themes/03_UtilisationModules/01_SurfingPorquerolles
@@ -2046,39 +2046,39 @@ File: ../../Informatique/S1_Themes/03_UtilisationModules/01_SurfingPorquerolles
 <use ../../Informatique/S1_Themes/03_UtilisationModules/01_SurfingPorquerolles/
 images/fig_00.pdf>
 Package pdftex.def Info: ../../Informatique/S1_Themes/03_UtilisationModules/01_
-SurfingPorquerolles/images/fig_00.pdf  used on input line 39.
+SurfingPorquerolles/images/fig_00.pdf  used on input line 38.
 (pdftex.def)             Requested size: 236.84843pt x 177.63979pt.
 LaTeX Font Info:    Font shape `T1/cmtt/m/n' will be
-(Font)              scaled to size 10.70007pt on input line 44.
+(Font)              scaled to size 10.70007pt on input line 41.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `T1/cmtt/m/it' will be
-(Font)              scaled to size 10.70007pt on input line 50.
+(Font)              scaled to size 10.70007pt on input line 47.
 
-Underfull \hbox (badness 10000) in paragraph at lines 54--55
+Underfull \hbox (badness 10000) in paragraph at lines 51--52
 \T1/cmtt/m/it/10 trace_vagues(file: str) -> None \T1/mdput/m/it/10 (+20) pre-na
 nt
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 60--61
+Underfull \hbox (badness 10000) in paragraph at lines 57--58
 \T1/cmtt/m/it/10 moyenne(liste_niveaux: list) -> float
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 60--61
+Underfull \hbox (badness 10000) in paragraph at lines 57--58
 \T1/mdput/m/it/10 (+20) pre-nant comme ar-gu-ment une liste non vide
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 67--68
+Underfull \hbox (badness 10000) in paragraph at lines 64--65
 \T1/cmtt/m/it/10 ind_premier_pzd(liste_niveaux: list) ->
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 73--74
+Underfull \hbox (badness 10000) in paragraph at lines 70--71
 \T1/cmtt/m/it/10 ind_dernier_pzd(liste_niveaux: list) ->
  []
 
@@ -2089,56 +2089,86 @@ File: ../../Informatique/S1_Themes/03_UtilisationModules/01_SurfingPorquerolles
 <use ../../Informatique/S1_Themes/03_UtilisationModules/01_SurfingPorquerolles/
 images/fig_01.png>
 Package pdftex.def Info: ../../Informatique/S1_Themes/03_UtilisationModules/01_
-SurfingPorquerolles/images/fig_01.png  used on input line 78.
+SurfingPorquerolles/images/fig_01.png  used on input line 75.
 (pdftex.def)             Requested size: 236.84843pt x 155.29266pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 83--84
+Underfull \hbox (badness 10000) in paragraph at lines 80--81
 \T1/cmtt/m/it/10 construction_successeurs(liste_niveaux:
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 93--94
+Underfull \hbox (badness 10000) in paragraph at lines 90--91
 \T1/cmtt/m/it/10 decompose_vagues(liste_niveaux: list) ->
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 93--94
+Underfull \hbox (badness 10000) in paragraph at lines 90--91
 \T1/cmtt/m/it/10 decompose_vagues([1, -1, -2, 2, -2, -1, 6,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 95--99
+Underfull \hbox (badness 10000) in paragraph at lines 92--96
 []\T1/mdput/m/n/10 (+20) On dé-sire main-te-nant ca-rac-té-ri-ser les vagues.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 95--99
+Underfull \hbox (badness 10000) in paragraph at lines 92--96
 \T1/mdput/m/n/10 (+20) Ainsi, on cherche à conce-voir une fonc-tion
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 95--99
+Underfull \hbox (badness 10000) in paragraph at lines 92--96
 \T1/cmtt/m/it/10 proprietes(liste_niveaux: list) -> list \T1/mdput/m/n/10 (+20)
  re-
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 103--104
+\T1/cmtt/m/it/10 proprietes(liste_niveaux: list, dt:float)
+ []
+
 LaTeX Font Info:    Font shape `T1/mdput/m/n' will be
-(Font)              scaled to size 7.52002pt on input line 101.
+(Font)              scaled to size 7.52002pt on input line 104.
 LaTeX Font Info:    Font shape `T1/mdput/m/sl' will be
-(Font)              scaled to size 7.52002pt on input line 101.
+(Font)              scaled to size 7.52002pt on input line 104.
 LaTeX Font Info:    Font shape `T1/mdput/b/n' will be
-(Font)              scaled to size 7.52002pt on input line 101.
+(Font)              scaled to size 7.52002pt on input line 104.
 [2
 design size mismatch in local font md-utro8t in virtual font mdputro8t.vf ignor
 ed. <../../Informatique/S1_Themes/03_UtilisationModules/01_SurfingPorquerolles/
 images/fig_00.pdf> <../../Informatique/S1_Themes/03_UtilisationModules/01_Surfi
 ngPorquerolles/images/fig_01.png>]
-Overfull \hbox (24.25829pt too wide) detected at line 144
+LaTeX Font Info:    Font shape `T1/mdput/m/it' will be
+(Font)              scaled to size 6.58002pt on input line 119.
+LaTeX Font Info:    Font shape `T1/mdput/m/it' will be
+(Font)              scaled to size 4.70001pt on input line 119.
+
+Underfull \hbox (badness 10000) in paragraph at lines 119--120
+\T1/cmtt/m/it/10 H_max(liste_niveaux: list, dt: float) ->
+ []
+
+<../../Informatique/S1_Themes/03_UtilisationModules/01_SurfingPorquerolles/imag
+es/fig_02.png, id=82, 175.6161pt x 141.1674pt>
+File: ../../Informatique/S1_Themes/03_UtilisationModules/01_SurfingPorquerolles
+/images/fig_02.png Graphic file (type png)
+<use ../../Informatique/S1_Themes/03_UtilisationModules/01_SurfingPorquerolles/
+images/fig_02.png>
+Package pdftex.def Info: ../../Informatique/S1_Themes/03_UtilisationModules/01_
+SurfingPorquerolles/images/fig_02.png  used on input line 132.
+(pdftex.def)             Requested size: 236.84843pt x 190.39326pt.
+
+Overfull \hbox (24.25829pt too wide) detected at line 145
 \OML/mdput/m/it/10 K \OT1/mdput/m/n/10 = [] \OMS/mdput/m/n/10  []  [] [][]   
 []\OML/mdput/m/it/10 :
  []
 
 )
+Underfull \hbox (badness 10000) in paragraph at lines 160--38
+\T1/cmtt/m/it/10 skewness(liste_niveaux) -> float \T1/mdput/m/it/10 (+20) per-m
+et-tant
+ []
+
+
 (../../Informatique/S1_Themes/04_AlgorithmesDichotomiques/01_RechercheDichotomi
 que/01_RechercheDichotomique.tex)
 (../../Informatique/S1_Themes/04_AlgorithmesDichotomiques/02_ExponentiationRapi
@@ -2165,7 +2195,7 @@ ivites.tex)
 \tf@ptc=\write6
 \openout6 = `S1_Themes_Full_PDF.ptc'.
 
-<../../Style/png/logo_lycee.png, id=82, 329.23pt x 265.99374pt>
+<../../Style/png/logo_lycee.png, id=83, 329.23pt x 265.99374pt>
 File: ../../Style/png/logo_lycee.png Graphic file (type png)
 <use ../../Style/png/logo_lycee.png>
 Package pdftex.def Info: ../../Style/png/logo_lycee.png  used on input line 41.
@@ -2178,10 +2208,12 @@ LaTeX Font Info:    Font shape `T1/pag/m/it' in size <8> not available
 LaTeX Font Info:    Font shape `T1/mdput/b/n' will be
 (Font)              scaled to size 11.28003pt on input line 41.
 
-[3 <../../Style/png/logo_lycee.png>]
+[3 <../../Style/png/logo_lycee.png> <../../Informatique/S1_Themes/03_Utilisatio
+nModules/01_SurfingPorquerolles/images/fig_02.png (PNG copy)>]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 41.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 41.
- (S1_Themes_Full_PDF.aux)
+
+(S1_Themes_Full_PDF.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 41.
 Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 41.
 
@@ -2197,15 +2229,15 @@ Package logreq Info: Writing requests to 'S1_Themes_Full_PDF.run.xml'.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 41.
  ) 
 Here is how much of TeX's memory you used:
- 38776 strings out of 481165
- 760936 string characters out of 2912171
- 1512070 words of memory out of 3000000
- 53268 multiletter control sequences out of 15000+200000
- 763311 words of font info for 335 fonts, out of 3000000 for 9000
+ 38765 strings out of 481165
+ 761168 string characters out of 2912171
+ 1509070 words of memory out of 3000000
+ 53279 multiletter control sequences out of 15000+200000
+ 776066 words of font info for 321 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  71i,17n,81p,1145b,1953s stack positions out of 5000i,500n,10000p,200000b,50000s
- <C:\Users\xpess\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi642\
-ectt1000.pk>{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/ly1/texnansi.enc}{C:/P
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/ly1/texnansi.enc} <C:\Users\xpes
+s\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi642\ectt1000.pk>{C:/P
 rogram Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Program Files/MiKTeX 2.
 9/fonts/type1/mathdesign/mdput/md-utr7t.pfb><C:/Program Files/MiKTeX 2.9/fonts/
 type1/mathdesign/mdput/md-utr7v.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/ma
@@ -2217,9 +2249,9 @@ es/MiKTeX 2.9/fonts/type1/adobe/utopia/putr8a.pfb><C:/Program Files/MiKTeX 2.9/
 fonts/type1/adobe/utopia/putri8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/u
 rw/avantgar/uagd8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/avantgar/ua
 gko8a.pfb>
-Output written on S1_Themes_Full_PDF.pdf (3 pages, 608145 bytes).
+Output written on S1_Themes_Full_PDF.pdf (3 pages, 675302 bytes).
 PDF statistics:
- 180 PDF objects out of 1000 (max. 8388607)
+ 181 PDF objects out of 1000 (max. 8388607)
  17 named destinations out of 1000 (max. 500000)
- 81446 words of extra memory for PDF output out of 89155 (max. 10000000)
+ 82475 words of extra memory for PDF output out of 89155 (max. 10000000)
 
