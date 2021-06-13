@@ -41,13 +41,13 @@
   >
 ]>
 <requests version="1.0">
-  <internal package="biblatex" priority="9" active="1">
+  <internal package="biblatex" priority="9" active="0">
     <generic>latex</generic>
     <provides type="dynamic">
-      <file>S1_Themes_Full_PDF.bcf</file>
+      <file>Exercices_Full_PDF.bcf</file>
     </provides>
     <requires type="dynamic">
-      <file>S1_Themes_Full_PDF.bbl</file>
+      <file>Exercices_Full_PDF.bbl</file>
     </requires>
     <requires type="static">
       <file>blx-dm.def</file>
@@ -61,23 +61,23 @@
       <file>french.lbx</file>
     </requires>
   </internal>
-  <external package="biblatex" priority="5" active="1">
+  <external package="biblatex" priority="5" active="0">
     <generic>biber</generic>
     <cmdline>
       <binary>biber</binary>
-      <infile>S1_Themes_Full_PDF</infile>
+      <infile>Exercices_Full_PDF</infile>
     </cmdline>
     <input>
-      <file>S1_Themes_Full_PDF.bcf</file>
+      <file>Exercices_Full_PDF.bcf</file>
     </input>
     <output>
-      <file>S1_Themes_Full_PDF.bbl</file>
+      <file>Exercices_Full_PDF.bbl</file>
     </output>
     <provides type="dynamic">
-      <file>S1_Themes_Full_PDF.bbl</file>
+      <file>Exercices_Full_PDF.bbl</file>
     </provides>
     <requires type="dynamic">
-      <file>S1_Themes_Full_PDF.bcf</file>
+      <file>Exercices_Full_PDF.bcf</file>
     </requires>
     <requires type="editable">
       <file>bibliography.bib</file>
