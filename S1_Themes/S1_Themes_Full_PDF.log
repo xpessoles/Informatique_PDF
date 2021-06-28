@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.10.7)  22 JUN 2021 09:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.10.7)  24 JUN 2021 13:26
 entering extended mode
 **./S1_Themes_Full_PDF.tex
 (S1_Themes_Full_PDF.tex
@@ -1998,31 +1998,35 @@ LaTeX Font Info:    Font shape `T1/mdput/m/n' will be
 1_AlgorithmesBasiques.tex
 LaTeX Font Info:    Font shape `T1/pag/b/n' in size <10> not available
 (Font)              Font shape `T1/pag/db/n' tried instead on input line 2.
+
+Underfull \hbox (badness 10000) in paragraph at lines 4--6
+
+ []
+
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 6.
+(mdframed)              on input line 7.
 LaTeX Font Info:    Font shape `T1/cmtt/m/n' will be
-(Font)              scaled to size 10.70007pt on input line 12.
+(Font)              scaled to size 10.70007pt on input line 14.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `T1/cmtt/m/n' will be
-(Font)              scaled to size 9.63007pt on input line 14.
-
+(Font)              scaled to size 9.63007pt on input line 16.
 ("C:\Program Files\MiKTeX 2.9\tex/latex/base\latin1.def"
 File: latin1.def 2020/08/01 v1.3d Input encoding file
 )
 LaTeX Font Info:    Font shape `T1/cmtt/b/n' in size <9> not available
-(Font)              Font shape `T1/cmtt/bx/n' tried instead on input line 15.
+(Font)              Font shape `T1/cmtt/bx/n' tried instead on input line 17.
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <9> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 15.
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 17.
 LaTeX Font Info:    Font shape `T1/cmtt/m/n' will be
-(Font)              scaled to size 9.63007pt on input line 15.
+(Font)              scaled to size 9.63007pt on input line 17.
 LaTeX Font Info:    Font shape `T1/cmtt/m/it' will be
-(Font)              scaled to size 9.63007pt on input line 16.
+(Font)              scaled to size 9.63007pt on input line 18.
 LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line 
-17.
+19.
 
 ("C:\Program Files\MiKTeX 2.9\tex/latex/base\ts1cmtt.fd"
 File: ts1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
@@ -2032,9 +2036,50 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `T1/mdput/m/it' will be
-(Font)              scaled to size 9.40002pt on input line 27.
+(Font)              scaled to size 9.40002pt on input line 29.
 LaTeX Font Info:    Font shape `T1/cmtt/m/it' will be
-(Font)              scaled to size 10.70007pt on input line 27.
+(Font)              scaled to size 10.70007pt on input line 29.
+
+Overfull \hbox (3.67224pt too wide) in paragraph at lines 39--40
+[]\T1/mdput/b/n/10 Question []6[]\T1/mdput/m/it/10 (-20) Écrire une fonc-tion d
+e si-gna-ture \T1/cmtt/m/it/10 recherche_first_index_nb_01(nb: int, L: list) ->
+ int
+ []
+
+
+Overfull \hbox (3.67224pt too wide) in paragraph at lines 41--42
+[]\T1/mdput/b/n/10 Question []7[]\T1/mdput/m/it/10 (-20) Écrire une fonc-tion d
+e si-gna-ture \T1/cmtt/m/it/10 recherche_first_index_nb_02(nb: int, L: list) ->
+ int
+ []
+
+LaTeX Font Info:    Font shape `T1/mdput/m/n' will be
+(Font)              scaled to size 7.52002pt on input line 54.
+LaTeX Font Info:    Font shape `T1/mdput/m/sl' will be
+(Font)              scaled to size 7.52002pt on input line 54.
+LaTeX Font Info:    Font shape `T1/mdput/b/n' will be
+(Font)              scaled to size 7.52002pt on input line 54.
+[2
+design size mismatch in local font md-utro8t in virtual font mdputro8t.vf ignor
+ed.]
+Overfull \hbox (15.52092pt too wide) in paragraph at lines 57--58
+[]\T1/mdput/m/n/10 (-20) Les ins-truc-tions sui-vantes per-mettent de char-ger 
+l'en-semble des mots du dic-tion-naire dans la va-riable \T1/cmtt/m/it/10 dicti
+onnaire\T1/mdput/m/n/10 (-20) .
+ []
+
+("C:\Program Files\MiKTeX 2.9\tex/latex/base\latin1.def"
+File: latin1.def 2020/08/01 v1.3d Input encoding file
+)
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 86.
+LaTeX Font Info:    Font shape `T1/pag/b/n' in size <5> not available
+(Font)              Font shape `T1/pag/db/n' tried instead on input line 87.
+
+Underfull \hbox (badness 10000) in paragraph at lines 87--89
+
+ []
 
 ("C:\Program Files\MiKTeX 2.9\tex/latex/base\latin1.def"
 File: latin1.def 2020/08/01 v1.3d Input encoding file
@@ -2044,61 +2089,216 @@ File: latin1.def 2020/08/01 v1.3d Input encoding file
 )
 ("C:\Program Files\MiKTeX 2.9\tex/latex/base\latin1.def"
 File: latin1.def 2020/08/01 v1.3d Input encoding file
-))
+)
+LaTeX Font Info:    Font shape `T1/mdput/m/n' will be
+(Font)              scaled to size 4.70001pt on input line 124.
+)
 (../../Informatique/S1_Themes/01_RechercheSequentielle/02_Dictionnaires/02_Dict
 ionnaires.tex)
 (../../Informatique/S1_Themes/01_RechercheSequentielle/03_SuiteSyracuse/03_Suit
 eSyracuse.tex
+Underfull \hbox (badness 10000) in paragraph at lines 1--3
+
+ []
+
+<../../Style/png/logo_lycee.png, id=45, 329.23pt x 265.99374pt>
+File: ../../Style/png/logo_lycee.png Graphic file (type png)
+<use ../../Style/png/logo_lycee.png>
+Package pdftex.def Info: ../../Style/png/logo_lycee.png  used on input line 4.
+(pdftex.def)             Requested size: 56.9055pt x 45.97325pt.
+LaTeX Font Info:    Font shape `T1/mdput/m/it' will be
+(Font)              scaled to size 7.52002pt on input line 4.
+LaTeX Font Info:    Font shape `T1/pag/m/it' in size <8> not available
+(Font)              Font shape `T1/pag/m/sl' tried instead on input line 4.
+LaTeX Font Info:    Font shape `T1/mdput/b/n' will be
+(Font)              scaled to size 11.28003pt on input line 4.
+[3 <../../Style/png/logo_lycee.png>]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 6.
+(mdframed)              on input line 7.
 
-Underfull \hbox (badness 10000) in paragraph at lines 6--8
+Underfull \hbox (badness 10000) in paragraph at lines 7--9
 
  []
 
 LaTeX Font Info:    Trying to load font information for TS1+mdput on input line
- 8.
+ 9.
 ("C:\Program Files\MiKTeX 2.9\tex/latex/mathdesign/mdput\ts1mdput.fd"
 File: ts1mdput.fd 2013/08/29 Fontinst v1.933 font definitions for TS1/mdput.
 )
 LaTeX Font Info:    Font shape `TS1/mdput/m/n' will be
-(Font)              scaled to size 9.40002pt on input line 8.
+(Font)              scaled to size 9.40002pt on input line 9.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `mdput' (encoding: TS1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `T1/mdput/m/n' will be
-(Font)              scaled to size 7.52002pt on input line 20.
-LaTeX Font Info:    Font shape `T1/mdput/m/sl' will be
-(Font)              scaled to size 7.52002pt on input line 20.
-LaTeX Font Info:    Font shape `T1/mdput/b/n' will be
-(Font)              scaled to size 7.52002pt on input line 20.
- [2
-design size mismatch in local font md-utro8t in virtual font mdputro8t.vf ignor
-ed.]
-LaTeX Font Info:    Font shape `T1/mdput/m/n' will be
-(Font)              scaled to size 6.58002pt on input line 21.
-LaTeX Font Info:    Font shape `T1/mdput/m/n' will be
-(Font)              scaled to size 4.70001pt on input line 25.
-<../../Style/png/logo_lycee.png, id=70, 329.23pt x 265.99374pt>
+(Font)              scaled to size 6.58002pt on input line 22.
 File: ../../Style/png/logo_lycee.png Graphic file (type png)
 <use ../../Style/png/logo_lycee.png>
-Package pdftex.def Info: ../../Style/png/logo_lycee.png  used on input line 89.
+Package pdftex.def Info: ../../Style/png/logo_lycee.png  used on input line 64.
 
 (pdftex.def)             Requested size: 56.9055pt x 45.97325pt.
-LaTeX Font Info:    Font shape `T1/mdput/m/it' will be
-(Font)              scaled to size 7.52002pt on input line 89.
-LaTeX Font Info:    Font shape `T1/pag/m/it' in size <8> not available
-(Font)              Font shape `T1/pag/m/sl' tried instead on input line 89.
-LaTeX Font Info:    Font shape `T1/mdput/b/n' will be
-(Font)              scaled to size 11.28003pt on input line 89.
- [3 <../../Style/png/logo_lycee.png>])
+ [4])
 (../../Informatique/S1_Themes/02_StructuresImbriquees/01_RechercheDansTexte/01_
 RechercheDansTexte.tex)
 (../../Informatique/S1_Themes/02_StructuresImbriquees/02_TriBulles/02_TriBulles
 .tex)
 (../../Informatique/S1_Themes/03_UtilisationModules/01_SurfingPorquerolles/01_S
 urfingPorquerolles.tex
+Underfull \hbox (badness 10000) in paragraph at lines 1--3
 
-! LaTeX Error: No coun
+ []
+
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 8.
+
+Underfull \hbox (badness 10000) in paragraph at lines 8--10
+
+ []
+
+<../../Informatique/S1_Themes/03_UtilisationModules/01_SurfingPorquerolles/imag
+es/fig_00.pdf, id=97, 462.52798pt x 346.89601pt>
+File: ../../Informatique/S1_Themes/03_UtilisationModules/01_SurfingPorquerolles
+/images/fig_00.pdf Graphic file (type pdf)
+<use ../../Informatique/S1_Themes/03_UtilisationModules/01_SurfingPorquerolles/
+images/fig_00.pdf>
+Package pdftex.def Info: ../../Informatique/S1_Themes/03_UtilisationModules/01_
+SurfingPorquerolles/images/fig_00.pdf  used on input line 37.
+(pdftex.def)             Requested size: 483.69687pt x 362.79063pt.
+File: ../../Style/png/logo_lycee.png Graphic file (type png)
+<use ../../Style/png/logo_lycee.png>
+Package pdftex.def Info: ../../Style/png/logo_lycee.png  used on input line 38.
+
+(pdftex.def)             Requested size: 56.9055pt x 45.97325pt.
+[5]
+<../../Informatique/S1_Themes/03_UtilisationModules/01_SurfingPorquerolles/imag
+es/fig_01.png, id=109, 203.5605pt x 133.4586pt>
+File: ../../Informatique/S1_Themes/03_UtilisationModules/01_SurfingPorquerolles
+/images/fig_01.png Graphic file (type png)
+<use ../../Informatique/S1_Themes/03_UtilisationModules/01_SurfingPorquerolles/
+images/fig_01.png>
+Package pdftex.def Info: ../../Informatique/S1_Themes/03_UtilisationModules/01_
+SurfingPorquerolles/images/fig_01.png  used on input line 74.
+(pdftex.def)             Requested size: 483.69687pt x 317.16498pt.
+File: ../../Style/png/logo_lycee.png Graphic file (type png)
+<use ../../Style/png/logo_lycee.png>
+Package pdftex.def Info: ../../Style/png/logo_lycee.png  used on input line 75.
+
+(pdftex.def)             Requested size: 56.9055pt x 45.97325pt.
+ [6 <../../Informatique/S1_Themes/03_UtilisationModules/01_SurfingPorquerolles/
+images/fig_00.pdf>]
+Overfull \hbox (21.21704pt too wide) in paragraph at lines 89--90
+\T1/mdput/m/it/10 (-20) vagues. On omet-tra les don-nées pré-cé-dant le pre-mie
+r PND et celles suc-cé-dant au der-nier PND. Ainsi \T1/cmtt/m/it/10 decompose_v
+agues([1,
+ []
+
+
+Overfull \hbox (31.04102pt too wide) in paragraph at lines 91--95
+[]\T1/mdput/m/n/10 (-20) On dé-sire main-te-nant ca-rac-té-ri-ser les vagues. A
+insi, on cherche à conce-voir une fonc-tion \T1/cmtt/m/it/10 proprietes(liste_n
+iveaux:
+ []
+
+LaTeX Font Info:    Font shape `T1/mdput/m/it' will be
+(Font)              scaled to size 6.58002pt on input line 118.
+LaTeX Font Info:    Font shape `T1/mdput/m/it' will be
+(Font)              scaled to size 4.70001pt on input line 118.
+<../../Informatique/S1_Themes/03_UtilisationModules/01_SurfingPorquerolles/imag
+es/fig_02.png, id=153, 175.6161pt x 141.1674pt>
+File: ../../Informatique/S1_Themes/03_UtilisationModules/01_SurfingPorquerolles
+/images/fig_02.png Graphic file (type png)
+<use ../../Informatique/S1_Themes/03_UtilisationModules/01_SurfingPorquerolles/
+images/fig_02.png>
+Package pdftex.def Info: ../../Informatique/S1_Themes/03_UtilisationModules/01_
+SurfingPorquerolles/images/fig_02.png  used on input line 131.
+(pdftex.def)             Requested size: 483.69687pt x 388.86201pt.
+File: ../../Style/png/logo_lycee.png Graphic file (type png)
+<use ../../Style/png/logo_lycee.png>
+Package pdftex.def Info: ../../Style/png/logo_lycee.png  used on input line 132
+.
+(pdftex.def)             Requested size: 56.9055pt x 45.97325pt.
+[7 <../../Informatique/S1_Themes/03_UtilisationModules/01_SurfingPorquerolles/i
+mages/fig_01.png>])
+(../../Informatique/S1_Themes/04_AlgorithmesDichotomiques/01_RechercheDichotomi
+que/01_RechercheDichotomique.tex)
+(../../Informatique/S1_Themes/04_AlgorithmesDichotomiques/02_ExponentiationRapi
+de/02_ExponentiationRapide.tex)
+(../../Informatique/S1_Themes/05_FonctionsRecursives/01_AlgorithmesDichotomique
+s/01_AlgorithmesDichotomiques.tex)
+(../../Informatique/S1_Themes/05_FonctionsRecursives/02_FiguresAlphaNumeriques/
+02_FiguresAlphaNumeriques.tex)
+(../../Informatique/S1_Themes/05_FonctionsRecursives/03_Fractales/03_Fractales.
+tex)
+(../../Informatique/S1_Themes/05_FonctionsRecursives/04_EnumerationListes/04_En
+umerationListes.tex)
+(../../Informatique/S1_Themes/06_Gloutons/01_RenduMonnaie/01_RenduMonnaie.tex)
+(../../Informatique/S1_Themes/06_Gloutons/02_AllocationSalles/02_AllocationSall
+es.tex)
+(../../Informatique/S1_Themes/06_Gloutons/03_SelectionActivites/03_SelectionAct
+ivites.tex)
+(../../Informatique/S1_Themes/07_Images/01_TraitementImages/01_TraitementImages
+.tex) (../../Informatique/S1_Themes/07_Images/02_Convolution/02_Convolution.tex
+) (../../Informatique/S1_Themes/08_Tris/01_TriQuadratique/01_TriQuadratique.tex
+) (../../Informatique/S1_Themes/08_Tris/02_TriFusion/02_TriFusion.tex)
+(../../Informatique/S1_Themes/08_Tris/03_TriRapide/03_TriRapide.tex)
+(../../Informatique/S1_Themes/08_Tris/04_TriComptage/04_TriComptage.tex))
+\tf@ptc=\write6
+\openout6 = `S1_Themes_Full_PDF.ptc'.
+
+File: ../../Style/png/logo_lycee.png Graphic file (type png)
+<use ../../Style/png/logo_lycee.png>
+Package pdftex.def Info: ../../Style/png/logo_lycee.png  used on input line 41.
+
+(pdftex.def)             Requested size: 56.9055pt x 45.97325pt.
+
+[8 <../../Informatique/S1_Themes/03_UtilisationModules/01_SurfingPorquerolles/i
+mages/fig_02.png (PNG copy)>] (S1_Themes_Full_PDF.aux)
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+
+LaTeX Warning: There were undefined references.
+
+
+Package biblatex Warning: Please (re)run Biber on the file:
+(biblatex)                S1_Themes_Full_PDF
+(biblatex)                and rerun LaTeX afterwards.
+
+Package logreq Info: Writing requests to 'S1_Themes_Full_PDF.run.xml'.
+\openout1 = `S1_Themes_Full_PDF.run.xml'.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 39304 strings out of 480202
+ 768741 string characters out of 2887200
+ 1633947 words of memory out of 3000000
+ 54637 multiletter control sequences out of 15000+200000
+ 785351 words of font info for 373 fonts, out of 3000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 93i,17n,101p,1145b,1957s stack positions out of 5000i,500n,10000p,200000b,50000s
+ <C:\Users\xavier.pessoles2\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen
+/ec/dpi600\tctt0900.pk>{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/ly1/texnans
+i.enc} <C:\Users\xavier.pessoles2\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jkna
+ppen/ec/dpi600\tcit0900.pk> <C:\Users\xavier.pessoles2\AppData\Local\MiKTeX\2.9
+\fonts/pk/ljfour/jknappen/ec/dpi642\ectt0900.pk> <C:\Users\xavier.pessoles2\App
+Data\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi642\ectt1000.pk>{C:/Progra
+m Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Program Files/MiKTeX 2.9/fon
+ts/type1/mathdesign/mdput/md-utr7t.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
+/mathdesign/mdput/md-utr7v.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/mathdes
+ign/mdput/md-utr7y.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/mathdesign/mdpu
+t/md-utri7m.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/mathdesign/mdpgd/md-ut
+rma.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/adobe/utopia/putb8a.pfb><C:/Pr
+ogram Files/MiKTeX 2.9/fonts/type1/adobe/utopia/putr8a.pfb><C:/Program Files/Mi
+KTeX 2.9/fonts/type1/adobe/utopia/putr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts
+/type1/adobe/utopia/putri8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/av
+antgar/uagd8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/avantgar/uagko8a
+.pfb>
+Output written on S1_Themes_Full_PDF.pdf (8 pages, 726873 bytes).
+PDF statistics:
+ 334 PDF objects out of 1000 (max. 8388607)
+ 72 named destinations out of 1000 (max. 500000)
+ 84523 words of extra memory for PDF output out of 89155 (max. 10000000)
+
