@@ -1,0 +1,50 @@
+\documentclass[10pt,fleqn]{article} % Default font size and left-justified equations
+\usepackage[%
+    pdftitle={Exercices de SII},
+    pdfauthor={Xavier Pessoles}]{hyperref}
+
+
+\newcommand{\repStyle}{../../../Style}
+\input{\repStyle/packages}
+\input{\repStyle/new_style}
+\input{\repStyle/macros_SII}
+\input{\repStyle/environment}
+
+
+\newcommand{\macrocomp}{macro_competences}
+\newcommand{\comp}{competences}
+\newcommand{\td}{fichier_td}
+\newcommand{\repExo}{dossier}
+
+
+\def\xxYCartouche{-2.25cm}
+\def\xxYongletGarde{.5cm}
+\def\xxYOnget{.9cm}
+
+\begin{document}
+
+\def\xxcompetences{}
+\def\xxfigures{}
+
+\graphicspath{{\repStyle/png/}}
+
+\setlength{\columnseprule}{.1pt}
+
+%% MODELISER
+% Page de garde
+
+\input{\repStyle/Entete_Themes_Info}
+\input{\repStyle/pagegarde_livret_exos}
+\pagestyle{fancy}
+\thispagestyle{plain}
+\input{../../../Informatique/S1_Themes/02_StructuresImbriquees/Fiche/S1_02_BouclesImbriquees_Fiche.tex}
+
+\newpage
+
+\graphicspath{{\repStyle/png/}{../../../Informatique/S1_Themes/02_StructuresImbriquees/03_Percolation/images}}
+\input{../../../Informatique/S1_Themes/02_StructuresImbriquees/03_Percolation/03_Percolation.tex}
+
+\end{document}
+
+
+
