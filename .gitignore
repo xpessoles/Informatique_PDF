@@ -10,3 +10,7 @@ Exercices/Exercices_Full_PDF.bcf
 *.aux
 *.aux
 *.bcf
+*.aux
+*.xml
+*.gz
+*.log
