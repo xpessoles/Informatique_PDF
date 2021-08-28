@@ -1,0 +1,210 @@
+\documentclass[t,10pt]{article}
+% A modifier selon la personne...
+\input{base.tex}
+\input{base_XP.tex}
+\geometry{a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm}
+
+% A modifier pour chaque chapitre...
+\newcommand{\titre}{Boucles imbriquées -- QCM}
+\newcommand{\numero}{2}
+
+% Prof ou élève...
+% prof : 
+%\newcommand{\phantomchoix}[1]{\textcolor{red}{#1}}
+%\newcommand{\blanc}[1]{\textcolor{red}{#1}}
+% eleve : 
+\newcommand{\phantomchoix}[1]{\phantom{#1}}
+\newcommand{\blanc}[1]{\textcolor{white}{#1}}
+
+\renewcommand{\baselinestretch}{1.2}
+
+\newcommand{\site}{\texttt{changer le nom du site}}
+
+
+
+\begin{document}
+
+\enteteinfo
+
+
+
+
+
+\question{Quelle est la valeur de la variable \texttt{image} après exécution du programme \texttt{Python} suivant ?}
+
+\begin{lstlisting}
+image = [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]]
+for i in range(4) :
+     for j in range(4) :
+          if (i+j) == 3 :
+               image[i][j] = 1
+\end{lstlisting}
+\begin{enumerate}
+\item \texttt{[[0,0,0,1],[0,0,1,0],[0,1,0,0],[1,0,0,0]]}. % +
+\item \texttt{[[0,0,0,1],[0,0,0,1],[0,0,0,1],[0,0,0,1]]}.
+\item \texttt{[[0,0,0,1],[0,0,1,1],[0,1,1,1],[1,1,1,1]]}.
+\item \texttt{[[0,0,0,0],[0,0,0,0],[0,0,0,0],[1,1,1,1]]}.
+\end{enumerate}
+
+
+\question{Quelle est la valeur de la variable \texttt{table} après exécution du programme \texttt{Python} suivant ?}
+\begin{lstlisting}
+table = [12, 43, 6, 22, 37]
+for i in range(len(table) - 1):
+    if table [i] > table [i+1] :
+        table [i] ,table [i+1] = table [i+1] ,table [i]
+\end{lstlisting}
+\begin{enumerate}
+\item \texttt{[12, 6, 22, 37, 43]}. % +
+\item \texttt{[6, 12, 22, 37, 43]}.
+\item \texttt{[43, 12, 22, 37, 6]}.
+\item \texttt{[43, 37, 22, 12, 6]}.
+\end{enumerate}
+
+
+\question{On considère le programme suivant. Quelle est la valeur de maxi(L) ?}
+\begin{lstlisting}
+def maxi(tab):
+   """
+   tab est une liste de couples (nom, note)
+     * nom est de type str
+     * note est un entier entre 0 et 20.
+   """
+   m = tab[0]
+   for x in tab:
+      if x[1] >= m[1]:
+         m = x
+   return m
+L =  [('Adrien', 17), ('Barnabe', 17), ('Casimir', 17), ('Dorian', 17), ('Emilien', 16), ('Fabien', 16)]
+\end{lstlisting}
+\begin{enumerate}
+\item \texttt{('Adrien',17)}.
+\item \texttt{('Dorian',17)}. %+
+\item \texttt{('Fabien',16)}.
+\item \texttt{('Emilien',16)}.
+\end{enumerate}
+
+
+\question{Que contient la variable compteur à la fin de l’exécution de ce script ?}
+\begin{lstlisting}
+liste = [0, 1, 2, 3]
+compteur = 0
+for i in range(len(liste)-1) :
+    for j in range(i,len(liste)) :
+        compteur += 1
+\end{lstlisting}
+\begin{enumerate}
+\item 4.
+\item 8.
+\item 9. %+
+\item 10.
+\end{enumerate}
+
+\question{}
+On considère la liste de p-uplets suivante :
+\begin{lstlisting}
+table = [ ('Grace', 'Hopper', 'F', 1906), ('Tim', 'Berners-Lee', 'H', 1955), ('Ada', 'Lovelace', 'F', 1815), ('Alan', 'Turing', 'H', 1912) ]
+\end{lstlisting}
+où chaque p-uplet représente un informaticien ou une informaticienne célèbre ; le premier élément est son prénom, le deuxième élément son nom, le troisième élément son sexe (‘H’ pour un homme, ‘F’ pour une femme) et le quatrième élément son année de naissance (un nombre entier entre 1000 et 2000).
+
+On définit une fonction :
+\begin{lstlisting}
+def fonctionMystere(table):
+    mystere = []
+    for ligne in table:
+        if ligne[2] == 'F':
+            mystere.append(ligne[1])
+    return mystere
+\end{lstlisting}
+Que vaut fonctionMystere(table)?
+\begin{enumerate}
+\item \texttt{[‘Grace’, ‘Ada’]}.
+\item \texttt{[('Grace', 'Hopper', 'F', 1906), ('Ada', 'Lovelace', 'F', 1815)]}.
+\item \texttt{['Hopper', 'Lovelace']}. %+
+\item \texttt{[]}.
+\end{enumerate}
+
+\question{Quelle est la valeur de la variable table à la fin de l'exécution du script suivant ?}
+\begin{lstlisting}
+table = [[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]]
+table [1][2] = 5
+\end{lstlisting}
+\begin{enumerate}
+\item \texttt{[[1, 5, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]]}.
+\item \texttt{[[1, 2, 3], [5, 2, 3], [1, 2, 3], [1, 2, 3]]}.
+\item \texttt{[[1, 2, 3], [1, 2, 5], [1, 2, 3], [1, 2, 3]]}. %+
+\item \texttt{[[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 5, 3]]}.
+\end{enumerate}
+
+\question{Soit le tableau défini de la manière suivante : \texttt{tableau = [[1,3,4],[2,7,8],[9,10,6],[12,11,5]]}
+On souhaite accéder à la valeur 12.}
+\begin{enumerate}
+\item \texttt{tableau[4][1]}.
+\item \texttt{tableau[1][4]}.
+\item \texttt{tableau[3][0]}. %+
+\item \texttt{tableau[0][3]}.
+\end{enumerate}
+
+\question{Une erreur s'est glissée dans le tableau, car le symbole du Fluor est F et non Fl. Quelle instruction permet de rectifier ce tableau ?}
+\begin{lstlisting}
+mendeleiev = [ ['H','.', '.','.','.','.','.','He'],
+               ['Li','Be','B','C','N','O','Fl','Ne'],
+               ['Na','Mg','Al','Si','P','S','Cl','Ar'],
+                 ...... ]
+\end{lstlisting}
+\begin{enumerate}
+\item \texttt{mendeleiev.append('F')}.
+\item \texttt{mendeleiev[1][6] = 'F'}. %+
+\item \texttt{mendeleiev[6][1] = 'F'}.
+\item \texttt{mendeleiev[-1][-1] = 'F'}.
+\end{enumerate}
+
+\question{Quelle est la valeur de la variable t1 à la fin de l'exécution du script suivant ?}
+\begin{lstlisting}
+t1 = [['Valenciennes', 24],['Lille', 23],['Laon', 31],['Arras', 18]]
+t2 = [['Lille', 62],['Arras', 53],['Valenciennes', 67],['Laon', 48]]
+for i in range(len(t1)):
+    for v in t2:
+        if v[0] == t1[i][0]:
+           t1[i].append(v[1])
+\end{lstlisting}
+\begin{enumerate}
+\item \texttt{[['Valenciennes', 67], ['Lille', 62], ['Laon', 48], ['Arras', 53]]}.
+\item \texttt{[['Valenciennes', 24, 67], ['Lille', 23, 62], ['Laon', 31, 48], ['Arras', 18, 53]]}. %+
+\item \texttt{[['Arras', 18, 53],['Laon', 31, 48], ['Lille', 23, 62], ['Valenciennes', 24, 67]]}.
+\item \texttt{[['Valenciennes', 67, 24], ['Lille', 62,23], ['Laon', 48, 31], ['Arras', 53, 18]]}.
+\end{enumerate}
+
+\question{Que vaut asso à la fin de l'exécution ?}
+\begin{lstlisting}
+asso = []
+L =  [ ['marc','marie'], ['marie','jean'], ['paul','marie'], ['marie','marie'], ['marc','anne'] ]
+for c in L :
+    if c[1]=='marie':
+        asso.append(c[0])
+\end{lstlisting}
+\begin{enumerate}
+\item \texttt{['marc', 'jean', 'paul']}.
+\item \texttt{[['marc','marie'], ['paul','marie'], ['marie','marie']]}.
+\item \texttt{['marc', 'paul', 'marie'] }.%+
+\item \texttt{['marie', 'anne']}.
+\end{enumerate}
+
+\question{Quelle est la valeur de x après exécution du programme ci-dessous ?}
+\begin{lstlisting}
+t = [[3,4,5,1],[33,6,1,2]]
+x = t[0][0]
+for i in range(len(t)):
+    for j in range(len(t[i])):
+        if x < t[i][j]:
+            x = t[i][j]
+\end{lstlisting}
+\begin{enumerate}
+\item 3.
+\item 5.
+\item 6.
+\item 33. %+
+\end{enumerate}
+
+
+\end{document}
