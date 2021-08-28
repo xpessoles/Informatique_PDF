@@ -1,0 +1,206 @@
+\documentclass[t,10pt]{article}
+% A modifier selon la personne...
+\input{base.tex}
+\input{base_XP.tex}
+\geometry{a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm}
+
+% A modifier pour chaque chapitre...
+\newcommand{\titre}{Fiche 3 -- Boucles imbriquées}
+\newcommand{\numero}{2}
+
+% Prof ou élève...
+% prof : 
+%\newcommand{\phantomchoix}[1]{\textcolor{red}{#1}}
+%\newcommand{\blanc}[1]{\textcolor{red}{#1}}
+% eleve : 
+\newcommand{\phantomchoix}[1]{\phantom{#1}}
+\newcommand{\blanc}[1]{\textcolor{white}{#1}}
+
+\renewcommand{\baselinestretch}{1.2}
+
+\newcommand{\site}{\texttt{changer le nom du site}}
+
+
+
+\begin{document}
+
+\enteteinfo
+
+
+\bigskip
+
+Thème : Algorithmes opérant sur une structure séquentielle par boucles imbriquées. 
+Commentaires :
+\begin{itemize}
+\item recherche d'un facteur dans un texte;
+\item recherche des deux valeurs les plus proches dans un tableau;
+\item tri à bulles;
+\item notion de complexité quadratique
+\item outils pour valider la correction de l'algorithme
+\end{itemize}
+
+
+\section{Parcours d'une liste de listes}
+Les listes de listes permettent de mettre les données en deux dimensions. 
+\begin{exemple}
+~\\
+\begin{minipage}[t]{.3\linewidth}
+Grille de mots mêlés.
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+L & E & S \\ \hline
+E & T & E \\ \hline
+S & E & C \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{lstlisting}
+grille = [['L','E','S'],['E','T','E'],['S','E','C']]
+\end{lstlisting}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.3\linewidth}
+
+Table de multiplication
+\begin{center}
+\begin{tabular}{|c||c|c|c|}
+\hline
+$\times $ & 1 & 2 & 3 \\
+\hline
+\hline
+1 & 1 & 2 & 3 \\
+2 & 2 & 4 &  6 \\
+3 & 3 & 6 &  9 \\
+\hline
+\end{tabular}
+\end{center}
+
+\begin{lstlisting}
+table = [[1,2,3],[2,4,6],[3,6,9]]
+\end{lstlisting}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{.3\linewidth}
+
+Température en fonction du temps.
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+T (s)& 1 & 2 & 3 & 4 \\
+ \hline
+ T°C & 18 & 19 & 21 & 24 \\ 
+\hline
+\end{tabular}
+\end{center}
+
+\begin{lstlisting}
+data = [[1,18], [2,19],[3,21],[4,24]]
+\end{lstlisting}
+
+\end{minipage}
+\end{exemple}
+
+Pour parcourir les éléments d'un tableau on procède de la même façon que pour une recherche séquentielle. Prenons l'exemple d'un tableau \texttt{tab} de \texttt{n} lignes et {p} colonnes.
+
+\textbf{Utilisation de boucles \texttt{while}}
+\begin{lstlisting}
+n = len(tab)
+p = len(tab[0])
+i,j = 0,0
+while i<n :
+    while j<p :
+        print(tab[i][j])
+        j = j+1
+    j=0
+    i=i+1
+\end{lstlisting}
+
+\textbf{Utilisation de boucles \texttt{for}}
+\begin{lstlisting}
+n = len(tab)
+p = len(tab[0])
+for i in range(n) :
+    for j in range(p) :
+        print(tab[i][j])
+\end{lstlisting}
+
+\textbf{Écriture de boucles \texttt{for} en \texttt{Python}}
+\begin{lstlisting}
+for t in tab :
+    for e in t :
+        print(e)
+\end{lstlisting}
+
+\begin{rem}
+Il est possible de dénombrer le nombre d'itérations réalisées par les algorithmes ci-dessus. Dans chaque cas, la première boucle est réalisée $n$ fois. La seconde boucle, imbriquée dans la première est parcourue $p$ fois. 
+On peut donc dénombrer le nombre de fois que la fonction \texttt{print} est appelée : $n\times p$. 
+
+Une estimation grossière du nombre d'opérations réalisées en tout est donc  $n\times p$. On dit que la complexité dans ces algorithmes, dans le pire des cas est $\mathcal{O}\left(np\right)$. Si $n=p$, la complexité est de $\mathcal{O}\left(n^2\right)$. On parle de complexité quadratique. 
+
+\end{rem}
+ 
+
+\section{Recherche de facteur dans un mot}
+Rechercher un facteur dans un mot signifie rechercher une (sous-)chaîne de caractères dans une chaîne de caractères (ou encore un mot dans une chaîne).
+\begin{lstlisting}
+def recherche_01(m:str, s:str) -> bool:
+    """Recherche le mot m dans la chaine s
+       Préconditions : m et s sont des chaines de caractères"""
+    long_s = len(s) # Longueur de s
+    long_m = len(m) # Longueur de m
+    for i in range(long_s-long_m+1): 
+        # Invariant : m n'a pas été trouvé dans s[0:i+long_m-1]
+        j = 0
+        while j < long_m and m[j] == s[i+j]:
+            # Invariant : m[:j] == s[i:i+j]
+            j = j+1
+            # Invariant : m[:j] == s[i:i+j]
+        if j == long_m:
+            # Invariant précédent : m == s[i:i+long_m]
+            return True
+    return False
+\end{lstlisting}
+
+Cet algorithme est simplifiable en utilisant le slicing.
+\begin{lstlisting}
+def recherche_02(m:str, s:str) -> bool:
+    """Recherche le mot m dans la chaine s
+       Préconditions : m et s sont des chaines de caractères"""
+    long_s = len(s) # Longueur de s
+    long_m = len(m) # Longueur de m
+    for i in range(long_s-long_m+1): 
+        # Invariant : m n'a pas été trouvé dans s[0:i+long_m-1]
+        if s[i:i+long_m] == m: # On a trouvé m
+            return True
+    return False
+\end{lstlisting}
+
+En utilisant les possibilités de \texttt{Python}, il est possible de simplifier encore l'algorithme. 
+
+\begin{lstlisting}
+def recherche_03(m:str, s:str) -> bool:
+    """Recherche le mot m dans la chaine s
+       Préconditions : m et s sont des chaines de caractères"""
+    return m in s
+\end{lstlisting}
+
+\section{Activités préparatoires}
+
+
+\textbf{Pour réaliser l'activité associée à ce cours, suivre le lien suivant : }
+\url{https://bit.ly/3AmRgdH}
+
+\url{https://colab.research.google.com/drive/1HcfpO61L5QAuF5oupwehUPd3JI-JkYRS?usp=sharing}
+
+
+%\begin{qexo}
+%\'Ecrire la fonction \texttt{satisfaireClient(listeCommande:list,drone:dict,stock:dict,\\
+%limiteMin:dict,limiteMax:dict)} qui prend pour argument une liste de commande de drones, les dictionnaires \texttt{drone}, \texttt{stock}, \texttt{limiteMin} et \texttt{limiteMax} et qui affiche l'état du stock après chaque réalisation d'un drone ainsi que les commandes successives.
+%\end{qexo}
+
+
+
+
+\end{document}

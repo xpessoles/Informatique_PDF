@@ -1,0 +1,48 @@
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+    }
+
+%%% Python
+\usepackage{listingsutf8}
+\lstset{language=Python,
+  inputencoding=utf8/latin1,
+  breaklines=true,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{purple!40!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+  upquote = true,
+  columns=fullflexible,
+  backgroundcolor=\color{gray!10},frame=leftline,rulecolor=\color{gray}}  
+  
+
+\lstset{
+     literate=%
+         {é}{{\'e}}1    
+         {è}{{\`e}}1    
+         {ê}{{\^e}}1    
+         {à}{{\`a}}1    
+         {ô}{{\^o}}1    
+         {ù}{{\`u}}1    
+}
+
+%%% Exemple
+\newenvironment{exemple}[1][\hsize]%
+{%
+    \def\FrameCommand%
+    {%
+\rotatebox{90}{\textit{\textsf{Exemple}}} 
+        {\color{blue}\vrule width 3pt}%
+        \hspace{0pt}%must no space.
+        \fboxsep=\FrameSep\colorbox{gris_c}%
+    }%
+    \MakeFramed{\hsize#1\advance\hsize-\width\FrameRestore}%
+}%
+{\endMakeFramed}%
