@@ -1,0 +1,26 @@
+Semaine 0 :
+ * Distribtion du cours Ch_01
+
+Semaines 1 & 2 : 
+ * Ch1. Prise en main (~40')
+ * Ch2. Instructions  (~40')
+ * Ch3. Fonctions     (~30')
+ * Donner des activités sur les listes : (Ch4. + Activités à faire) 
+
+Semaines 3 & 4 :
+ * Ch4. Les listes 
+ * Ch5. Algorithmes sur les listes
+  >> Synthèse (10min.)
+ * TP1(?) sur les colis (boucles) + algos sur les listes. 
+ * Donner le chapitre 6 sur les dico + activités ?
+
+Semaines 5 & 6 :
+ * Ch6.(?) Les dictionnaires
+ * TP2 Lettres + Drone
+ * Donner le chapitre 7 (boucles imbriquées + activités).  
+
+Semaines 7 & 8 :
+ * Synthèses de boucles imbriquées 
+ * TP3(?) boucles imbriquées 
+
+Quizz sur Moodle ?
