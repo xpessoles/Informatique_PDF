@@ -15,15 +15,17 @@ path=r"../Informatique/progression_2021_2022_Info_MPSI.xlsx"#chemin de la progre
 path_classe=''
 path_site='site_info_mpsi'#Chemin pour exporter les pdf vers site
 path_site_ds='/Users/emiliendurif/Dropbox/cpge/ipt_mpsi_ds'#Chemin pour exporter les pdf vers site
-path_ref=os.popen('pwd').readlines()[0].strip()
+
 
 # os.chdir(os.system('pwd'))
 
 #Separateur de dossier
 if platform.system()=='Windows':
     sep='\\'
+    path_ref=os.popen('cd').readlines()[0].strip()
 else:
     sep='/'
+    path_ref=os.popen('pwd').readlines()[0].strip()
 
 ####
 #Definition des colonnes dans le tableau excel
