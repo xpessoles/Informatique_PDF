@@ -539,6 +539,8 @@ def compile_tex_python(file_abrege):
     ####pdflatex
     os.system(cmd_latex+file_abrege+'.tex')
     os.system(cmd_latex+file_abrege+'.tex')
+    
+    
 def genere_pdf(file,rep,type_activite):
     '''genere le pdf avec le fichier complet et incomplet'''
     file_abrege=file.split('.')[0].split('/')[-1]
@@ -706,8 +708,8 @@ def creer_dossier_tp(num_tp):
 
 
 ####Traiter TP en générant les .tex
-for tp in info_tp[1:2]:
-#for tp in info_tp:
+#for tp in info_tp[1:2]:
+for tp in info_tp:
      (date,n_cycle,num_activite,name_cycle,name_activite,supports,competences,figures,ref_cours)=tp
      rep=creer_dossier_tp(num_activite)
 #     rep=trouver_repertoire(tp)
@@ -729,8 +731,8 @@ for tp in info_tp[1:2]:
 #     genere_support(rep,ds,'ds')
 
 ####Compiler tp
-#for k in range(len(info_tp)):
-for k in range(0,4):
+for k in range(len(info_tp)):
+#for k in range(0,4):
     activite=info_tp[k]
     #rep=trouver_repertoire(activite)
     num_tp=activite[2]
