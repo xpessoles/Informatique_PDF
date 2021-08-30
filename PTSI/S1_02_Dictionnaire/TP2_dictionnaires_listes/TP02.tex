@@ -1,0 +1,173 @@
+\documentclass[t,10pt]{article}
+% A modifier selon la personne...
+\input{base.tex}
+\geometry{a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm}
+
+% A modifier pour chaque chapitre...
+\newcommand{\titre}{Séquences et dictionnaires}
+\newcommand{\numero}{2}
+
+% Prof ou élève...
+% prof : 
+%\newcommand{\phantomchoix}[1]{\textcolor{red}{#1}}
+%\newcommand{\blanc}[1]{\textcolor{red}{#1}}
+% eleve : 
+\newcommand{\phantomchoix}[1]{\phantom{#1}}
+\newcommand{\blanc}[1]{\textcolor{white}{#1}}
+
+\renewcommand{\baselinestretch}{1.2}
+
+\newcommand{\site}{\texttt{changer le nom du site}}
+
+
+
+\begin{document}
+\entetetpinfo
+
+intro...
+
+\bigskip
+
+Le but de ce TP est blablabla.\\
+
+Créez un dossier \texttt{TP02} puis, à l'intérieur, un fichier \texttt{TP02.py}. 
+
+
+\begin{activite}
+Le signe $\sharp$ est utilisé devant un commentaire. Pour chaque exercice, vous devrez en entête inscrire le titre de l'exercice.\\
+Les tests effectués seront conservés sous forme de commentaires dans le script de votre programme. Le signe de commentaire $\sharp$ en début de ligne peut être mis en sélectionnant les lignes à commenter et en choisissant « comment out region » dans l'onglet format (pour décommenter, vous pouvez utiliser « uncomment region »).\\
+On rappelle aussi qu'il est préférable de faire les tests dans le script (au moyen de \texttt{print}) plutôt que dans le shell. Il suffit ensuite de mettre en commentaire les \texttt{print}. 
+\vspace{0.2cm}
+\end{activite}
+
+\section{Travail sur les listes}
+
+\section{Déterminer la fréquence d'apparition des lettres dans un texte}
+
+Récupérez  le fichier \texttt{texte.py} sur le site \site, et enregistrez-le dans votre dossier \texttt{TP02}.\\
+Après avoir ouvert et parcouru \texttt{texte.py}, copiez-collez son contenu au début de votre fichier \texttt{TP02.py}.\\
+
+On rappelle que c'est le type \texttt{string} (chaîne de caractères) qui permet, en python, de manipuler les caractères et les textes : par exemple \texttt{'a'} et \texttt{'bonjour, ça va ?'} sont de type \texttt{string}.
+
+\bigskip
+
+La fonction \texttt{compterLettre(texte)} est donnée,
+\begin{python}
+\texttt{def compterLettre(texte:str):\\
+{}\ \indente dictionnaire=\{\}\\
+\ \indente  for lettre in texte:\\
+\ \indente \indente        if lettre in 'azertyuiopqsdfghjklmwxcvbn':\\
+\ \indente \indente \indente     if lettre in dictionnaire.keys():\\
+\ \indente \indente \indente  \indente   dictionnaire[lettre]+=1\\
+\ \indente \indente \indente else:\\
+\ \indente \indente \indente  \indente  dictionnaire[lettre]=1\\
+\ \indente    return dictionnaire}
+\end{python}
+
+\setcounter{cexo}{0}
+
+\begin{qexo}
+Commenter chaque ligne de la fonction \texttt{compterLettre} et expliquer ce qu'elle fait.
+\end{qexo}
+
+Pour connaître la fréquence d'apparition des lettres dans un texte, nous allons compter le nombre de lettres dans le texte à partir du dictionnaire obtenu avec la fonction \texttt{compterLettre(texte)} (sans ponctuation ni caractère particulier),
+
+\begin{qexo}
+\'Ecrire la fonction \texttt{sommeLettre(dico:dict)} qui prend comme argument un dictionnaire dont les clés sont les lettres de l'alphabet et les valeurs le nombre d'apparition de chaque lettre dans le texte considéré. Cette fonction renvoie un entier, somme de toutes les lettres.
+\end{qexo}
+
+\begin{qexo}
+\'Ecrire la fonction \texttt{frequenceLettre(dico:dict)} qui prend pour argument le même dictionnaire que dans la fonction \texttt{sommeLettre} et qui renvoie un dictionnaire dont les clés sont les lettres de l'alphabet et les valeurs les pourcentages d'apparition des lettres dans le texte considéré. Vous pourrez avantageusement utiliser la fonction \texttt{sommeLettre} dans votre fonction.
+\end{qexo}
+
+\textit{Vous devez trouver pour la lettre 'i', 8.009153318077804\%}
+
+
+\section{Gérer les stocks de composants pour réaliser des drones}
+L'entreprise \texttt{trucMuch}...\\\
+
+\begin{minipage}{.7\textwidth}%
+Les composants utiles pour réaliser un drone sont :
+\begin{itemize}
+\item le châssis ;
+\item les 4 moteurs ;
+\item les 4 hélices ;
+\item la batterie ;
+\item le contrôleur de vol ;
+\item ESC 4 en 1 pour les 4 moteurs (Electronic Speed Controler) ;
+\item la plaque de distribution de puissance (PDB Power Distribution Board).
+\end{itemize}
+\end{minipage}%
+\hfill
+\begin{minipage}{.3\textwidth}%
+\includegraphics[width=\textwidth]{drone.jpg}
+\end{minipage}
+Des composants en option sont aussi disponibles (caméra, radiocommande, chargeur, buzzer, leds...) et ne seront pas traités ici.\\
+
+Dans le fichier \texttt{drone.py} donné, vous trouverez 4 dictionnaires dont les clés sont les noms des composants et les valeurs représentent le nombre de composants nécessaire :
+
+\begin{python}
+drone=\{'chassis':1,'moteur':4,'helice':4,'controleurVol':1,'ESC4en1':1,'batterie':1,\\
+'plaqueDeDistribution':1\}\\
+stock=\{'chassis':0,'moteur':25,'helice':36,'controleurVol':12,'ESC4en1':8,'batterie':20,\\
+'plaqueDeDistribution':7\}\\
+limiteMin=\{'chassis':2,'moteur':8,'helice':8,'controleurVol':2,'ESC4en1':2,'batterie':2,\\
+'plaqueDeDistribution':2\}\\
+limiteMax=\{'chassis':15,'moteur':60,'helice':60,'controleurVol':15,'ESC4en1':15,'batterie':30,\\
+'plaqueDeDistribution':15\}
+\end{python}
+
+\begin{itemize}
+\item \texttt{drone}, correspond aux composants nécessaires à la réalisation d'un drone. Les clés étant les composants et les valeurs le nombre de composant pour un drone;
+\item \texttt{stock}, correspond au stock à l'instant considéré;
+\item \texttt{limitMin}, correspond aux valeurs limites basses du stock pour déclencher une commande;
+\item \texttt{limitMax}, correspond aux valeurs limites hautes pour reconstituer le stock et définir le nombre de composants de la commande.
+\end{itemize}
+
+
+Récupérez  le fichier \texttt{drone.py} sur le site \site, et enregistrez-le dans votre dossier \texttt{TP02}.\\
+Après avoir ouvert et parcouru \texttt{drone.py}, copiez-collez son contenu au début de cette activité dans votre fichier \texttt{TP02.py}.
+
+\begin{objectif}
+\'Ecriture d'un programme qui permette de générer les commandes de composants utiles pour assurer la réalisation des drones attendus par les clients sans avoir de rupture de stock.\\
+On utilisera des objets de type \texttt{dict}.
+\end{objectif}
+
+\subsection*{Réaliser un drone}
+\setcounter{cexo}{0}
+
+\begin{qexo}
+\'Ecrire la fonction \texttt{realiser1Drone(drone:dict, stock:dict)} qui prend pour argument les dictionnaires \texttt{drone} et \texttt{stock} et qui renvoie un booléen, \texttt{True} si le stock est suffisant pour réaliser un drône sinon \texttt{False}.
+\end{qexo}
+
+\subsection*{Gérer le stock de composants}
+
+\begin{qexo}
+\'Ecrire la fonction \texttt{destocker(drone:dict, stock:dict)} qui prend pour argument les dictionnaires \texttt{drone} et \texttt{stock} et qui retire du stock le nombre de composants utiles pour réaliser un drône. Cette fonction ne renvoie rien. Le dictionnaire \texttt{stock} est modifié par effet de bord.
+\end{qexo}
+
+Lorsque le stock devient insuffisant, une commande est passée et le stock est ré-évalué.
+
+\begin{qexo}
+\'Ecrire la fonction \texttt{stocker(commande:dict, stock:dict)} qui prend pour argument les dictionnaires \texttt{commande} et \texttt{stock} et qui ajoute au stock le nombre de composants commandés. Cette fonction ne renvoie rien. Le dictionnaire \texttt{stock} est modifié par effet de bord.
+\end{qexo}
+
+\subsection*{Passer une commande}
+Une commande est passée quand le stock d'un composant est à la limite basse (valeur incluse). Les composants qui n'ont pas atteint la limite basse ne sont pas commandés.
+
+\begin{qexo}
+\'Ecrire la fonction \texttt{commanderComposant(stock:dict,limiteMin:dict,limiteMax:dict)} qui prend pour argument les dictionnaires \texttt{stock}, \texttt{limiteMin} et \texttt{limiteMax} et qui renvoie un dictionnaire \texttt{commande} permettant de reconstituer le stock.
+\end{qexo}
+
+\subsection*{Gestion automatique}
+Dans la semaine, l'entreprise trucmuch reçoit les commandes de drones de 4 clients sous la forme d'une liste, \texttt{listeCommande}=\verb![!3,1,5,2\verb!]!.
+
+\begin{qexo}
+\'Ecrire la fonction \texttt{satisfaireClient(listeCommande:list,drone:dict,stock:dict,\\
+limiteMin:dict,limiteMax:dict)} qui prend pour argument une liste de commande de drones, les dictionnaires \texttt{drone}, \texttt{stock}, \texttt{limiteMin} et \texttt{limiteMax} et qui affiche l'état du stock après chaque réalisation d'un drone ainsi que les commandes successives.
+\end{qexo}
+
+
+
+
+\end{document}

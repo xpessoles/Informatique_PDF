@@ -1,0 +1,325 @@
+\documentclass[t,10pt]{article}
+% A modifier selon la personne...
+\input{base.tex}
+\input{base_XP.tex}
+\geometry{a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm}
+
+% A modifier pour chaque chapitre...
+\newcommand{\titre}{Boucles imbriquées -- QCM}
+\newcommand{\numero}{2}
+
+% Prof ou élève...
+% prof : 
+%\newcommand{\phantomchoix}[1]{\textcolor{red}{#1}}
+%\newcommand{\blanc}[1]{\textcolor{red}{#1}}
+% eleve : 
+\newcommand{\phantomchoix}[1]{\phantom{#1}}
+\newcommand{\blanc}[1]{\textcolor{white}{#1}}
+
+\renewcommand{\baselinestretch}{1.2}
+
+\newcommand{\site}{\texttt{changer le nom du site}}
+
+
+
+\begin{document}
+
+\enteteinfo
+
+\graphicspath{{images}}
+
+\exer{Percolation}
+\setcounter{numques}{0}
+
+%\begin{multicols}{2}
+Pour ce TP, on utilisera le fichier \texttt{Percolation\_Sujet.py} que vous renommerez en utilisant la convetion suivante : 
+\texttt{TP\_n\_Nom1\_Nom2.py} où \texttt{n} désigne le numéro du TP et \texttt{Nom1} et \texttt{Nom2} vos noms.
+
+La percolation \footnote{du latin \emph{percolare} : couler à travers.} désigne le passage d'un fluide à
+travers un solide poreux. Ce terme fait bien entendu référence au café
+produit par le passage de l'eau à travers une poudre de café comprimée,
+mais dans un sens plus large peut aussi bien s'appliquer à
+l'infiltration des eaux de pluie jusqu'aux nappes phréatiques ou encore
+à la propagation des feux de forêt par contact entre les feuillages des
+arbres voisins.
+
+L'étude scientifique des modèles de percolation s'est développée à
+partir du milieu du XXe siècle et touche aujourd'hui de nombreuses
+disciplines, allant des mathématiques à l'économie en passant par la
+physique et la géologie.
+
+%\setcounter{section}{1}
+\subsection*{Choix d'un modèle}\label{choix-dun-modele}
+
+
+Nous allons aborder certains phénomènes propres à la percolation par
+l'intermédiaire d'un modèle très simple : une grille carrée $n\times n$,
+chaque case pouvant être ouverte (avec une probabilité $p$) ou
+fermée (avec une probabilité $1-p$). La question à laquelle nous
+allons essayer de répondre est la suivante : est-il possible de joindre
+le haut et le bas de la grille par une succession de cases ouvertes
+adjacentes ?
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\linewidth]{illustration_perco.jpg}
+\caption{Deux exemples de grilles $10\times10$. La percolation
+n'est possible que dans le second cas (les cases ouvertes sont les cases
+blanches). \label{fig1}}
+\end{center}
+\end{figure}
+
+%On conçoit aisément que la réussite ou non de la percolation dépend
+%beaucoup de $p$ : plus celle-ci est grande, plus les chances de
+%réussite sont importantes. Nous auront l'occasion d'observer l'existence
+%pour de grandes valeurs de $n$ d'un seuil critique $p_0$ au delà duquel la percolation a toutes les chances de réussir et en dessous duquel la percolation échoue presque à
+%chaque fois.
+
+\subsection*{Création et visualisation de la grille}
+
+%
+%Les deux modules essentiels dont nous aurons besoin sont les modules
+%\texttt{numpy} (manipulation de tableaux bi-dimensionnels) et \texttt{matplotlib.pyplot}
+%(graphisme), qu'il convient d'importer :
+%
+%\begin{lstlisting}
+%import numpy as np
+%import matplotlib.pyplot as plt
+%\end{lstlisting}
+%
+%Nous aurons aussi besoin de la fonction \textbf{\texttt{rand}} du module \texttt{numpy.random}
+%(fonction qui retourne un nombre pseudo- aléatoire de l'intervalle
+%$\left[0,1\right[$ et accessoirement de la fonction \texttt{ListedColormap} du
+%module \texttt{matplotlib.colors} (pour choisir l'échelle chromatique à utiliser
+%pour la représentation graphique). Ces deux fonctions seront importées
+%directement, puisque nous n'aurons pas besoin des modules entiers :
+%
+%\begin{lstlisting}
+%from numpy.random import rand
+%from matplotlib.colors import ListedColormap
+%\end{lstlisting}
+%
+%La grille de percolation sera représentée par le type \texttt{np.array}. La
+%fonction \texttt{np.zeros((n, p))} renvoie un tableau de $n$ lignes et
+%$p$ colonnes contenant dans chacune de ses cases le nombre flottant
+%0.0. Une fois un tableau \texttt{tab} créé, la case d'indice $(i, j)$ est
+%référencée indifféremment par \texttt{tab[i][j]} ou par \texttt{tab[i,j]} et
+%peut être lue et modifiée (comme d'habitude, les indices débutent à 0).
+%Enfin, on notera que si tab est un tableau, l'attribut \texttt{tab.shape}
+%retourne le couple $(n, p)$ de ses dimensions verticale et
+%horizontale (le nombre de lignes et de colonnes, \texttt{tab} étant vu comme une
+%matrice).
+%
+%Dans la suite de ce document, on représentera une grille de percolation
+%par un tableau $n\times n$, les cases fermées contenant le nombre
+%flottant $0.0$ et les cases ouvertes le nombre flottant $1.0$.
+
+La grille de percolation sera représentée par le type \texttt{list}. Cette grille sera elle-même composée de \texttt{n} listes de \texttt{n} flottants (tableau $n\times n$). 
+Une fois la grille \texttt{grille} créée, la case d'indice $(i, j)$ est référencée par \texttt{grille[i][j]}.
+
+Afin de remplir la grille, on dispose de la fonction \texttt{rand()} permettant de renvoyer un nombre aléatoire compris dans l'intervalle $[0,1[$.
+
+Afin de visualiser la grille et de sauvegarder la grille on dispose des fonctions \texttt{afficher\_grille(grille : list) -> None} et 
+\texttt{sauvegarder\_grille(grille : list, nom\_de\_fichier : str) -> None}.
+
+
+\question{Définir une fonction \texttt{Python}, de signature \texttt{def creation\_grille(p: float, n: int) -> list} à deux paramètres : un nombre réel $p$ (qu'on supposera dans l'intervalle $[0,1[$ et un entier naturel $n$, qui renvoie un tableau $(n,n)$ dans lequel chaque case sera ouverte avec la probabilité $p$ et fermée sinon. }
+
+Pour afficher la grille, vous pourrrez utiliser les instructions suivantes : 
+\begin{lstlisting}
+>>> grille = creation_grille(0.6, 10)
+>>> afficher_grille(grille)
+\end{lstlisting}
+
+%\subsubsection*{Visualisation de la grille}
+%
+%Pour visualiser simplement la grille, nous allons utiliser la fonction
+%\texttt{plt.matshow} : appliquée à un tableau, celle-ci présente ce dernier sous
+%forme de cases colorées en fonction de leur valeur.
+%
+%Les couleurs sont choisies en fonction d'une échelle chromatique que
+%vous pouvez visualiser à l'aide de la fonction plt.colorbar(). Celle
+%utilisée par défaut va du bleu au rouge ; puisque nos grilles ne
+%contiennent pour l'instant que les valeurs 0 ou 1, les cases fermées
+%apparaîtrons en bleu, et les cases ouvertes, en rouge.
+%%
+%
+%\subsubsection*{Changer l'échelle chromatique}
+%
+%L'argument par défaut \texttt{cmap} de la fonction \texttt{plt.matshow} permet de modifier
+%l'échelle chromatique utilisée. La fonction \texttt{ListedColormap} va nous
+%permettre de créer l'échelle de notre choix. Puisque nous n'aurons que
+%trois états possibles (une case pleine représentée par la valeur $0.0$),
+%une case vide représentée par la valeur $1.0$ et plus tard une case
+%remplie d'eau représentée par la valeur $0.5$) une échelle à trois
+%couleurs suffit. Vous pouvez utiliser celle-ci :
+%
+%\begin{lstlisting}
+%echelle = ListedColormap(['black', 'aqua', 'white'])
+%\end{lstlisting}
+%
+%
+%
+%\question{Écrire une fonction \texttt{afficher\_grille(grille,nom\_de\_fichier)} 
+%qui prend en argument une variable grille qui correspond à une grille de 
+%percolation générée précédemment et ne renvoyant rien mais enregistrant dans 
+%\texttt{nom\_de\_fichier} le graphe obtenu. On pourra exporter une grille de
+% $10\times 10$ cases avec l'échelle suggérée précédemment, l'enregistrer sous 
+% le nom \texttt{tp09\_q02\_vos\_noms.png} et l'envoyer à votre professeur.}
+%
+%
+
+%\end{quote}
+%
+\subsection*{Percolation}\label{percolation}
+%
+
+
+
+
+Une fois la grille crée, les cases ouvertes de la première ligne sont
+remplies par un fluide, ce qui sera représenté par la valeur $0,5$ dans
+les cases correspondantes. Le fluide pourra ensuite être diffusé à
+chacune des cases ouvertes voisines d'une case contenant déjà le fluide jusqu'à remplir toutes les cases ouvertes possibles.
+
+
+\begin{figure}[!htb]
+\begin{center}
+\includegraphics[width=0.6\textwidth]{illustration_perco2}
+\caption{les deux grilles de la figure \ref{fig1}, une fois le processus de percolation terminé (le fluide est représenté par des hachures) \label{fig2}.}
+\end{center}
+\end{figure}
+
+\question{Écrire une fonction \texttt{percolation(grille : list) -> None} qui prend en argument une
+grille et qui remplit de fluide celle-ci, en appliquant l'algorithme
+exposé ci-dessous :
+\begin{enumerate}
+\item Créer une liste contenant initialement les coordonnées des cases ouvertes de la première ligne de la grille et remplir ces cases de liquide.
+\item  Puis, tant que cette liste n'est pas vide, effectuer les opérations suivantes :
+  \begin{enumerate}
+  \item extraire de cette liste les coordonnées d'une case quelconque ;
+  \item ajouter à la liste les coordonnées des cases voisines qui sont encore vides, et les remplir de liquide.
+  \end{enumerate}
+\end{enumerate}
+L'algorithme se termine quand la liste est vide.}
+
+
+
+
+\question{Rédiger un script vous permettant de visualiser une grille avant et
+après remplissage, et faire l'expérience avec quelques valeurs de
+$p$ pour une grille de taille raisonnable (commencer avec $n
+= 10$ pour vérifier visuellement que votre algorithme est correct, puis
+augmenter la taille de la grille, par exemple avec $n = 64$). On pourra exporter et l'enregistrer sous le nom  \texttt{tp\_n\_q03\_vos\_noms.png}.}
+
+
+
+On dit que la percolation est réussie lorsqu'à la fin du processus au
+moins une des cases de la dernière ligne est remplie du fluide.
+
+\question{Écrire une fonction \texttt{teste\_percolation(p : float, n : int) -> bool} qui prend en argument
+un réel $p\in\left[0,1\right[$ et un entier $n\in \mathbb{N}^*$, crée une grille, effectue la percolation et
+renvoie : }
+\begin{itemize}
+\item \texttt{True} lorsque la percolation est réussie, c'est-à-dire lorsque le bas
+  de la grille est atteint par le fluide ;
+\item \texttt{False} dans le cas contraire.
+\end{itemize}
+
+%
+\subsection*{Seuil critique}\label{seuil-critique}
+%
+%\begin{quote}
+Nous allons désormais travailler avec des grilles de taille $128\times 128$ \footnote{Baisser cette valeur si le temps de calcul sur votre ordinateur est trop long.}
+
+
+Faire quelques essais de percolation avec différentes valeurs de $p$. Vous observerez assez vite qu'il semble exister un seuil $p_0$ en deçà duquel la percolation
+échoue presque à chaque fois, et au delà duquel celle-ci réussit presque
+à chaque fois. Plus précisément, il est possible de montrer que pour une
+grille de taille infinie, il existe un seuil critique
+$p_0$ en deçà duquel la percolation échoue toujours,
+et au delà duquel la percolation réussit toujours. Bien évidemment, plus
+la grille est grande, plus le comportement de la percolation tend à se
+rapprocher du cas de la grille théorique infinie.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.4\linewidth]{proba}
+\caption{L'allure théorique du graphe de la fonction $P(p)$ \label{fig3}.}
+\end{figure}
+
+%L'allure théorique du graphe de la fonction P(p)
+
+Notons $P(p)$ la probabilité pour le fluide de traverser la grille. Pour déterminer une valeur approchée de la probabilité de traverser la grille, on se contente d'effectuer $k$ essais pour une valeur de $p$ puis de renvoyer le nombre moyen de fois où le test de percolation est vérifié.
+
+\question{Rédiger la fonction \texttt{proba(p : float, k : int, n : int) -> float} qui prend en argument le nombre d'essai $k$, la variable $p$ ainsi que le nombre de cases $n$ sur la largeur de la grille et qui renvoie $P(p)$.}
+
+\question{Écrire une fonction \texttt{tracer\_proba(n : int ,nom\_de\_fichier : str) -> None}
+qui prend en argument une taille $n$  ne renvoyant rien mais enregistrant 
+dans \texttt{nom\_de\_fichier} le graphe obtenu. On pourra traiter le 
+cas d'une grille de $128\times 128$ cases et enregistrer la figure obtenue 
+sous le nom \texttt{tp\_n\_q06\_vos\_noms.png}.} 
+
+
+%
+%P(\emph{p})
+%\end{quote}
+%
+%1
+%
+%\begin{quote}
+%\emph{p}
+%
+%\emph{p}0 1
+%
+%Figure 3 -- \emph{L'allure théorique du graphe de la fonction} P\emph{.}
+%\end{quote}
+%
+%
+%Pour déterminer le seuil critique $p_0$, on peut procéder à une recherche dichotomique (assez grossière) en convenant que si
+%$P(p) < 0,4$ alors $p < p_0$ et si $P(p) > 0,6$ alors $p > p_0$
+%\question{ (Facultative) En utilisant une recherche dichotomique, chercher à estimer le plus précisément possible la valeur numérique du seuil $p_0$.}
+%\end{enumerate}
+%
+%\section{Propriétés
+%macroscopiques}\label{propriuxe9tuxe9s-macroscopiques}
+%
+%\begin{quote}
+%A l'instar de la thermodynamique, on peut décrire le comportement d'un
+%système lors d'une transition de phase en introduisant des propriétés
+%macroscopiques. Dans le cas de la percolation, on peut par exemple
+%définir la densité moyenne \emph{d}(\emph{p}) de cases ouvertes
+%atteintes par le fluide.
+%
+%Question 5.
+%\end{quote}
+%
+%\begin{enumerate}
+%\def\labelenumi{\alph{enumi})}
+%\item
+%  Définir une fonction densite qui prend en argument une grille dans
+%  laquelle la percolation a eu lieu et qui retourne la valeur de sa
+%  densité.
+%\item
+%  À l'aide d'un nombre raisonnable d'échantillons, définir alors la
+%  fonction d qui à une probabilité \emph{p} ∈ {[}0\emph{,} 1{[} associe
+%  la densité moyenne de la percolation dans une grille 128 × 128.
+%\item
+%  Tracer le graphe de \emph{d}(\emph{p}) pour \emph{p} ∈ {[}0\emph{,}
+%  1{[}.
+%\end{enumerate}
+%
+%\section{Et pour les plus rapides}\label{et-pour-les-plus-rapides}
+%
+%\begin{quote}
+%Recommencez toute cette étude, mais cette fois-ci avec une grille
+%hexagonale. Il est possible de prouver que pour une grille hexagonale
+%carrée le seuil critique \emph{p}\textsubscript{0} est exactement égal à
+%\emph{p}\textsubscript{0} = 1\emph{/}2 ; le vérifier expérimentalement
+%et chercher à le démontrer (en utilisant un argument de symétrie).
+%\end{quote}
+
+%\end{multicols}
+
+
+
+\end{document}
