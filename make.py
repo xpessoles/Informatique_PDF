@@ -23,9 +23,13 @@ path_site_ds='/Users/emiliendurif/Dropbox/cpge/ipt_mpsi_ds'#Chemin pour exporter
 if platform.system()=='Windows':
     sep='\\'
     path_ref=os.popen('cd').readlines()[0].strip()
+    copy='copy '
+    rm='DEL '
 else:
     sep='/'
     path_ref=os.popen('pwd').readlines()[0].strip()
+    copy='cp '
+    rm='rm '
 
 ####
 #Definition des colonnes dans le tableau excel
@@ -146,12 +150,12 @@ def genere_fichiers_tex0(info_activite,type_activite):
         if int(num_activite)<10 and len(num_activite)<2:
             num_activite='0'+num_activite
     if type_activite=='cours':
-        os.system('cp style'+sep+'Cy_i_Ch_j_Cours.tex '+rep+sep+'Cy_0'+str(n_cycle)+'_Ch_'+str(num_activite)+'_Cours.tex')
-        os.system('cp style'+sep+'Cy_i_Ch_j_Cours_PDF.tex '+rep+sep+'Cy_0'+str(n_cycle)+'_Ch_'+str(num_activite)+'_Cours_PDF.tex')
-        os.system('cp style'+sep+'Cy_i_livret_Ch_j.tex '+rep+sep+'Cy_0'+str(n_cycle)+'_livret_Ch_'+str(num_activite)+'.tex')
-        os.system('cp style'+sep+'Cy_i_Ch_j_TD_j.tex '+rep+sep+'Cy_0'+str(n_cycle)+'_Ch_'+str(num_activite)+'_TD_'+str(num_activite)+'.tex')
-        os.system('cp style'+sep+'Cy_i_Ch_j_TD_k_cor_pdf.tex '+rep+sep+'Cy_0'+str(n_cycle)+'_Ch_'+str(num_activite)+'_TD_'+str(num_activite)+'_cor_pdf.tex')
-        os.system('cp style'+sep+'Cy_i_Ch_j_TD_j_cor.tex '+rep+sep+'Cy_0'+str(n_cycle)+'_Ch_'+str(num_activite)+'_TD_'+str(num_activite)+'_cor.tex')
+        os.system(copy+'style'+sep+'Cy_i_Ch_j_Cours.tex '+rep+sep+'Cy_0'+str(n_cycle)+'_Ch_'+str(num_activite)+'_Cours.tex')
+        os.system(copy+'style'+sep+'Cy_i_Ch_j_Cours_PDF.tex '+rep+sep+'Cy_0'+str(n_cycle)+'_Ch_'+str(num_activite)+'_Cours_PDF.tex')
+        os.system(copy+'style'+sep+'Cy_i_livret_Ch_j.tex '+rep+sep+'Cy_0'+str(n_cycle)+'_livret_Ch_'+str(num_activite)+'.tex')
+        os.system(copy+'style'+sep+'Cy_i_Ch_j_TD_j.tex '+rep+sep+'Cy_0'+str(n_cycle)+'_Ch_'+str(num_activite)+'_TD_'+str(num_activite)+'.tex')
+        os.system(copy+'style'+sep+'Cy_i_Ch_j_TD_k_cor_pdf.tex '+rep+sep+'Cy_0'+str(n_cycle)+'_Ch_'+str(num_activite)+'_TD_'+str(num_activite)+'_cor_pdf.tex')
+        os.system(copy+'style'+sep+'Cy_i_Ch_j_TD_j_cor.tex '+rep+sep+'Cy_0'+str(n_cycle)+'_Ch_'+str(num_activite)+'_TD_'+str(num_activite)+'_cor.tex')
         # print(rep+sep+'Cy_0'+str(n_cycle)+'_Ch_0'+str(num_activite)+'_Cours_PDF.tex')
         changer_ligne(rep+sep+'Cy_0'+str(n_cycle)+'_Ch_'+str(num_activite)+'_Cours_PDF.tex','\\input{Cy_01_Ch_01_Cours.tex}','\\input{Cy_0'+str(n_cycle)+'_Ch_'+str(num_activite)+'_Cours.tex}')
         changer_ligne(rep+sep+'Cy_0'+str(n_cycle)+'_livret_Ch_'+str(num_activite)+'.tex','\\input{Cy_01_Ch_01_Cours.tex}','\\input{Cy_0'+str(n_cycle)+'_Ch_'+str(num_activite)+'_Cours.tex}')
@@ -164,23 +168,23 @@ def genere_fichiers_tex0(info_activite,type_activite):
         if os.path.exists(rep+sep+'Cy_0'+str(n_cycle)+'_Ch_'+str(num_chapitre)+'_TP_'+num_activite)==False:
             os.mkdir(rep+sep+'Cy_0'+str(n_cycle)+'_Ch_'+str(num_chapitre)+'_TP_'+num_activite)
             #TP : enonce
-        os.system('cp style'+sep+'Cy_i_Ch_j_TP_k.tex '+rep+'/Cy_0'+str(n_cycle)+'_Ch_'+str(num_chapitre)+'_TP_'+num_activite+sep+'Cy_0'+str(n_cycle)+'_Ch_'+str(num_chapitre)+'_TP_'+num_activite+'.tex')
-        os.system('cp style'+sep+'Cy_i_Ch_j_TP_k_pdf.tex '+rep+sep+'Cy_0'+str(n_cycle)+'_Ch_'+str(num_chapitre)+'_TP_'+num_activite+sep+'Cy_0'+str(n_cycle)+'_Ch_'+str(num_chapitre)+'_TP_'+num_activite+'_pdf.tex')
+        os.system(copy+'style'+sep+'Cy_i_Ch_j_TP_k.tex '+rep+'/Cy_0'+str(n_cycle)+'_Ch_'+str(num_chapitre)+'_TP_'+num_activite+sep+'Cy_0'+str(n_cycle)+'_Ch_'+str(num_chapitre)+'_TP_'+num_activite+'.tex')
+        os.system(copy+'style'+sep+'Cy_i_Ch_j_TP_k_pdf.tex '+rep+sep+'Cy_0'+str(n_cycle)+'_Ch_'+str(num_chapitre)+'_TP_'+num_activite+sep+'Cy_0'+str(n_cycle)+'_Ch_'+str(num_chapitre)+'_TP_'+num_activite+'_pdf.tex')
         changer_ligne(rep+sep+'Cy_0'+str(n_cycle)+'_Ch_'+str(num_chapitre)+'_TP_'+num_activite+sep+'Cy_0'+str(n_cycle)+'_Ch_'+str(num_chapitre)+'_TP_'+num_activite+'_pdf.tex','\\input{Cy_01_Ch_01_TP_01}','\\input{Cy_0'+str(n_cycle)+'_Ch_'+str(num_chapitre)+'_TP_'+num_activite+'.tex}')
             #TP : corrige
-        os.system('cp style'+sep+'Cy_i_Ch_j_TP_k.tex '+rep+'/Cy_0'+str(n_cycle)+'_Ch_'+str(num_chapitre)+'_TP_'+num_activite+sep+'Cy_0'+str(n_cycle)+'_Ch_'+str(num_chapitre)+'_TP_'+num_activite+'-cor.tex')
-        os.system('cp style'+sep+'Cy_i_Ch_j_TP_k_pdf.tex '+rep+sep+'Cy_0'+str(n_cycle)+'_Ch_'+str(num_chapitre)+'_TP_'+num_activite+sep+'Cy_0'+str(n_cycle)+'_Ch_'+str(num_chapitre)+'_TP_'+num_activite+'_pdf-cor.tex')
+        os.system(copy+'style'+sep+'Cy_i_Ch_j_TP_k.tex '+rep+'/Cy_0'+str(n_cycle)+'_Ch_'+str(num_chapitre)+'_TP_'+num_activite+sep+'Cy_0'+str(n_cycle)+'_Ch_'+str(num_chapitre)+'_TP_'+num_activite+'-cor.tex')
+        os.system(copy+'style'+sep+'Cy_i_Ch_j_TP_k_pdf.tex '+rep+sep+'Cy_0'+str(n_cycle)+'_Ch_'+str(num_chapitre)+'_TP_'+num_activite+sep+'Cy_0'+str(n_cycle)+'_Ch_'+str(num_chapitre)+'_TP_'+num_activite+'_pdf-cor.tex')
         changer_ligne(rep+sep+'Cy_0'+str(n_cycle)+'_Ch_'+str(num_chapitre)+'_TP_'+num_activite+sep+'Cy_0'+str(n_cycle)+'_Ch_'+str(num_chapitre)+'_TP_'+num_activite+'_pdf-cor.tex','\\input{Cy_01_Ch_01_TP_01}','\\input{Cy_0'+str(n_cycle)+'_Ch_'+str(num_chapitre)+'_TP_'+num_activite+'-cor.tex}')
         changer_ligne(rep+sep+'Cy_0'+str(n_cycle)+'_Ch_'+str(num_chapitre)+'_TP_'+num_activite+sep+'Cy_0'+str(n_cycle)+'_Ch_'+str(num_chapitre)+'_TP_'+num_activite+'-cor.tex','\\input{tp.tex}','\\input{tp-cor.tex}')
         changer_ligne(rep+sep+'Cy_0'+str(n_cycle)+'_Ch_'+str(num_chapitre)+'_TP_'+num_activite+sep+'Cy_0'+str(n_cycle)+'_Ch_'+str(num_chapitre)+'_TP_'+num_activite+'_pdf-cor.tex','\\corrigefalse','\\corrigetrue')
         #DS
     elif type_activite=='ds':
-        os.system('cp style'+sep+'DSk.tex '+rep+sep+'DS'+num_ds_str+'.tex')
-        os.system('cp style'+sep+'DSk_pdf.tex '+rep+sep+'DS'+num_ds_str+'_pdf.tex')
+        os.system(copy+'style'+sep+'DSk.tex '+rep+sep+'DS'+num_ds_str+'.tex')
+        os.system(copy+'style'+sep+'DSk_pdf.tex '+rep+sep+'DS'+num_ds_str+'_pdf.tex')
         changer_ligne(rep+sep+'DS'+num_ds_str+'_pdf.tex','\\input{Cy_01_Ch_01_TP_01}','\\input{DS'+num_ds_str+'.tex}')
             #DS : corrige
-        os.system('cp style'+sep+'DSk.tex '+rep+sep+'DS'+num_ds_str+'-cor.tex')
-        os.system('cp style'+sep+'DSk_pdf.tex '+rep+sep+'DS'+num_ds_str+'_pdf-cor.tex')
+        os.system(copy+'style'+sep+'DSk.tex '+rep+sep+'DS'+num_ds_str+'-cor.tex')
+        os.system(copy+'style'+sep+'DSk_pdf.tex '+rep+sep+'DS'+num_ds_str+'_pdf-cor.tex')
         changer_ligne(rep+sep+'DS'+num_ds_str+'_pdf-cor.tex','\\input{Cy_01_Ch_01_TP_01}','\\input{DS'+num_ds_str+'-cor.tex}')
         changer_ligne(rep+sep+'DS'+num_ds_str+'_pdf-cor.tex','\\corrigefalse','\\corrigetrue')
         changer_ligne(rep+sep+'DS'+num_ds_str+'-cor.tex','\\input{ds.tex}','\\input{ds-cor.tex}')
@@ -198,12 +202,12 @@ def genere_fichiers_tex(info_activite,type_activite,rep):
         if int(num_activite)<10 and len(num_activite)<2:
             num_activite='0'+num_activite
     if type_activite=='cours':
-        os.system('cp style'+sep+'Cy_i_Ch_j_Cours.tex '+rep+sep+'Cy_0'+str(n_cycle)+'_Ch_'+str(num_activite)+'_Cours.tex')
-        os.system('cp style'+sep+'Cy_i_Ch_j_Cours_PDF.tex '+rep+sep+'Cy_0'+str(n_cycle)+'_Ch_'+str(num_activite)+'_Cours_PDF.tex')
-        os.system('cp style'+sep+'Cy_i_livret_Ch_j.tex '+rep+sep+'Cy_0'+str(n_cycle)+'_livret_Ch_'+str(num_activite)+'.tex')
-        os.system('cp style'+sep+'Cy_i_Ch_j_TD_j.tex '+rep+sep+'Cy_0'+str(n_cycle)+'_Ch_'+str(num_activite)+'_TD_'+str(num_activite)+'.tex')
-        os.system('cp style'+sep+'Cy_i_Ch_j_TD_k_cor_pdf.tex '+rep+sep+'Cy_0'+str(n_cycle)+'_Ch_'+str(num_activite)+'_TD_'+str(num_activite)+'_cor_pdf.tex')
-        os.system('cp style'+sep+'Cy_i_Ch_j_TD_j_cor.tex '+rep+sep+'Cy_0'+str(n_cycle)+'_Ch_'+str(num_activite)+'_TD_'+str(num_activite)+'_cor.tex')
+        os.system(copy+'style'+sep+'Cy_i_Ch_j_Cours.tex '+rep+sep+'Cy_0'+str(n_cycle)+'_Ch_'+str(num_activite)+'_Cours.tex')
+        os.system(copy+'style'+sep+'Cy_i_Ch_j_Cours_PDF.tex '+rep+sep+'Cy_0'+str(n_cycle)+'_Ch_'+str(num_activite)+'_Cours_PDF.tex')
+        os.system(copy+'style'+sep+'Cy_i_livret_Ch_j.tex '+rep+sep+'Cy_0'+str(n_cycle)+'_livret_Ch_'+str(num_activite)+'.tex')
+        os.system(copy+'style'+sep+'Cy_i_Ch_j_TD_j.tex '+rep+sep+'Cy_0'+str(n_cycle)+'_Ch_'+str(num_activite)+'_TD_'+str(num_activite)+'.tex')
+        os.system(copy+'style'+sep+'Cy_i_Ch_j_TD_k_cor_pdf.tex '+rep+sep+'Cy_0'+str(n_cycle)+'_Ch_'+str(num_activite)+'_TD_'+str(num_activite)+'_cor_pdf.tex')
+        os.system(copy+'style'+sep+'Cy_i_Ch_j_TD_j_cor.tex '+rep+sep+'Cy_0'+str(n_cycle)+'_Ch_'+str(num_activite)+'_TD_'+str(num_activite)+'_cor.tex')
         # print(rep+sep+'Cy_0'+str(n_cycle)+'_Ch_0'+str(num_activite)+'_Cours_PDF.tex')
         changer_ligne(rep+sep+'Cy_0'+str(n_cycle)+'_Ch_'+str(num_activite)+'_Cours_PDF.tex','\\input{Cy_01_Ch_01_Cours.tex}','\\input{Cy_0'+str(n_cycle)+'_Ch_'+str(num_activite)+'_Cours.tex}')
         changer_ligne(rep+sep+'Cy_0'+str(n_cycle)+'_livret_Ch_'+str(num_activite)+'.tex','\\input{Cy_01_Ch_01_Cours.tex}','\\input{Cy_0'+str(n_cycle)+'_Ch_'+str(num_activite)+'_Cours.tex}')
@@ -211,23 +215,23 @@ def genere_fichiers_tex(info_activite,type_activite,rep):
         changer_ligne(rep+sep+'Cy_0'+str(n_cycle)+'_Ch_'+str(num_activite)+'_TD_'+str(num_activite)+'_cor_pdf.tex','\\input{Cy_02_Ch_01_TD_01}','\\input{Cy_0'+str(n_cycle)+'_Ch_'+str(num_activite)+'_TD_'+str(num_activite)+'_cor.tex}')
     elif type_activite=='tp':
             #TP : enonce
-        os.system('cp ../Style'+sep+'Cy_i_Ch_j_TP_k.tex '+rep+'TP'+str(num_activite)+'.tex')
-        os.system('cp ../Style'+sep+'Cy_i_Ch_j_TP_k_pdf.tex '+rep+'TP'+str(num_activite)+'_pdf.tex')
+        os.system(copy+'../Style'+sep+'Cy_i_Ch_j_TP_k.tex '+rep+'TP'+str(num_activite)+'.tex')
+        os.system(copy+'../Style'+sep+'Cy_i_Ch_j_TP_k_pdf.tex '+rep+'TP'+str(num_activite)+'_pdf.tex')
         changer_ligne(rep+'TP'+str(num_activite)+'_pdf.tex','\\input{Cy_01_Ch_01_TP_01}','\\input{'+'TP'+str(num_activite)+'.tex}')
             #TP : corrige
-        os.system('cp ../Style'+sep+'Cy_i_Ch_j_TP_k.tex '+rep+'TP'+num_activite+'-cor.tex')
-        os.system('cp ../Style'+sep+'Cy_i_Ch_j_TP_k_pdf.tex '+rep+sep+'TP'+num_activite+'_pdf-cor.tex')
+        os.system(copy+'../Style'+sep+'Cy_i_Ch_j_TP_k.tex '+rep+'TP'+num_activite+'-cor.tex')
+        os.system(copy+'../Style'+sep+'Cy_i_Ch_j_TP_k_pdf.tex '+rep+sep+'TP'+num_activite+'_pdf-cor.tex')
         changer_ligne(rep+sep+'TP'+num_activite+'_pdf-cor.tex','\\input{Cy_01_Ch_01_TP_01}','\\input{TP'+num_activite+'-cor.tex}')
         changer_ligne(rep+'TP'+num_activite+'-cor.tex','\\input{tp.tex}','\\input{tp-cor.tex}')
         #changer_ligne(rep+sep+'TP_'+num_activite+'_pdf-cor.tex','\\corrigefalse','\\corrigetrue')
         #DS
     elif type_activite=='ds':
-        os.system('cp style'+sep+'DSk.tex '+rep+sep+'DS'+num_ds_str+'.tex')
-        os.system('cp style'+sep+'DSk_pdf.tex '+rep+sep+'DS'+num_ds_str+'_pdf.tex')
+        os.system(copy+'style'+sep+'DSk.tex '+rep+sep+'DS'+num_ds_str+'.tex')
+        os.system(copy+'style'+sep+'DSk_pdf.tex '+rep+sep+'DS'+num_ds_str+'_pdf.tex')
         changer_ligne(rep+sep+'DS'+num_ds_str+'_pdf.tex','\\input{Cy_01_Ch_01_TP_01}','\\input{DS'+num_ds_str+'.tex}')
             #DS : corrige
-        os.system('cp style'+sep+'DSk.tex '+rep+sep+'DS'+num_ds_str+'-cor.tex')
-        os.system('cp style'+sep+'DSk_pdf.tex '+rep+sep+'DS'+num_ds_str+'_pdf-cor.tex')
+        os.system(copy+'style'+sep+'DSk.tex '+rep+sep+'DS'+num_ds_str+'-cor.tex')
+        os.system(copy+'style'+sep+'DSk_pdf.tex '+rep+sep+'DS'+num_ds_str+'_pdf-cor.tex')
         changer_ligne(rep+sep+'DS'+num_ds_str+'_pdf-cor.tex','\\input{Cy_01_Ch_01_TP_01}','\\input{DS'+num_ds_str+'-cor.tex}')
         changer_ligne(rep+sep+'DS'+num_ds_str+'_pdf-cor.tex','\\corrigefalse','\\corrigetrue')
         changer_ligne(rep+sep+'DS'+num_ds_str+'-cor.tex','\\input{ds.tex}','\\input{ds-cor.tex}')
@@ -305,9 +309,9 @@ def genere_entete(rep,info_activite,type_activite):
         if os.path.exists(rep+sep+'TP_01/'):
             os.system('rm -Rf '+rep+sep+'TP_01/')
         if os.path.exists(rep+sep+'cours.tex')==False:
-            os.system('cp style/cours0.tex '+rep+sep+'cours.tex')
+            os.system(copy+'style/cours0.tex '+rep+sep+'cours.tex')
         if os.path.exists(rep+sep+'td.tex')==False:
-            os.system('cp style/td0.tex '+rep+sep+'td.tex')
+            os.system(copy+'style/td0.tex '+rep+sep+'td.tex')
         if os.path.exists(rep+sep+'images/')==False:
             os.system('mkdir '+rep+sep+'images/')
     elif type_activite=='tp':
@@ -425,7 +429,7 @@ def genere_support(rep,info_activite,type_activite):
     if type_activite=='cours':
         rep_activite=rep+sep+'td.tex'
         rep_activite_cor=rep+sep+'td_cor.tex'
-        os.system('cp '+rep_activite+' '+rep_activite_cor)
+        os.system(copy+''+rep_activite+' '+rep_activite_cor)
         # print(num_activite,rep_activite,supports)
     elif type_activite=='tp':
         rep_activite=rep+'tp.tex'
@@ -541,15 +545,15 @@ def genere_pdf(file,rep,type_activite):
         rep_activite=rep
     #pdb.set_trace()
     os.chdir(path_ref+sep+rep_activite)
-    os.system('rm *.aux')
-    os.system('rm *.log')
-    os.system('rm *.out')
-    os.system('rm *.gz')
-    os.system('rm *.toc')
-    os.system('rm *.pytxcode')
-    os.system('rm *.nav')
-    os.system('rm *.snm')
-    os.system('rm *.pdf')
+    os.system(rm+'*'+'.aux')
+    os.system(rm+'*'+'.log')
+    os.system(rm+'*'+'.out')
+    os.system(rm+'*'+'.gz')
+    os.system(rm+'*'+'.toc')
+    os.system(rm+'*'+'.pytxcode')
+    os.system(rm+'*'+'.nav')
+    os.system(rm+'*'+'.snm')
+    os.system(rm+'*'+'.pdf')
     compile_tex_python(file_abrege)
     if type_activite=='tp'or type_activite=='ds':
         compile_tex_python(file_abrege+'-cor')
@@ -568,17 +572,17 @@ def genere_pdf(file,rep,type_activite):
     elif type_activite=='ds':
         # os.system('mv '+file_abrege+'-cor.pdf '+path_site_ds+sep+file_abrege+'-cor.pdf')
         shutil.move(file_abrege+'-cor.pdf',path_site_ds+sep+file_abrege+'-cor.pdf')
-        os.system('rm *.aux')
-        os.system('rm *.log')
-        os.system('rm *.out')
-        os.system('rm *.toc')
-        os.system('rm *.pytxcode')
-        os.system('rm *.nav')
-        os.system('rm *.snm')
-        os.system('rm *.pdf')
-        os.system('rm *.idx')
-        os.system('rm *.bcf')
-        os.system('rm *.xml')
+        os.system(rm+'*'+'.aux')
+        os.system(rm+'*'+'.log')
+        os.system(rm+'*'+'.out')
+        os.system(rm+'*'+'.toc')
+        os.system(rm+'*'+'.pytxcode')
+        os.system(rm+'*'+'.nav')
+        os.system(rm+'*'+'.snm')
+        os.system(rm+'*'+'.pdf')
+        os.system(rm+'*'+'.idx')
+        os.system(rm+'*'+'.bcf')
+        os.system(rm+'*'+'.xml')
     # os.system('cp '+file.split('.')[0]+'_complet.pdf '+path_site+sep+file_abrege+'_complet.pdf ')
     # 
     
@@ -592,15 +596,15 @@ def genere_pdf0(file,rep,type_activite):
     elif type_activite=='ds':
         rep_activite=rep
     os.chdir(path_ref+sep+rep_activite)
-    os.system('rm *.aux')
-    os.system('rm *.log')
-    os.system('rm *.out')
-    os.system('rm *.gz')
-    os.system('rm *.toc')
-    os.system('rm *.pytxcode')
-    os.system('rm *.nav')
-    os.system('rm *.snm')
-    os.system('rm *.pdf')
+    os.system(rm+'*'+'.aux')
+    os.system(rm+'*'+'.log')
+    os.system(rm+'*'+'.out')
+    os.system(rm+'*'+'.gz')
+    os.system(rm+'*'+'.toc')
+    os.system(rm+'*'+'.pytxcode')
+    os.system(rm+'*'+'.nav')
+    os.system(rm+'*'+'.snm')
+    os.system(rm+'*'+'.pdf')
     compile_tex_python(file_abrege)
     if type_activite=='tp'or type_activite=='ds':
         compile_tex_python(file_abrege+'-cor')
@@ -618,17 +622,17 @@ def genere_pdf0(file,rep,type_activite):
     elif type_activite=='ds':
         # os.system('mv '+file_abrege+'-cor.pdf '+path_site_ds+sep+file_abrege+'-cor.pdf')
         shutil.move(file_abrege+'-cor.pdf',path_site_ds+sep+file_abrege+'-cor.pdf')
-        os.system('rm *.aux')
-        os.system('rm *.log')
-        os.system('rm *.out')
-        os.system('rm *.toc')
-        os.system('rm *.pytxcode')
-        os.system('rm *.nav')
-        os.system('rm *.snm')
-        os.system('rm *.pdf')
-        os.system('rm *.idx')
-        os.system('rm *.bcf')
-        os.system('rm *.xml')
+        os.system(rm+'*'+'.aux')
+        os.system(rm+'*'+'.log')
+        os.system(rm+'*'+'.out')
+        os.system(rm+'*'+'.toc')
+        os.system(rm+'*'+'.pytxcode')
+        os.system(rm+'*'+'.nav')
+        os.system(rm+'*'+'.snm')
+        os.system(rm+'*'+'.pdf')
+        os.system(rm+'*'+'.idx')
+        os.system(rm+'*'+'.bcf')
+        os.system(rm+'*'+'.xml')
     # os.system('cp '+file.split('.')[0]+'_complet.pdf '+path_site+sep+file_abrege+'_complet.pdf ')
     # 
   
@@ -718,8 +722,8 @@ for tp in info_tp:
 #     genere_support(rep,ds,'ds')
 
 ####Compiler tp
-for k in range(len(info_tp)):
-#for k in range(3,4):
+#for k in range(len(info_tp)):
+for k in range(3,4):
     activite=info_tp[k]
     #rep=trouver_repertoire(activite)
     num_tp=activite[2]
@@ -727,6 +731,7 @@ for k in range(len(info_tp)):
     file=trouver_file_tex(activite,rep,'tp')
     genere_pdf(file,rep,'tp')
     #impr_2_page(activite,rep,'tp')
+    os.chdir(path_ref)
 
 
 
