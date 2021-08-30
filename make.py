@@ -13,7 +13,7 @@ f=open('log.txt','w')
 
 path=r"../Informatique/progression_2021_2022_Info_MPSI.xlsx"#chemin de la progression
 path_classe=''
-path_site='site_info_mpsi'#Chemin pour exporter les pdf vers site
+path_site='pdf'#Chemin pour exporter les pdf vers site
 path_site_ds='/Users/emiliendurif/Dropbox/cpge/ipt_mpsi_ds'#Chemin pour exporter les pdf vers site
 
 
@@ -25,11 +25,13 @@ if platform.system()=='Windows':
     path_ref=os.popen('cd').readlines()[0].strip()
     copy='copy '
     rm='DEL '
+    cmd_latex='pdflatex '
 else:
     sep='/'
     path_ref=os.popen('pwd').readlines()[0].strip()
     copy='cp '
     rm='rm '
+    cmd_latex='/usr/local/texlive/2017/bin/x86_64-darwin/pdflatex '
 
 ####
 #Definition des colonnes dans le tableau excel
@@ -476,7 +478,7 @@ def genere_support(rep,info_activite,type_activite):
                         f2.write('\n\n\\'+type_support+'{'+exo+'}\n\n')
                     else:   
                         f.write('\n\n\\textbf{Consignes}\n\n')
-                    if os.path.exists('exercices/'+support_cor):
+                    if os.path.exists('../Informatique/Exercices/'+support_cor):
                         f2.write('\\input{'+chemin_relatif+support_cor+'}\n')
                     f.write('\\input{'+chemin_relatif+support+'}\n')
             if type_activite=='tp':
@@ -528,11 +530,15 @@ def trouver_file_tex0(activite,rep,type_activite):
     return file_tex
 
 def compile_tex_python(file_abrege):
-    os.system('/usr/local/texlive/2017/bin/x86_64-darwin/pythontex '+file_abrege+'.tex')
+    ###pythontex
+    # os.system('/usr/local/texlive/2017/bin/x86_64-darwin/pythontex '+file_abrege+'.tex')
+    # os.system('/usr/local/texlive/2017/bin/x86_64-darwin/pdflatex '+file_abrege+'.tex')
+    # os.system('/usr/local/texlive/2017/bin/x86_64-darwin/pythontex '+file_abrege+'.tex')
+    # os.system('/usr/local/texlive/2017/bin/x86_64-darwin/pdflatex '+file_abrege+'.tex')
+    # os.system('/usr/local/texlive/2017/bin/x86_64-darwin/pythontex '+file_abrege+'.tex')
+    ####pdflatex
+    os.system(cmd_latex+file_abrege+'.tex')
     os.system('/usr/local/texlive/2017/bin/x86_64-darwin/pdflatex '+file_abrege+'.tex')
-    os.system('/usr/local/texlive/2017/bin/x86_64-darwin/pythontex '+file_abrege+'.tex')
-    os.system('/usr/local/texlive/2017/bin/x86_64-darwin/pdflatex '+file_abrege+'.tex')
-    os.system('/usr/local/texlive/2017/bin/x86_64-darwin/pythontex '+file_abrege+'.tex')
     
 def genere_pdf(file,rep,type_activite):
     '''genere le pdf avec le fichier complet et incomplet'''
@@ -567,7 +573,9 @@ def genere_pdf(file,rep,type_activite):
         #shutil.copy(file_abrege+'.pdf',path_ref+sep+path_site+sep+file_abrege+'.pdf')
     if type_activite=='tp':
         # os.system('cp '+file_abrege+'-cor.pdf '+path_ref+sep+path_site+sep+file_abrege+'-cor.pdf')
-        #shutil.copy(file_abrege+'-cor.pdf',path_ref+sep+path_site+sep+file_abrege+'-cor.pdf')
+        #pdb.set_trace()
+        shutil.copy(file_abrege+'-cor.pdf',path_ref+sep+path_site+sep+file_abrege+'-cor.pdf')
+        shutil.copy(file_abrege+'.pdf',path_ref+sep+path_site+sep+file_abrege+'.pdf')
         print('ras')
     elif type_activite=='ds':
         # os.system('mv '+file_abrege+'-cor.pdf '+path_site_ds+sep+file_abrege+'-cor.pdf')
@@ -698,9 +706,9 @@ def creer_dossier_tp(num_tp):
 #     #print(trouver_file_tex(cours,'cours'))
 
 
-####Traiter TP
-#for tp in info_tp[3:4]:
-for tp in info_tp:
+####Traiter TP en générant les .tex
+for tp in info_tp[1:2]:
+#for tp in info_tp:
      (date,n_cycle,num_activite,name_cycle,name_activite,supports,competences,figures,ref_cours)=tp
      rep=creer_dossier_tp(num_activite)
 #     rep=trouver_repertoire(tp)
@@ -723,7 +731,7 @@ for tp in info_tp:
 
 ####Compiler tp
 #for k in range(len(info_tp)):
-for k in range(3,4):
+for k in range(0,4):
     activite=info_tp[k]
     #rep=trouver_repertoire(activite)
     num_tp=activite[2]
