@@ -538,8 +538,7 @@ def compile_tex_python(file_abrege):
     # os.system('/usr/local/texlive/2017/bin/x86_64-darwin/pythontex '+file_abrege+'.tex')
     ####pdflatex
     os.system(cmd_latex+file_abrege+'.tex')
-    os.system('/usr/local/texlive/2017/bin/x86_64-darwin/pdflatex '+file_abrege+'.tex')
-    
+    os.system(cmd_latex+file_abrege+'.tex')
 def genere_pdf(file,rep,type_activite):
     '''genere le pdf avec le fichier complet et incomplet'''
     file_abrege=file.split('.')[0].split('/')[-1]
