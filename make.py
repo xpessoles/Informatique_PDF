@@ -295,6 +295,7 @@ def genere_entete(rep,info_activite,type_activite):
         figures=''
     else:
         (date,n_cycle,num_activite,name_cycle,name_activite,supports,competences,figures,ref_cours)=info_activite
+        n_cycle= "Semestre 1" # Mauvais HACK :) 
     #competences=competences.split(';')
         num_chapitre=trouver_chapitre(ref_cours)
     if type_activite=='cours':
@@ -732,7 +733,7 @@ for tp in info_tp:
 #     genere_support(rep,ds,'ds')
 
 ####Compiler tp
-for k in range(len(info_tp)):`
+for k in range(len(info_tp)):
 ###
 #for k in range(0,4):
     activite=info_tp[k]
