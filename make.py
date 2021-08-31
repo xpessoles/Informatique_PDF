@@ -217,12 +217,13 @@ def genere_fichiers_tex(info_activite,type_activite,rep):
         changer_ligne(rep+sep+'Cy_0'+str(n_cycle)+'_Ch_'+str(num_activite)+'_TD_'+str(num_activite)+'_cor_pdf.tex','\\input{Cy_02_Ch_01_TD_01}','\\input{Cy_0'+str(n_cycle)+'_Ch_'+str(num_activite)+'_TD_'+str(num_activite)+'_cor.tex}')
     elif type_activite=='tp':
             #TP : enonce
-        os.system(copy+'../Style'+sep+'Cy_i_Ch_j_TP_k.tex '+rep+'TP'+str(num_activite)+'.tex')
-        os.system(copy+'../Style'+sep+'Cy_i_Ch_j_TP_k_pdf.tex '+rep+'TP'+str(num_activite)+'_pdf.tex')
+        os.system(copy+'..'+sep+'Style'+sep+'Cy_i_Ch_j_TP_k.tex '+rep+'TP'+str(num_activite)+'.tex')
+        os.system(copy+'..'+sep+'Style'+sep+'Cy_i_Ch_j_TP_k_pdf.tex '+rep+'TP'+str(num_activite)+'_pdf.tex')
         changer_ligne(rep+'TP'+str(num_activite)+'_pdf.tex','\\input{Cy_01_Ch_01_TP_01}','\\input{'+'TP'+str(num_activite)+'.tex}')
+
             #TP : corrige
-        os.system(copy+'../Style'+sep+'Cy_i_Ch_j_TP_k.tex '+rep+'TP'+num_activite+'-cor.tex')
-        os.system(copy+'../Style'+sep+'Cy_i_Ch_j_TP_k_pdf.tex '+rep+sep+'TP'+num_activite+'_pdf-cor.tex')
+        os.system(copy+'..'+sep+'Style'+sep+'Cy_i_Ch_j_TP_k.tex '+rep+'TP'+num_activite+'-cor.tex')
+        os.system(copy+'..'+sep+'Style'+sep+'Cy_i_Ch_j_TP_k_pdf.tex '+rep+sep+'TP'+num_activite+'_pdf-cor.tex')
         changer_ligne(rep+sep+'TP'+num_activite+'_pdf-cor.tex','\\input{Cy_01_Ch_01_TP_01}','\\input{TP'+num_activite+'-cor.tex}')
         changer_ligne(rep+'TP'+num_activite+'-cor.tex','\\input{tp.tex}','\\input{tp-cor.tex}')
         #changer_ligne(rep+sep+'TP_'+num_activite+'_pdf-cor.tex','\\corrigefalse','\\corrigetrue')
@@ -686,7 +687,7 @@ def lire_planning_ds(path):
     return info_ds
     
 def creer_dossier_tp(num_tp):
-    nom_dossier='S1_Themes/TP'+num_tp+'/'
+    nom_dossier='S1_Themes'+sep+'TP'+num_tp+sep
     if os.path.exists(nom_dossier)==False:
         os.mkdir(nom_dossier)
     return nom_dossier
@@ -738,10 +739,9 @@ for k in range(len(info_tp)):
     num_tp=activite[2]
     rep=creer_dossier_tp(num_tp)
     file=trouver_file_tex(activite,rep,'tp')
-    genere_pdf(file,rep,'tp')
+    #genere_pdf(file,rep,'tp')
     #impr_2_page(activite,rep,'tp')
     os.chdir(path_ref)
-
 
 
 #####Compliler cours et td
