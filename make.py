@@ -11,7 +11,7 @@ Mois=['Janvier','Fevrier','Mars','Avril','Mai','Juin','Juillet','Aout','Septembr
 #RAZ du fichier log
 f=open('log.txt','w')
 
-path=r"../Informatique/progression_2021_2022_Info_MPSI.xlsx"#chemin de la progression
+path=r"../Informatique/progression_2021_2022_Info_MPSI.xls"#chemin de la progression
 path_classe=''
 path_site='pdf'#Chemin pour exporter les pdf vers site
 path_site_ds='/Users/emiliendurif/Dropbox/cpge/ipt_mpsi_ds'#Chemin pour exporter les pdf vers site
