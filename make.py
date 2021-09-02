@@ -267,7 +267,7 @@ def trouver_chapitre(ref_cours):
     
 def trouve_exo_source(support):
     '''A partir d'un support renvoie le nom de l'exo et sa source'''
-    classeur=xlrd.open_workbook('../Informatique/inventaire_exos.xlsx')
+    classeur=xlrd.open_workbook('../Informatique/inventaire_exos.xls')
     feuilles=classeur.sheet_names()
     col_domaine,col_fichier,col_exo,col_sources=0,1,2,3
     exo,source='',''
