@@ -733,15 +733,15 @@ for tp in info_tp:
 #     genere_support(rep,ds,'ds')
 
 ####Compiler tp
-for k in range(len(info_tp)):
+#for k in range(len(info_tp)):
 ###
-#for k in range(0,4):
+for k in range(1,2):
     activite=info_tp[k]
     #rep=trouver_repertoire(activite)
     num_tp=activite[2]
     rep=creer_dossier_tp(num_tp)
     file=trouver_file_tex(activite,rep,'tp')
-    #genere_pdf(file,rep,'tp')
+    genere_pdf(file,rep,'tp')
     #impr_2_page(activite,rep,'tp')
     os.chdir(path_ref)
 
