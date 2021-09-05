@@ -735,7 +735,7 @@ for tp in info_tp:
 ####Compiler tp
 #for k in range(len(info_tp)):
 ###
-for k in range(1,2):
+for k in range(1,3):
     activite=info_tp[k]
     #rep=trouver_repertoire(activite)
     num_tp=activite[2]
