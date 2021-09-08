@@ -479,7 +479,7 @@ def genere_support(rep,info_activite,type_activite):
                         f.write('\n\n\\'+type_support+'{'+prefixe_activite+exo+'}\n\n')
                         f2.write('\n\n\\'+type_support+'{'+exo+'}\n\n')
                     else:   
-                        f.write('\n\n\\textbf{Consignes}\n\n')
+                        f.write('\n\n\\noindent\\textbf{Consignes}\n\n')
                     if os.path.exists('../Informatique/Exercices/'+support_cor):
                         f2.write('\\input{'+chemin_relatif+support_cor+'}\n')
                     f.write('\\input{'+chemin_relatif+support+'}\n')
@@ -733,9 +733,9 @@ for tp in info_tp:
 #     genere_support(rep,ds,'ds')
 
 ####Compiler tp
-for k in range(len(info_tp)):
+#for k in range(len(info_tp)):
 ###
-#for k in range(0,4):
+for k in range(1,3):
     activite=info_tp[k]
     #rep=trouver_repertoire(activite)
     num_tp=activite[2]
