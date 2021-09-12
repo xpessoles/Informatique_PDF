@@ -735,13 +735,13 @@ for tp in info_tp:
 ####Compiler tp
 #for k in range(len(info_tp)):
 ###
-for k in range(1,3):
+for k in range(6,7):
     activite=info_tp[k]
     #rep=trouver_repertoire(activite)
     num_tp=activite[2]
     rep=creer_dossier_tp(num_tp)
     file=trouver_file_tex(activite,rep,'tp')
-    #genere_pdf(file,rep,'tp')
+    genere_pdf(file,rep,'tp')
     #impr_2_page(activite,rep,'tp')
     os.chdir(path_ref)
 
