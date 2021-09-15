@@ -741,7 +741,7 @@ for k in range(6,7):
     num_tp=activite[2]
     rep=creer_dossier_tp(num_tp)
     file=trouver_file_tex(activite,rep,'tp')
-    genere_pdf(file,rep,'tp')
+    #genere_pdf(file,rep,'tp')
     #impr_2_page(activite,rep,'tp')
     os.chdir(path_ref)
 
