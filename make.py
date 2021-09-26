@@ -75,7 +75,7 @@ def lire_semanier(path):
     #for k in range(1,2):
         if 'Vacances' not in str(fs.cell_value(k,0)):
             delta = datetime.timedelta(days=(fs.cell_value(k,col_date)-2))
-            d_s=d0+delta#Date du début de la semaine
+            d_s=d0+delta  #Date du début de la semaine
             d_cours=d_s+datetime.timedelta(delta_cours)#Date du cours
             d_td=d_s+datetime.timedelta(delta_td)#Date du TD
             d_tp=d_s+datetime.timedelta(delta_tp)#Date du TD
@@ -688,7 +688,7 @@ def lire_planning_ds(path):
     return info_ds
     
 def creer_dossier_tp(num_tp):
-    nom_dossier='S1_Themes'+sep+'TP'+num_tp+sep
+    nom_dossier='s'+sep+'TP'+num_tp+sep
     if os.path.exists(nom_dossier)==False:
         os.mkdir(nom_dossier)
     return nom_dossier
@@ -735,7 +735,11 @@ for tp in info_tp:
 ####Compiler tp
 #for k in range(len(info_tp)):
 ###
-for k in range(6,7):
+#<<<<<<< Updated upstream
+# for k in range(6,7):
+# =======
+for k in range(1,3):
+#>>>>>>> Stashed changes
     activite=info_tp[k]
     #rep=trouver_repertoire(activite)
     num_tp=activite[2]
