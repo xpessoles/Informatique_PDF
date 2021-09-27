@@ -736,8 +736,12 @@ for tp in info_tp:
 #for k in range(len(info_tp)):
 ###
 #<<<<<<< Updated upstream
+#<<<<<<< Updated upstream
 # for k in range(6,7):
 # =======
+#for k in range(1,3):
+#>>>>>>> Stashed changes
+#=======
 for k in range(1,3):
 #>>>>>>> Stashed changes
     activite=info_tp[k]
