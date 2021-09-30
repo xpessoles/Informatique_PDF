@@ -5,35 +5,35 @@
 \end{Large}
 
 
+\section*{Activité 1}
 
-\section*{Recherche dans un tableau}
+\lstinputlisting[linerange={3-48},scale=0.75]{TP03corr.py}
 
-\lstinputlisting[linerange={3-44},scale=0.75]{TP03corr.py}
+\eject 
+
+\lstinputlisting[linerange={49-70},scale=0.75]{TP03corr.py}
 
 On obtient pour chaque $i$ compris entre 0 et $n-1$, $n-i-1$ comparaisons.
 
-Au total, on en a $n**2-n(n-1)/2-n$ lequel est equivalent a $n**2/2$.
+Au total, on en a $n**2-n(n-1)/2-n$ lequel est équivalent a $n**2/2$.
 
 D'où une complexité quadratique.
 
 
 \eject
 
-\section*{Recherche d'un mot dans un texte}
+\section*{Activité 2}
 
-\lstinputlisting[linerange={59-89},scale=0.75]{TP03corr.py}
+\lstinputlisting[linerange={77-104},scale=0.75]{TP03corr.py}
 
-\eject \section*{Tri à bulles}
+\eject \section*{Activité 3}
 
-\lstinputlisting[linerange={93-132},scale=0.75]{TP03corr.py}
+\lstinputlisting[linerange={108-139},scale=0.75]{TP03corr.py}
 
 La première boucle $k$ ex\'ecute $n-1$ opérations. Pour chaque $k$, il y a $n-k$ boucles $i$ et une comparaison pour chacune. Au total, il y a une complexite de $\displaystyle\sum_{k=1}^{n-1}\sum_{i=0}^{n-k} 1 =n(n-1)/2 = O(n**2)$:
 On obtient une complexité quadratique.
 
-
-
-\eject 
-\lstinputlisting[linerange={137-149},scale=0.75]{TP03corr.py}
+\lstinputlisting[linerange={147-176},scale=0.75]{TP03corr.py}
 
 Cette fonction est a privilégier lorsque le tableau contient des éléments minima en fin de tableau, notamment lorsque le tableau est décroissant par exemple.
 
