@@ -735,6 +735,7 @@ for tp in info_tp:
 ####Compiler tp
 #for k in range(len(info_tp)):
 ###
+<<<<<<< Updated upstream
 #<<<<<<< HEAD
 #<<<<<<< Updated upstream
 #<<<<<<< Updated upstream
@@ -748,6 +749,9 @@ for tp in info_tp:
 #=======
 for k in range(3,4):
 #>>>>>>> a695b1c2ad84d31831d864d639f7a0dd05965176
+=======
+for k in range(1,3):
+>>>>>>> Stashed changes
     activite=info_tp[k]
     #rep=trouver_repertoire(activite)
     num_tp=activite[2]

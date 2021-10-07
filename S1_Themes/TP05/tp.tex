@@ -1,10 +1,248 @@
+	
+%Etant donné deux suites $(u_n)$ et $(v_n)$  de réels strictement positifs, on dit que $(u_n)$ est dominée par la suite $(v_n)$ lorsque $\left(\Frac{u_n}{v_n}\right)$ est une suite bornée. On note alors $u_n=\O{n\to +\infty}(v_n)$.
+%
+%Par exemple:
+%
+%\bi\q Si $(u_n)$ converge alors $u_n=\O{n\to +\infty}(1)$. Réciproque fausse.
+%
+%\q  $3n=\O{n\to +\infty}(n^2)$, $5n^2=\O{n\to +\infty}(n^2)$, $\ln(n)=\O{n\to +\infty}(n\ln(n)^2)$, $an^2+bn+c\ln(n)=\O{n\to +\infty}(n^2)$ ...
+%
+%\q Pour tout polynôme de degré $p$, $P=a_px^p+a_{p-1}x^{p-1}+...+a_1x+a_0$, on a $P(n)=\O{n\to +\infty}(n^p)$.
+%
+%\ei 
+%
+%En programmation, on dira qu'un programme a:
+%
+%- une complexité linéaire lorsque le nombre d'opérations effectuées est en $\O{n\to +\infty}(n)$
+%
+%- une complexité logarithmique lorsque le nombre d'opérations effectuées est en $\O{n\to +\infty}(\log(n))$
+%
+%- une complexité quadratique lorsque le nombre d'opérations effectuées est en $\O{n\to +\infty}(n^2)$
+
+	
+\section{Recherche dichotomique d'un élément dans une liste triée}
+
+On se donne une liste \texttt{L} de nombres de longueur \texttt{n}, {triée dans l'ordre croissant}, et un nombre \texttt{x0}. 
+
+Pour chercher \texttt{x0}, on va couper la liste en deux moitiés et chercher dans la moitié qui encadre \texttt{x0} et ainsi de suite...
+
+On appelle \texttt{g} l'indice de l'élément du début de la sous-liste dans laquelle on travaille et \texttt{d} l'indice de l'élément de fin.
+
+Au début, \texttt{g =} {0} et \texttt{d = } {n - 1}
+
+%On souhaite construire un algorithme admettant l'invariant suivant:
+%\bigskip
+%
+%\centerline{\fbox{si \t{x0} est dans \t{L} alors \t{x0} est dans la sous-liste \t{L[g:d]} (\t{g} inclus et \t{d} exclu).}}
+
+%\bigskip
+%\newpage
+\medskip 
+On utilise la méthode suivante :
+
+\begin{itemize}
+\item On compare \texttt{x0} à "l'élément du milieu"  \texttt{L[m]} avec \texttt{m = (g + d) // 2}}
+%son indice est \t{m} $=$\cache{\t{ n//2} (division euclidienne)}
+
+\item Si \texttt{x0 = L[m]}, on a trouvé \texttt{x0}, on peut alors s'arrêter.
+\item  Si \texttt{x0} $<$ \texttt{L[m]}, c'est qu'il faut chercher entre \texttt{L[g]} et  \texttt{L[m-1]}% (\texttt{L[m]} exclu).
+}%dans \cache{la première moitié de la liste \t{L[g:m]}}\\
+\item Si \texttt{x0} $>$ \texttt{L[m]}, c'est qu'il faut chercher  entre \texttt{L[m+1]} et \texttt{L[d]}% (\texttt{L[m]} exclu).
+}\\
+\end{enumerate}
+
+On poursuit jusqu'à ce qu'on a trouvé \texttt{x0} ou lorsque l'on a épuisé la liste \texttt{L}.
+
+%\emph{Remarque} : On verra plus tard que l'algorithme est tellement rapide que cela ne change pas grand chose de s'arrêter avant et cela simplifie son écriture.
+
+%En notant $g$ et $d$  les indices de gauche et de droite du morceau de la liste $l$ où l'on est en train de faire la %recherche, 
+
+\question{Illustrer la méthode avec les deux exemples suivants en déterminant successivement les valeurs de $g$, de $d$ et de $m$:}
 
 
-\activite{}
+-   \texttt{x0 = 5} et \texttt{L} $= \begin{array}{|c|c|c|c|c|c|c|c|c|} 
+\hline -3 & 5 & 7 & 10 & 11 & 14 & 17 & 21 & 30 \\ \hline
+\end{array}$
 
-\input{../../../Informatique/Exercices/S1_04_AlgorithmesDichotomiques/01_RechercheDichotomique/01_RechercheDichotomique }
+% g=0\\d=8\\m=4,L[m]>x0
+% g=0\\d=3\\m=1,L[m]=x0
+
+\medskip 
+
+- \texttt{x0 = 11} et \texttt{L} $= \begin{array}{|c|c|c|c|c|c|c|c|c|} 
+\hline -2 & 1 & 2 & 7 & 8 & 10 & 13 & 16 & 17  \\ \hline
+\end{array}$
 
 
-\activite{}
+%g=0\\d=8\\m=4,L[m]<x0
+%g=5\\d=8\\m=6,L[m]>x0
+%g=5\\d=5\\m=5,L[m]<x0
+%g=6\\d=5
 
-\input{../../../Informatique/Exercices/S1_04_AlgorithmesDichotomiquesque/02_ExponentiationRapide/02_ExponentiationRapide}
+\question{Si $x0$ n'est pas dans la liste $L$, donner un test d'arrêt du processus de dichotomie portant sur $g$ et $d$. }
+
+\question{\'Ecrire une fonction \texttt{dichotomie(x0,L)} qui renvoie \texttt{True} ou \texttt{False} selon que \texttt{x0} figure ou non dans \texttt{L} par cette méthode. On utilisera une boucle \texttt{while} que l'on interrompra soit lorsque l'on a trouvé $x0$, soit lorsque l'on a fini de parcourir la liste.}
+
+\question{Combien vaut $g-d$ au $i\ieme$ tour de boucle ? Si \texttt{x0} ne figure pas dans \texttt{L}, montrer que le nombre de tours de boucles nécessaires pour sortir de la fonction est de l'ordre de $\ln n$ où $n=len(L)$ (cela rend la fonction beaucoup plus efficace qu'une simple recherche séquentielle pour laquelle le nombre de comparaisons pour sortir de la boucle serait de l'ordre de $n$)}
+
+
+%\subsection{Recherche d'un indice satisfaisant une condition donnée}
+%
+%On se donne dans cette question une liste \texttt{L} strictement décroissante de réels contenant des termes strictement positifs et des termes strictement négatifs. Par exemple $L=[6,5,3,1.5,0.6,-0.3,-1,-3]$
+%
+%On cherche l'indice et la valeur du dernier élément positif ou nul $x0$. Sur cet exemple, on doit trouver $[4,0.6]$. Pour cela, on va adapter la méthode de dichotomie ci-dessus de la manière suivante:
+%
+%- On pose au départ $g=0$, $d=n-1$ avec $n=len(L)$.
+%
+%- On définit $m=(g+d)//2$. 
+%
+%Si $L[m]>0$, c'est que $x0$ est situé entre $L[m]$ et $L[n-1]$. On pose donc $g=m$, $d=n-1$.
+%
+%Si $L[m]<=0$, c'est que $x0$ est situé entre $L[0]$ et $L[m]$. On pose donc $g=0$, $d=m$.
+%
+%- On continue ainsi le processus.
+%
+%\be\q Quelle est la condition d'arrêt à la dernière étape ?
+%
+%\q \'Ecrire une fonction \texttt{recherche\_dicho(L)}, d'argument la liste \texttt{L}, qui renvoie l'indice ainsi que la valeur du dernier élément positif ou nul. On utilisera là encore une boucle \texttt{while}.
+%
+%\ee
+
+
+\section{Recherche d'un zéro d'une fonction}
+
+
+Soit une fonction $f:[a,b]\to\mathbb{R}$ ($a<b$) vérifiant : 
+$f$ continue sur $[a,b]$ et $f(a).f(b)\<0$ ie $f(a)$ et $f(b)$ de signes opposés.}.$$
+
+Le théorème des valeurs intermédiaires s'applique et assure que $f$ possède au moins un zéro $\ell$ entre $a$ et $b$. 
+
+\eject 
+
+\begin{center}
+	\begin{tikzpicture}[scale=2]
+		\shorthandoff{:};
+		\draw[->] (-2.5,0)--(2.5,0);
+		\draw[->] (-2.25,-1.5)--(-2.25,1.5);
+		\fenetre
+		\draw[domain=-2:2, samples=200, very thick]  plot ({\x},{((\x)^5+3*(\x)-7)/34});
+		\draw (-2,0)node{$\cdot$};
+		\draw (-1,0)node{$\cdot$};
+		\draw (1,0)node{$\cdot$};
+		\draw (0,0)node{$\cdot$};
+		\draw (2,0)node{$\cdot$};
+		\draw (-2 , 0) node[below] {$g_0=a$};
+		\draw (2 , 0) node[below] {$d_0=b$};
+		\draw (1 , 0.15) node[allow] {$g_2=m_1$};
+		\draw (2 , 0.15) node[allow] {$d_2=b$};
+		\draw (2 , -0.2) node[below] {$d_1=b$};
+		\draw (0 , 0) node[below] {$g_1=m_0$};
+		\draw (1.26 , 0) node[below] {$\ell$};
+	\end{tikzpicture}
+\end{center}
+
+L'idée consiste à créer une suite d'intervalles $[g_n,d_n]$ tels que pour tout entier naturel $n$, $$g_n\le\ell\le\d_n \textrm{ et } 0\le g_n-d_n=\displaystyle\frac{g_{n-1}-d_{n-1}}2.$$
+
+\medskip 
+
+On considère $m_0 = \dfrac{g_0+d_0}{2}$ et on évalue $f(m_0)$ : 
+
+\bigskip 
+
+\begin{itemize}
+	\item Si $f(m_0)\times f(d_0)\ge 0$, on va poursuivre la recherche d'un zéro dans l'intervalle $[g_1,d_1]=[g_0,m_0]$
+
+	\item Sinon,  on poursuit la recherche dans l'intervalle $[g_1,d_1]=[m_0,d_0]$. 
+
+
+	\item On recommence alors en considérant $m_1 = \dfrac{g_1+d_1}{2}$ ...\\
+\end{itemize}
+
+\bigskip
+
+\question{Si l'on souhaite que $g_n$ et $d_n$ soient des solutions approchées de $\ell$ à une précision $\varepsilon$, quelle est la condition d'arrêt de l'algorithme ? Préciser alors la valeur approchée de $\ell$ qui sera renvoyée par la fonction.}
+	
+\question{\'Ecrire une fonction \texttt{recherche\_zero(f,a,b,epsilon)} qui renvoie une valeur approchée du zéro de \texttt{f} sur \texttt{[a,b]} a epsilon près.}
+	
+\question{Tester la fonction avec $f:x\mapsto x^2-2$ sur $[0,2]$ et $\varepsilon=0.001$.}
+	
+\question{Avec une erreur de $\varepsilon=\Frac 1{2^p}$, combien y a-t-il de comparaisons au final en fonction de $p$ ?}
+	
+
+
+\section{Valeur d'un polynôme par plusieurs méthodes}
+
+	
+	\question{Ecrire une fonction \texttt{exponaif(x,n)} d'arguments un réel $x$ et un entier naturel $n$, qui renvoie la valeur de $x^n$ par la méthode naïve $x^n=x\times x \times ... \times x$ ($n$ termes).}
+
+	%\medskip  Montrer que le nombre d'opérations effectuées a une complexité linéaire.
+
+\question{Une autre méthode, celle de l'exponentiation rapide consiste à remarquer que $$x^n=\left\{\begin{tabular}{ccc} ${(x^2)}^{n/2}$ &si &$n$ pair \\ ${x\times (x^2)}^{(n-1)/2}$& si& $n$ impair\end{tabular}\right.$$}
+
+	Le code itératif correspondant est le suivant:
+	
+	\bigskip \begin{minipage}{0.5\linewidth}
+	def expo\_rapide(x,n):\\
+		 \textcolor{white}{aaaa}  p,res,y = n,1,x\\
+	    \textcolor{white}{aaaa} while p>0:\\
+		\textcolor{white}{aaaa}\textcolor{white}{aaaa} if p\%2==1:\\
+		\textcolor{white}{aaaa}\textcolor{white}{aaaa}\textcolor{white}{aaaa}res=res*y\\
+		\textcolor{white}{aaaa}\textcolor{white}{aaaa} p=p//2\\
+		\textcolor{white}{aaaa}\textcolor{white}{aaaa} y=y*y\\
+		\textcolor{white}{aaaa} return(res)\end{minipage}
+	
+	\question{Quel est le nom de la variable locale dont le contenu est retourné par la fonction ?}
+	
+	\question{Faire tourner \og{}à la main\fg{} la fonction pour $x=2$ et $n=10$:}
+	
+	\begin{center}
+		\begin{tabular}{|l|p{1cm}|p{1cm}|p{1cm}|}
+			\hline &$ \texttt{p} & \texttt{res} & \texttt{y}\\
+			\hline &&&\\
+			sortie du 1{\textrm{er}} tour de boucle && & \\[3mm]
+			sortie du 2\ieme\  tour de boucle && & \\[3mm]
+			\ldots && & \\[3mm]
+			\ldots&& & \\[3mm]
+			&& & \\[3mm]
+			&& & \\[3mm]
+		\end{tabular}
+		
+	\end{center}
+	
+	
+	%\q Montrer que le nombre d'opérations effectuées a une complexité logarithmique.
+
+
+	\bigskip On considère un polynôme $$P(x)=\displaystyle\sum_{k=0}^n a_k.x^k$$ que l'on modélisera en Python par la liste $P=[a_0,a_1,...,a_n]$. Dans la suite, on prendra pour tout $k\in\mathbb{N}$, $a_k=k$.
+
+	\question{Ecrire une fonction \texttt{Pnaif(x,n)} qui renvoie $P(x)$ à l'aide de la fonction \texttt{exponaif}.}
+
+	%\medskip Donner un équivalent du nombre d'opérations faites pour ce calcul et vérifier que la complexité est quadratique.
+
+	\question{ Faire de même pour une fonction 
+	\texttt{Prapide(x,n)} qui renvoie $P(x)$ à l'aide de la fonction \texttt{exporapide}. }
+	
+	%On peut montrer dans ce cas que la complexité est dominée par $n.\ln(n)$ (on admettra ce résultat).
+
+	\bigskip Une dernière méthode consiste à utiliser le schéma de Hörner:
+	\[P(x)= (\ldots((a_nx+a_{n-1})x+a_{n-2})x+...+a_1)x+a_0}\]
+
+	\question{\'Ecrire une fonction \texttt{horner(x,L)} de paramètres un réel $x$ et une liste $L$ représentant un polynôme $P$, renvoie la valeur de $P(x)$ par la méthode de Hörner.}
+
+	%\medskip Compter le nombre d'opérations au total pour calculer $P(x)$ et en donner que la complexité du programme est linéaire.
+
+	\end{enumerate}
+
+
+	\bigskip On désire maintenant visualiser les temps d'éxécution des trois fonctions précédentes pour des grandes valeurs de $n$.
+
+	\question{Définir la liste $N$ des entiers naturels compris entre 0 et 100.}
+
+	\question{Grâce à la fonction \texttt{perf\_counter} de la bibliothèque \texttt{time},  écrire une fonction \texttt{Temps\_calcul(x)} qui:\\
+	-  définit 3 listes \texttt{Tn}, \texttt{Tr} et \texttt{Th} contenant les temps de calcul de $P(x)$ pour $P=\displaystyle\sum_{k=0}^n k.x^k$ lorsque $n$ décrit $N$ avec respectivement la méthode naïve, la méthode rapide puis la méthode de Hörner.\\
+	- trace les trois courbes  \texttt{Tn}, \texttt{Tr} et \texttt{Th} en fonction de $N$ (on prendra $x=2$). Interpréter le résultat (on pourrait démontrer que les temps d'éxécution des trois programmes sont de l'ordre de $n**2$ pour la méthode naïve (on parle de complexité quadratique), de l'ordre de $n\ln(n)$ pour l'exporapide, et de l'ordre de $n$ pour la méthode de Hörner (complexité linéaire)). }
+
+	\end{enumerate}
+
+\end{enumerate}
+
