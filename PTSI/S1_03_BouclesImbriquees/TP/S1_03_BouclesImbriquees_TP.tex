@@ -131,7 +131,7 @@ Pour afficher une grille, on peut utiliser les instructions suivantes :
 >>> afficher_grille(grille)
 \end{lstlisting}
 
-\question{Définir une fonction \texttt{Python}, de signature \texttt{def creation\_grille(p: float, n: int) -> list} à deux paramètres : un nombre réel $p$ (qu'on supposera dans l'intervalle $[0,1[$ et un entier naturel $n$, qui renvoie un tableau $(n,n)$ dans lequel chaque case sera ouverte avec la probabilité $p$ et fermée sinon. }
+\question{Définir une fonction \texttt{Python}, de signature \texttt{def creation\_grille(p: float, n: int) -> list} à deux paramètres : un nombre réel $p$ (qu'on supposera dans l'intervalle $[0,1[$ et un entier naturel $n$, qui renvoie un tableau $(n,n)$ dans lequel chaque case sera ouverte avec la probabilité (valeur 0) $p$ et fermée sinon (valeur~1). }
 
 
 
@@ -181,7 +181,7 @@ Pour afficher une grille, on peut utiliser les instructions suivantes :
 
 
 
-Une fois la grille crée, les cases ouvertes de la première ligne sont
+Une fois la grille créée, les cases ouvertes de la première ligne sont
 remplies par un fluide, ce qui sera représenté par la valeur $0,5$ dans
 les cases correspondantes. Le fluide pourra ensuite être diffusé à
 chacune des cases ouvertes voisines d'une case contenant déjà le fluide jusqu'à remplir toutes les cases ouvertes possibles.
