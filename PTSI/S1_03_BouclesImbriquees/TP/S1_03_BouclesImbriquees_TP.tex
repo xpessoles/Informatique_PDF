@@ -5,7 +5,7 @@
 \geometry{a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm}
 
 % A modifier pour chaque chapitre...
-\newcommand{\titre}{Boucles imbriquées -- QCM}
+\newcommand{\titre}{TP 4 -- Boucles imbriquées}
 \newcommand{\numero}{2}
 
 % Prof ou élève...
@@ -32,7 +32,7 @@
 \setcounter{numques}{0}
 
 %\begin{multicols}{2}
-Pour ce TP, on utilisera le fichier \texttt{Percolation\_Sujet.py} que vous renommerez en utilisant la convetion suivante : 
+Pour ce TP, on utilisera le fichier \texttt{Percolation\_Sujet.py} que vous renommerez en utilisant la convention suivante : 
 \texttt{TP\_n\_Nom1\_Nom2.py} où \texttt{n} désigne le numéro du TP et \texttt{Nom1} et \texttt{Nom2} vos noms.
 
 La percolation \footnote{du latin \emph{percolare} : couler à travers.} désigne le passage d'un fluide à
@@ -117,19 +117,23 @@ blanches). \label{fig1}}
 La grille de percolation sera représentée par le type \texttt{list}. Cette grille sera elle-même composée de \texttt{n} listes de \texttt{n} flottants (tableau $n\times n$). 
 Une fois la grille \texttt{grille} créée, la case d'indice $(i, j)$ est référencée par \texttt{grille[i][j]}.
 
+Si la case \texttt{grille[i][j]} est vide on lui affectera la case 0 (case ouverte, le fluide peut passer). Si la case \texttt{grille[i][j]} empêche le fluide de passer, on lui affectera la valeur 1 (case fermée). 
+
 Afin de remplir la grille, on dispose de la fonction \texttt{rand()} permettant de renvoyer un nombre aléatoire compris dans l'intervalle $[0,1[$.
 
 Afin de visualiser la grille et de sauvegarder la grille on dispose des fonctions \texttt{afficher\_grille(grille : list) -> None} et 
 \texttt{sauvegarder\_grille(grille : list, nom\_de\_fichier : str) -> None}.
 
 
-\question{Définir une fonction \texttt{Python}, de signature \texttt{def creation\_grille(p: float, n: int) -> list} à deux paramètres : un nombre réel $p$ (qu'on supposera dans l'intervalle $[0,1[$ et un entier naturel $n$, qui renvoie un tableau $(n,n)$ dans lequel chaque case sera ouverte avec la probabilité $p$ et fermée sinon. }
-
-Pour afficher la grille, vous pourrrez utiliser les instructions suivantes : 
+Pour afficher une grille, on peut utiliser les instructions suivantes : 
 \begin{lstlisting}
 >>> grille = creation_grille(0.6, 10)
 >>> afficher_grille(grille)
 \end{lstlisting}
+
+\question{Définir une fonction \texttt{Python}, de signature \texttt{def creation\_grille(p: float, n: int) -> list} à deux paramètres : un nombre réel $p$ (qu'on supposera dans l'intervalle $[0,1[$ et un entier naturel $n$, qui renvoie un tableau $(n,n)$ dans lequel chaque case sera ouverte avec la probabilité (valeur 0) $p$ et fermée sinon (valeur~1). }
+
+
 
 %\subsubsection*{Visualisation de la grille}
 %
@@ -177,7 +181,7 @@ Pour afficher la grille, vous pourrrez utiliser les instructions suivantes :
 
 
 
-Une fois la grille crée, les cases ouvertes de la première ligne sont
+Une fois la grille créée, les cases ouvertes de la première ligne sont
 remplies par un fluide, ce qui sera représenté par la valeur $0,5$ dans
 les cases correspondantes. Le fluide pourra ensuite être diffusé à
 chacune des cases ouvertes voisines d'une case contenant déjà le fluide jusqu'à remplir toutes les cases ouvertes possibles.
@@ -186,7 +190,7 @@ chacune des cases ouvertes voisines d'une case contenant déjà le fluide jusqu'
 \begin{figure}[!htb]
 \begin{center}
 \includegraphics[width=0.6\textwidth]{illustration_perco2}
-\caption{les deux grilles de la figure \ref{fig1}, une fois le processus de percolation terminé (le fluide est représenté par des hachures) \label{fig2}.}
+\caption{les deux grilles de la figure \ref{fig1}, une fois le processus de percolation terminé (le fluide est représenté par des hachures)\label{fig2}.}
 \end{center}
 \end{figure}
 
@@ -253,12 +257,32 @@ Notons $P(p)$ la probabilité pour le fluide de traverser la grille. Pour déter
 
 \question{Rédiger la fonction \texttt{proba(p : float, k : int, n : int) -> float} qui prend en argument le nombre d'essai $k$, la variable $p$ ainsi que le nombre de cases $n$ sur la largeur de la grille et qui renvoie $P(p)$.}
 
-\question{Écrire une fonction \texttt{tracer\_proba(n : int ,nom\_de\_fichier : str) -> None}
-qui prend en argument une taille $n$  ne renvoyant rien mais enregistrant 
-dans \texttt{nom\_de\_fichier} le graphe obtenu. On pourra traiter le 
-cas d'une grille de $128\times 128$ cases et enregistrer la figure obtenue 
-sous le nom \texttt{tp\_n\_q06\_vos\_noms.png}.} 
 
+
+%\question{Écrire une fonction \texttt{tracer\_proba(n : int ,nom\_de\_fichier : str) -> None}
+%qui prend en argument une taille $n$ ne renvoyant rien mais enregistrant 
+%dans \texttt{nom\_de\_fichier} le graphe obtenu. On pourra traiter le 
+%cas d'une grille de $128\times 128$ cases et enregistrer la figure obtenue 
+%sous le nom \texttt{tp\_n\_q06\_vos\_noms.png}.} 
+
+La fonction suivante prend en argument une taille $n$ et affichele graphe obtenu. On pourra traiter le 
+cas d'une grille de $128\times 128$ cases.% et visualiser la figure obtenue.
+%sous le nom \texttt{tp\_n\_q06\_vos\_noms.png}.
+
+\begin{lstlisting}
+import numpy as np
+import matplotlib.pyplot as plt
+#Q06
+def tracer_proba(n):
+    x=np.linspace(0,1,21)
+    y=[]
+    for p in x:
+        y.append(proba(p,20,n))
+    plt.clf()
+    plt.plot(x,y)
+    plt.show()
+    return None
+\end{lstlisting}
 
 %
 %P(\emph{p})

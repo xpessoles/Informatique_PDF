@@ -735,6 +735,7 @@ for tp in info_tp:
 ####Compiler tp
 #for k in range(len(info_tp)):
 ###
+#<<<<<<< HEAD
 # <<<<<<< Updated upstream
 # <<<<<<< Updated upstream
 # <<<<<<< Updated upstream
@@ -758,8 +759,11 @@ for tp in info_tp:
 #for k in range(1,3):
 #>>>>>>> Stashed changes
 #=======
-for k in range(1,3):
+#for k in range(1,3):
 #>>>>>>> Stashed changes
+#=======
+#for k in range(4,5):
+#>>>>>>> d807f243cc885188d73e310c6132b3d300c389be
     activite=info_tp[k]
     #rep=trouver_repertoire(activite)
     num_tp=activite[2]
@@ -770,15 +774,15 @@ for k in range(1,3):
     os.chdir(path_ref)
 
 
-#####Compliler cours et td
-# for k in range(18,19)
-#     os.chdir(path_ref)
-#     activite=info_cours[k]
-#     rep=trouver_repertoire(activite)
-#     file=trouver_file_tex(activite,rep,'cours')
-#     genere_pdf(file,rep,'cours')
-#     file_td=trouver_file_tex(activite,rep,'td')
-#     genere_pdf(file_td,rep,'td')
+####Compliler cours et td
+for k in range(18,19)
+    os.chdir(path_ref)
+    activite=info_cours[k]
+    rep=trouver_repertoire(activite)
+    file=trouver_file_tex(activite,rep,'cours')
+    genere_pdf(file,rep,'cours')
+    file_td=trouver_file_tex(activite,rep,'td')
+    genere_pdf(file_td,rep,'td')
 
 # activite=info_ds[1]
 # num_ds_str=activite[0]
