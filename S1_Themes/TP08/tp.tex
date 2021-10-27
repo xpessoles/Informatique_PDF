@@ -47,9 +47,9 @@
 	f=open(nom\de\_fichier,r)
 \end{lstlisting}
 
-- On peut obtenir la chaine de caractère formée du contenu du fichier avec la méthode \texttt{f.read()}.
+- On peut obtenir la chaine de caractère formée du contenu du fichier avec la méthode \texttt{read()}.
 
-- On peut ensuite créer la liste dont les éléments seront formés des chaines de caractères des données du fichier.
+- On peut ensuite créer, grâce à la méthode \texttt{split}, casser la chaine de caractère et obtenir une liste contenant les diverses données.
 
 \begin{lstlisting}
 	c=f.read().split()
@@ -121,13 +121,19 @@ suivante par un fichier.
 	français (c'est-à-dire de gauche à droite puis de haut en bas).
 	\medskip Au final, un fichier d'extension pgm sera de la forme:
 			
-			P2\\	
-			p \ n \ N \\	
-			valeur1 \\ 
-			valeur2\\
-			valeur 3\\
-			$\vdots$\\
-			valeur n*p
+			\ \hskip5cm P2	
+			
+			\ \hskip5cm p \ n \ N 	
+			
+			\ \hskip5cm valeur1 
+			
+			\ \hskip5cm valeur2
+			
+			\ \hskip5cm valeur 3
+			
+			\ \hskip5.5cm $\vdots$
+			
+			\ \hskip5cm valeur n*p
 	
 \medskip 	
 	\item[\textbullet] Le fichier peut contenir des commentaires ; ceux-ci commencent par le
@@ -147,10 +153,10 @@ le représentant avec \texttt{str}.
 \bigskip Enfin, on représentera une matrice (de nombres) à $n$ lignes et $p$ colonnes comme un tableau (ou liste Python) de longueur $n$, chacun de ses éléments étant un tableau de longueur $p$. On décrit donc la matrice ligne par ligne. 
 Ainsi, l'indice \og ligne \texttt{i} colonne \texttt{j} \fg\ de la matrice représentée par \texttt{M} sera \texttt{M[i][j]}.
 \begin{exemple}
-	La matrice $\begin{pmatrix} 0&1&2 \\ 3&4&5 \end{pmatrix}$ sera représentée par \texttt{[ [0,1,2] , [3,4,5] ]}.
+	La matrice $\begin{pmatrix} 0&1&2 \\ 3&4&5 \end{pmatrix}$ sera représentée par \texttt{[[0,1,2],[3,4,5]]}.
 \end{exemple}
 
-\eject \section*{Travail demandé}
+\section*{Travail demandé}
 
 Commencez par recopier les fonctions  \texttt{image\_noire}, \texttt{dim} et  \texttt{lit\_valeurs} données ci dessous : ce sont des exemples utiles, utilisez les ! 
 
@@ -169,6 +175,10 @@ Commencez par recopier les fonctions  \texttt{image\_noire}, \texttt{dim} et  \t
 	n = len(img)
 	p = len(img[0])
 	return (n,p)
+	
+\end{lstlisting}
+
+\eject \begin{lstlisting}
 	
 	def lit_valeurs(nom_de_fichier):
 	"""Lit le contenu du fichier image f et renvoie la liste des
