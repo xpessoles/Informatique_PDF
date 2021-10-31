@@ -1,44 +1,60 @@
-%%%% Paramétrage du cours %%%%
-\def\xxactivite{\ifprof TP -- Corrigé  \else  TP \fi}
-\def\xxauteur{\textsl{É. Durif -- X. Pessoles -- J.-P. Berne}}
-%\fichefalse
-%\proftrue
-%\tdfalse
-%\courstrue
+
+	
+\begin{Large}
+	Proposition de corrigé du TP 3
+\end{Large}
 
 
+\section*{Activité 1}
 
-\def\xxYCartouche{-2.25cm}
-\def\xxYongletGarde{.5cm}
-\def\xxYOnget{.9cm}
+\lstinputlisting[linerange={3-48},scale=0.75]{TP03corr.py}
 
-\input{info_entete}
+\eject 
 
+\lstinputlisting[linerange={49-70},scale=0.75]{TP03corr.py}
 
+On obtient pour chaque $i$ compris entre 0 et $n-1$, $n-i-1$ comparaisons.
 
-\def\xxfigures{
-%\includegraphics[width=.6\linewidth]{fig_00}
-}%figues de la page de garde
+Au total, on en a $n**2-n(n-1)/2-n$ lequel est équivalent a $n**2/2$.
 
-
-\input{../../../style/pagegarde_info_tp}
-
-\setlength{\columnseprule}{.1pt}
-
-\pagestyle{fancy}
-\thispagestyle{plain}
+D'où une complexité quadratique.
 
 
+\eject
+
+\section*{Activité 2}
+
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+%<<<<<<< HEAD
+\lstinputlisting[linerange={77-104},scale=0.75]{TP03corr.py}
+%=======
 \vspace{3.5cm}
+%>>>>>>> a695b1c2ad84d31831d864d639f7a0dd05965176
+=======
+\vspace{3.5cm}
+>>>>>>> Stashed changes
+=======
+\vspace{3.5cm}
+>>>>>>> Stashed changes
+=======
+\vspace{3.5cm}
+>>>>>>> Stashed changes
 
-\def\columnseprulecolor{\color{ocre}}
-\setlength{\columnseprule}{0.4pt} 
+\eject \section*{Activité 3}
 
-%%%%%%%%%%%%%%%%%%%%%%%
+\lstinputlisting[linerange={108-139},scale=0.75]{TP03corr.py}
 
-\setcounter{exo}{0}
-\vspace{3cm}
-\input{tp-cor.tex}
+La première boucle $k$ ex\'ecute $n-1$ opérations. Pour chaque $k$, il y a $n-k$ boucles $i$ et une comparaison pour chacune. Au total, il y a une complexite de $\displaystyle\sum_{k=1}^{n-1}\sum_{i=0}^{n-k} 1 =n(n-1)/2 = O(n**2)$:
+On obtient une complexité quadratique.
+
+\lstinputlisting[linerange={147-176},scale=0.75]{TP03corr.py}
+
+Cette fonction est a privilégier lorsque le tableau contient des éléments minima en fin de tableau, notamment lorsque le tableau est décroissant par exemple.
+
+Néanmoins, dans le pire des cas, le nombre de comparaison est la somme sur $k$ variant de 1 à $(n-1)//2$ de $(n-k-1)-(k-1)+1+(n-k-1)-(k-1)+1=2(n-2k+1)$. Cela donne encore une complexité quadratique car équivalent à un terme de la forme $a.n**2$.
 
 
 
+\end{document}

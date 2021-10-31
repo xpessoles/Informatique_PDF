@@ -1,7 +1,8 @@
 \documentclass[10pt,fleqn]{article} % Default font size and left-justified equations
+\\
 \usepackage[%
-    pdftitle={Modélisation dynamique},
-    pdfauthor={Xavier Pessoles}]{hyperref}
+pdftitle={Modélisation dynamique},
+pdfauthor={Xavier Pessoles}]{hyperref}
 
 \input{../../../style/packages}
 \input{../../../style/new_style}
@@ -9,19 +10,31 @@
 \input{../../../style/environment}
 \input{info_entete}
 
-\livretfalse
 
+%\livretfalse
+
+%\input{../../../style/pagegarde_info_tp}
+
+\setlength{\columnseprule}{.1pt}
+
+\pagestyle{fancy}
+%\thispagestyle{plain}
+
+
+\vspace{3.5cm}
+
+\def\columnseprulecolor{\color{ocre}}
+\setlength{\columnseprule}{0.4pt} 
 
 
 
 
 \begin{document}
-% Sujet
-%\TPtrue \fichefalse \proffalse \tdfalse \coursfalse \collefalse
-%\corrigefalse
-\graphicspath{{../../../style/png/}{images/}}
-\input{TP05.tex}
-
+	% Sujet
+	%\TPtrue \fichefalse \proffalse \tdfalse \coursfalse \collefalse
+	%\corrigefalse
+	%\graphicspath{{../../../style/png/}{images/}}
+	\input{TP05.tex}
 %% Corrigé
 %\newpage
 %\fichetrue \proftrue \tdtrue \coursfalse \collefalse

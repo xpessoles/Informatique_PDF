@@ -1,1 +1,268 @@
+\def\t{\textbackslash t}
+\def\n{\textbackslash n}
 
+\section*{Lecture d'un fichier et écriture dans un fichier}
+	
+\subsection*{Ecriture}
+
+ - Pour créer un fichier en écriture, on écrira:
+
+\begin{lstlisting}
+	f=open(nom\de\_fichier,w)
+\end{lstlisting}
+
+- on utilisera la chaine de caractère \texttt{'\t'} pour une tabulation (un espace) et la chaine de caractère \texttt{'\n'} pour un passage à la ligne.
+
+- On rajoutera les chaines de caractères avec \texttt{f.write} par exemple:
+
+\begin{lstlisting}
+	f.write(''blabla'')
+\end{lstlisting}
+
+- Il ne faudra pas oublier de fermer le fichier avec 
+
+\begin{lstlisting}
+	f.close()
+\end{lstlisting}
+
+
+\begin{exemple}
+	\ \\[1mm]
+	\texttt{f=open('essai.txt','a')}	\\
+	\texttt{f.write(''3/2\t=1.5\n'')}\\
+	\texttt{f.write(''3\n'')}\\
+	\texttt{f.write(''2\n1\n'')}\\
+	\texttt{f.write(''5\n'')}\\
+	\texttt{f.close()}
+\end{exemple}
+
+- On rappelle que l'on peut concaténer des chaines de caractères avec l'opérateur “+”. Par exemple \texttt{''3/2\t=1.5\n''} équivaut à \texttt{''3/2''+''\t''+''=''+''1.5''+''\n''}.
+
+
+\subsection*{Lecture}
+
+- Pour ouvrir un fichier en lecture, on écrira:
+
+\begin{lstlisting}
+	f=open(nom\de\_fichier,r)
+\end{lstlisting}
+
+- On peut obtenir la chaine de caractère formée du contenu du fichier avec la méthode \texttt{read()}.
+
+- On peut ensuite créer, grâce à la méthode \texttt{split}, casser la chaine de caractère et obtenir une liste contenant les diverses données.
+
+\begin{lstlisting}
+	c=f.read().split()
+\end{lstlisting}
+
+- Il ne faudra pas oublier de fermer le fichier avec 
+
+\begin{lstlisting}
+	f.close()
+\end{lstlisting}
+
+\begin{exemple}
+	\ \\[1mm]
+	\texttt{f=open('essai.txt','r')}	\\
+	\texttt{c=f.read().split()}
+\end{exemple}
+
+renvoie \texttt{['3/2', '=', '1.5', '3', '2', '1', '5']}
+
+
+\section*{Manipulation d'image à l'aide de fichiers}
+	
+	On cherche à représenter des  images. Pour simplifier, on ne cherchera
+pas  à  représenter les  couleurs  mais  seulement  la luminosité  des
+différents points de l'image.  
+
+\medskip Pour cela, on découpe l'image, supposée
+rectangulaire,  en carrés  de même  taille (appelés \emph{pixels}). On
+remplace  alors chaque
+carré  par un  entier  naturel indiquant  la  luminosité (moyenne)  de
+l'image sur le carré considéré (la luminosité est donnée dans une
+unité arbitraire, les valeurs allant de $0$ pour un carré noir à $N$
+pour un carré blanc, où $N$ est une valeur arbitrairement fixée). 
+
+On
+obtient ainsi une matrice de $n\times p$ valeurs entières appartenant
+à l'intervalle $[0, N]$.
+
+\bigskip Pour lire et écrire une telle image dans un fichier, on peut utiliser
+le format de données PGM (Portable GrayMap), dans sa version texte
+(\textit{plain format}).
+
+Ce format de données consiste à représenter une image de la façon
+suivante par un fichier.
+\begin{itemize}
+	\item[\textbullet] Le fichier est un fichier texte (ne comportant que des
+	caractères ASCII).
+	\item[\textbullet] On appellera \emph{blanc} tout caractère qui est soit un retour à la
+	ligne, soit un caractère espace, soit un caractère de tabulation (en
+	fait, un autre caractère)
+	\item[\textbullet] Toutes les valeurs contenues dans le fichier sont séparées par
+	un ou plusieurs blancs.\footnote{À toutes fins utiles, pour toute
+		chaîne de caractères \texttt{s}, l'expression \texttt{s.split()} désigne
+		la liste obtenue par découpage de \texttt{s} en utilisant les blancs
+		comme séparateurs.}
+	\item[\textbullet] La première ligne du fichier doit contenir la «valeur magique»
+	constituée des deux caractères «P2» (cette contrainte sert à
+	distinguer un fichier pgm en niveaux de gris d'un autre type de fichier) et doit être
+	suivie d'un blanc.
+	\item[\textbullet] Les autres valeurs écrites dans le fichier sont toutes des
+	entiers naturels, écrits en base $10$ (autrement
+	dit, «douze» est représenté par la succession des caractères $1$ et $2$).
+	\item[\textbullet] Après  la valeur  magique, on trouve  un nombre  représentant la
+	largeur $p$ de la matrice puis un nombre représentant la hauteur $n$
+	de l'image,  puis un  nombre donnant la  valeur de $N$  choisie pour
+	cette image  (intensité de gris représentant le  blanc), puis toutes
+	les valeurs de  la matrice représentant l'image, dans  l'ordre où on
+	les  lirait  normalement si  la  matrice  était  un texte  écrit  en
+	français (c'est-à-dire de gauche à droite puis de haut en bas).
+	\medskip Au final, un fichier d'extension pgm sera de la forme:
+			
+			\ \hskip5cm P2	
+			
+			\ \hskip5cm p \ n \ N 	
+			
+			\ \hskip5cm valeur1 
+			
+			\ \hskip5cm valeur2
+			
+			\ \hskip5cm valeur 3
+			
+			\ \hskip5.5cm $\vdots$
+			
+			\ \hskip5cm valeur n*p
+	
+\medskip 	
+	\item[\textbullet] Le fichier peut contenir des commentaires ; ceux-ci commencent par le
+	caractère \texttt{\#} et finissent avec le retour à la ligne
+	suivant. Ils doivent être simplement ignorés. Pour faciliter le
+	travail demandé par la suite, \emph{on supposera qu'il n'y a aucun
+		commentaire dans les fichiers que l'on
+		traitera}.
+	\item[\textbullet] On doit avoir $N\in\ii{0, 2^{16}}$
+	\item[\textbullet] Les lignes du fichier doivent faire au plus $70$ caractères.
+\end{itemize}
+
+\bigskip On rappelle qu'on peut convertir une chaîne représentant un nombre
+décimal avec \texttt{int} et réciproquement, convertir un nombre en chaîne
+le représentant avec \texttt{str}.
+
+\bigskip Enfin, on représentera une matrice (de nombres) à $n$ lignes et $p$ colonnes comme un tableau (ou liste Python) de longueur $n$, chacun de ses éléments étant un tableau de longueur $p$. On décrit donc la matrice ligne par ligne. 
+Ainsi, l'indice \og ligne \texttt{i} colonne \texttt{j} \fg\ de la matrice représentée par \texttt{M} sera \texttt{M[i][j]}.
+\begin{exemple}
+	La matrice $\begin{pmatrix} 0&1&2 \\ 3&4&5 \end{pmatrix}$ sera représentée par \texttt{[[0,1,2],[3,4,5]]}.
+\end{exemple}
+
+\section*{Travail demandé}
+
+Commencez par recopier les fonctions  \texttt{image\_noire}, \texttt{dim} et  \texttt{lit\_valeurs} données ci dessous : ce sont des exemples utiles, utilisez les ! 
+
+\begin{lstlisting}
+	def image_noire(n, p):
+	"""Construit la matrice n*p d'une image noire."""
+	img = [0]*n
+	for i in range(n):
+	img[i] = [0]*p
+	return img
+	
+	def dim(img):
+	"""Donne le couple (n, p) des dimensions de la matrice img. n :
+	nombre de lignes, p : nombre de colonnes. La matrice est supposée
+	avoir au moins une ligne."""
+	n = len(img)
+	p = len(img[0])
+	return (n,p)
+	
+\end{lstlisting}
+
+\eject \begin{lstlisting}
+	
+	def lit_valeurs(nom_de_fichier):
+	"""Lit le contenu du fichier image f et renvoie la liste des
+	valeurs lues (séparées par des blancs) sous forme d'une liste
+	de chaines de caractères. La première valeur est normalement
+	'P2'."""
+	with open(nom_de_fichier, 'r') as f:
+	c = f.read()
+	return c.split()
+\end{lstlisting}
+
+
+N'hésitez pas à ouvrir l'image \texttt{degrade.pgm} et \texttt{joconde.pgm} dans un éditeur de texte puis dans un lecteur d'images, afin de comprendre le codage des images.
+
+
+\subsection*{Sauvegarde d'images}
+
+\question{ Écrire une fonction \texttt{sauve\_image(img, N, nom\_de\_fichier)} prenant en argument
+	une matrice \texttt{img} représentant une image, l'entier \texttt{N} comme
+	niveau de gris maximal (dans $\ii{0,2^{16}}$) ainsi qu'une chaîne \texttt{nom\_de\_fichier} et
+	sauvant l'image dans le fichier nommé \texttt{nom\_de\_fichier}, au format PGM.}
+	
+	\question{\ Écrire une fonction \texttt{sauve\_rectangle\_noir(n, p, N, nom\_de\_fichier)}
+	sauvant dans le fichier \texttt{nom\_de\_fichier} un rectangle noir, de côté
+	$n$ pixels de hauteur et $p$ de largeur, où le blanc est
+	d'intensité $N$.}
+	
+ 	Vérifier que l'image produite par
+	\begin{lstlisting}
+		sauve_rectangle_noir(100, 200, 255, 'rectangle_noir.pgm')
+	\end{lstlisting}
+	est bien ce que   vous attendiez grâce à GIMP ou la visionneuse d'images.
+	
+	\question{\ Écrire une fonction
+	\texttt{sauve\_rectangle\_blanc(n, p, N, nom\_de\_fichier)}
+	sauvant dans le fichier   \texttt{nom\_de\_fichier} un rectangle blanc, de côté $n$ pixels de hauteur et $p$ de
+	largeur, où le blanc est d'intensité $N$.}
+
+De même, vérifiez l'image
+	produite par
+	\begin{lstlisting}
+		sauve_rectangle_blanc(100, 200, 255, 'rectangle_blanc.pgm'). 
+	\end{lstlisting}}
+	
+	\question{\ (Question facultative) Écrire une fonction \texttt{sauve\_echiquier(p, N, nom\_de\_fichier)} produisant
+	dans le fichier \texttt{nom\_de\_fichier} l'image d'un échiquier, où chaque case de
+	l'échiquier a pour côté $p$ pixels et $N$ est le niveau d'intensité
+	du blanc. Pour mémoire un échiquier a 64 cases, et dans sa
+	représentation traditionnelle, la case en bas à droite est blanche.}
+	
+	
+	\subsection*{Lecture et modification d'images}
+	
+	On pourra, pour tester les fonctions écrites ici, utiliser d'une part
+	les images précédemment produites, d'autre part utiliser l'image
+	disponible sur le site de la classe.
+	
+	\question{\ Écrire une fonction \texttt{lit\_image(nom\_de\_fichier)}, où
+	la chaîne \texttt{nom\_de\_fichier} représente le nom  d'un fichier PGM et renvoyant un couple \texttt{(img, N)} où \texttt{N} est
+	le niveau d'intensité du blanc de l'image et \texttt{img} la matrice des
+	pixels.} \\ \\
+	\emph{On suppose que le fichier respecte les contraintes données
+		dans l'énoncé et on ne fera aucun effort particulier pour gérer les
+		situations où il ne les respecterait pas. \\
+		Par exemple, votre
+		fonction a le droit d'accepter un fichier dont les lignes
+		font plus de $70$ caractères. On suppose de plus que le fichier ne
+		contient aucun commentaire.}\\
+
+\medskip
+
+\textbf{Remarque:}
+		On pourra utiliser la fonction \texttt{lit\_valeurs}, que vous trouverez sur le site de classe.
+ 
+ \bigskip
+ 
+ 
+	\question{\ Écrire une fonction \texttt{negatif(fichier\_entree, fichier\_sortie)} prenant en argument
+	deux noms de fichiers \texttt{fichier\_entree} et \texttt{fichier\_sortie}. La fonction lit d'abord le fichier
+	\texttt{fichier\_entree} et crée le fichier \texttt{fichier\_sortie} obtenu en remplaçant chaque pixel
+	de niveau de gris $k$ par un pixel de niveau $N-k$, où $N$ est l'intensité du blanc du fichier d'entrée.}
+	
+	\question{\ (Question facultative) Écrire une fonction \texttt{rotation90(fichier\_entree, fichier\_sortie)}
+	lisant le fichier 
+	\texttt{fichier\_entree} et créant le fichier \texttt{fichier\_sortie} obtenu en effectuant une rotation
+	de $90$ degrés (dans le sens trigonométrique) de l'image originale.}
+	
