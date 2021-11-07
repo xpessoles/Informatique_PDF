@@ -8,7 +8,7 @@
  - Pour créer un fichier en écriture, on écrira:
 
 \begin{lstlisting}
-	f=open(nom\de\_fichier,w)
+	f=open(nom_de_fichier,'w')
 \end{lstlisting}
 
 - on utilisera la chaine de caractère \texttt{'\t'} pour une tabulation (un espace) et la chaine de caractère \texttt{'\n'} pour un passage à la ligne.
@@ -44,7 +44,7 @@
 - Pour ouvrir un fichier en lecture, on écrira:
 
 \begin{lstlisting}
-	f=open(nom\de\_fichier,r)
+	f=open(nom_de_fichier,'r')
 \end{lstlisting}
 
 - On peut obtenir la chaine de caractère formée du contenu du fichier avec la méthode \texttt{read()}.
@@ -185,7 +185,7 @@ Commencez par recopier les fonctions  \texttt{image\_noire}, \texttt{dim} et  \t
 	valeurs lues (séparées par des blancs) sous forme d'une liste
 	de chaines de caractères. La première valeur est normalement
 	'P2'."""
-	with open(nom_de_fichier, 'r') as f:
+	f=open(nom_de_fichier, 'r')
 	c = f.read()
 	return c.split()
 \end{lstlisting}

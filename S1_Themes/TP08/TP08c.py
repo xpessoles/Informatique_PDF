@@ -13,15 +13,20 @@ def dim(img):
     p=len(img[0])
     return (n,p)
 
+def lit_valeurs(nom_de_fichier):
+    f=open(nom_de_fichier,'r')
+    c=f.read()
+    return c.split()
+
 def sauve_image(img,N,f):
     """sauve l'image dans le fichier f (format pgm)"""
     assert(N in range(2**16))
     (n,p)=dim(img)
-    with open(f,'a') as f:
-        f.write('P2\n'+str(p)+' '+str(n)+' '+str(N)+'\n')
-        for i in range(n):
-            for j in range(p):
-                f.write(str(img[i][j])+'\n')
+    f=open(f,'a')
+    f.write('P2\n'+str(p)+' '+str(n)+' '+str(N)+'\n')
+    for i in range(n):
+        for j in range(p):
+            f.write(str(img[i][j])+'\n')
 
 def sauve_rectangle_noir(n,p,N,f):
     t=image_noire(n,p,N)
@@ -42,6 +47,32 @@ def echiquier(p,N,f):
             img.append(ligne_impaire)
     return(img)
     sauve_image(img,N,f)
+
+def lit_image(nom_de_fichier):
+    L=lit_valeurs(nom_de_fichier)
+    p,n=int(L[1]),int(L[2])
+    N=int(L[3])
+    img=[[0]*p for i in range(n)]
+    for i in range(n):
+        for j in range(p):
+            img[i][j]=int(L[i*p+j+4])
+    return(img,N)
+
+def negatif(fichier_entree, fichier_sortie):
+    img,N=lit_image(fichier_entree)
+    n,p=dim(img)
+    for i in range(n):
+        for j in range(p):
+            img[i][j]=N-img[i][j]
+    sauve_image(img,N,g)
+    return None
+
+def rotation90(fichier_entree, fichier_sortie):
+    img,N=lit_image(fichier_entree)
+    n,p=dim(img)
+    img_sortie=[[img[j][p-i-1] for j in range(n)]for i in range(p)]
+    sauve_image(img_sortie,N,fichier_sortie)
+    return(None)
 
 
 
