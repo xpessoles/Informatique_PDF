@@ -53,7 +53,7 @@ physique et la géologie.
 
 
 Nous allons aborder certains phénomènes propres à la percolation par
-l'intermédiaire d'un modèle très simple : une grille carrée $n\times n$,
+l'intermédiaire du modèle suivant : une grille carrée $n\times n$,
 chaque case pouvant être ouverte (avec une probabilité $p$) ou
 fermée (avec une probabilité $1-p$). La question à laquelle nous
 allons essayer de répondre est la suivante : est-il possible de joindre
@@ -76,6 +76,8 @@ blanches). \label{fig1}}
 %chaque fois.
 
 \subsection*{Création et visualisation de la grille}
+
+
 
 %
 %Les deux modules essentiels dont nous aurons besoin sont les modules
@@ -114,10 +116,7 @@ blanches). \label{fig1}}
 %par un tableau $n\times n$, les cases fermées contenant le nombre
 %flottant $0.0$ et les cases ouvertes le nombre flottant $1.0$.
 
-La grille de percolation sera représentée par le type \texttt{list}. Cette grille sera elle-même composée de \texttt{n} listes de \texttt{n} flottants (tableau $n\times n$). 
-Une fois la grille \texttt{grille} créée, la case d'indice $(i, j)$ est référencée par \texttt{grille[i][j]}.
 
-Si la case \texttt{grille[i][j]} est vide on lui affectera la case 0 (case ouverte, le fluide peut passer). Si la case \texttt{grille[i][j]} empêche le fluide de passer, on lui affectera la valeur 1 (case fermée). 
 
 Afin de remplir la grille, on dispose de la fonction \texttt{rand()} permettant de renvoyer un nombre aléatoire compris dans l'intervalle $[0,1[$.
 
