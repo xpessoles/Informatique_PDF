@@ -1,72 +1,27 @@
-\documentclass[a4paper,10pt]{report}
+\documentclass[10pt,fleqn]{article} % Default font size and left-justified equations
+\usepackage[%
+    pdftitle={Modélisation dynamique},
+    pdfauthor={Xavier Pessoles}]{hyperref}
+
+\input{../../../style/packages}
+\input{../../../style/new_style}
+\input{../../../style/macros_SII}
+\input{../../../style/environment}
+\input{info_entete}
+
+\livretfalse
 
 
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage[francais]{babel}
 
-\usepackage{ae}
-\usepackage{amssymb}
-\usepackage{amsmath}
-\usepackage{ifthen}
-\usepackage{fancyhdr,fancybox}
-\usepackage{lastpage}
-\usepackage{graphicx}
-\usepackage{color}
-\usepackage{multicol,mathrsfs,lscape}
-\usepackage{listings}
-\lstset{language={Python}}
-\usepackage{aeguill} % guillemets
-\usepackage[T1]{fontenc}
-\usepackage{fourier} % police de caractères
-\usepackage[scaled=0.875]{helvet}
-\usepackage{courier}
-\usepackage{tikz}
-
-\setlength{\oddsidemargin}{-5mm}  %pages paires
-\setlength{\evensidemargin}{-5mm} % pages impaires
-\setlength{\paperwidth}{597 pt}
-\setlength{\paperheight}{845pt} 
-\setlength{\textwidth}{17cm} 
-\setlength{\topmargin}{1cm} 
-\setlength{\headsep}{0.6cm}
-\setlength{\headheight}{1cm}
-\setlength{\footskip}{1cm} 
-\setlength{\textheight}{27cm} 
-\setlength{\hoffset}{0mm}
-\setlength{\voffset}{-4cm} 
-\setlength{\parindent}{0cm}
-
-\usepackage{setspace}
-\renewcommand{\baselinestretch}{1.25}  %interligne
-
-\usepackage[Bjornstrup]{fncychap}  % Glenn, Sonny, Bjornstrup
-
-\pagestyle{empty}
-
-\fancyhf{}
-\fancyhead[L]{} 
-\fancyhead[R]{\textit{\scriptsize \leftmark}}
-\fancyfoot[R]{\small \thepage } 
-\fancyfoot[L]{\tiny MPSI - Lycée La Martinière Monplaisir}
-\fancyfoot[C]{}
-
-\renewcommand{\headrulewidth}{0.5pt}
-\renewcommand{\footrulewidth}{0.5pt}
-\renewcommand\textsc[1]{{\fontfamily{ptm}\fontshape{sc}\fontseries{bx}\selectfont #1}}
-\addtolength{\headheight}{8pt}
-
-\begin{document}
-
-\lstset{language={Python}}
 
 
 \begin{document}
-	% Sujet
-	%\TPtrue \fichefalse \proffalse \tdfalse \coursfalse \collefalse
-	%\corrigefalse
-	%\graphicspath{{../../../style/png/}{images/}}
-	\input{TP03-cor.tex}
+% Sujet
+%\TPtrue \fichefalse \proffalse \tdfalse \coursfalse \collefalse
+%\corrigefalse
+\graphicspath{{../../../style/png/}{images/}}
+\input{TP03-cor.tex}
+
 %% Corrigé
 %\newpage
 %\fichetrue \proftrue \tdtrue \coursfalse \collefalse

@@ -688,7 +688,7 @@ def lire_planning_ds(path):
     return info_ds
     
 def creer_dossier_tp(num_tp):
-    nom_dossier='s'+sep+'TP'+num_tp+sep
+    nom_dossier='S1_Themes'+sep+'TP'+num_tp+sep
     if os.path.exists(nom_dossier)==False:
         os.mkdir(nom_dossier)
     return nom_dossier
@@ -710,8 +710,8 @@ def creer_dossier_tp(num_tp):
 
 
 ####Traiter TP en générant les .tex
-#for tp in info_tp[1:2]:
-for tp in info_tp:
+for tp in info_tp[3:4]:
+#for tp in info_tp:
      (date,n_cycle,num_activite,name_cycle,name_activite,supports,competences,figures,ref_cours)=tp
      rep=creer_dossier_tp(num_activite)
 #     rep=trouver_repertoire(tp)
@@ -733,37 +733,7 @@ for tp in info_tp:
 #     genere_support(rep,ds,'ds')
 
 ####Compiler tp
-#for k in range(len(info_tp)):
-###
-#<<<<<<< HEAD
-# <<<<<<< Updated upstream
-# <<<<<<< Updated upstream
-# <<<<<<< Updated upstream
-#<<<<<<< HEAD
-#<<<<<<< Updated upstream
-#<<<<<<< Updated upstream
-# for k in range(6,7):
-# =======
-#for k in range(1,3):
-#>>>>>>> Stashed changes
-#=======
-#for k in range(1,3):
-#>>>>>>> Stashed changes
-#=======
-#for k in range(3,4):
-#>>>>>>> a695b1c2ad84d31831d864d639f7a0dd05965176
-#=======
-#for k in range(1,3):
-#>>>>>>> Stashed changes
-#=======
-#for k in range(1,3):
-#>>>>>>> Stashed changes
-#=======
-#for k in range(1,3):
-#>>>>>>> Stashed changes
-#=======
-#for k in range(4,5):
-#>>>>>>> d807f243cc885188d73e310c6132b3d300c389be
+for k in range(6,7):
     activite=info_tp[k]
     #rep=trouver_repertoire(activite)
     num_tp=activite[2]
@@ -775,14 +745,14 @@ for tp in info_tp:
 
 
 ####Compliler cours et td
-for k in range(18,19)
-    os.chdir(path_ref)
-    activite=info_cours[k]
-    rep=trouver_repertoire(activite)
-    file=trouver_file_tex(activite,rep,'cours')
-    genere_pdf(file,rep,'cours')
-    file_td=trouver_file_tex(activite,rep,'td')
-    genere_pdf(file_td,rep,'td')
+# for k in range(18,19)
+#     os.chdir(path_ref)
+#     activite=info_cours[k]
+#     rep=trouver_repertoire(activite)
+#     file=trouver_file_tex(activite,rep,'cours')
+#     genere_pdf(file,rep,'cours')
+#     file_td=trouver_file_tex(activite,rep,'td')
+#     genere_pdf(file_td,rep,'td')
 
 # activite=info_ds[1]
 # num_ds_str=activite[0]
