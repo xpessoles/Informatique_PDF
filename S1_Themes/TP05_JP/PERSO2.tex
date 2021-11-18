@@ -1,0 +1,336 @@
+%
+%
+%   PACKAGE  PERSO.STY
+%   J-Philippe BERNE
+%
+%
+
+\scrollmode
+
+
+\def\fin{\end{document}}
+
+\def\FIN{\bigskip\bigskip{\begin{center}{----------------------- ~~~\fbox{\bf FIN}
+~~~ -----------------------}\end{center}} \end{document}}
+
+% &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+% quelques ensembles
+%
+
+\def\Dd{\mathbb{D}}
+\def\Rr{\mathbb{R}}
+\def\Nn{\mathbb{N}}
+\def\Cc{\mathbb{C}}
+\def\Qr{\mathbb{Q}}
+\def\Kk{\mathbb{K}}
+\def\Uu{\mathbb{U}}
+\def\Zz{\mathbb{Z}}
+\def\Pp{\mathbb{P}}
+
+\def\R{\mathbb{R}}
+\def\N{\mathbb{N}}
+\def\K{\mathbb{K}}
+\def\U{\mathbb{U}}
+\def\Z{\mathbb{Z}}
+\def\P{\mathbb{P}}
+
+\def\M{\medskip}
+\def\B{\bigskip}
+
+
+% &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+% quelques macros
+%
+
+\def\*{\times}
+
+
+\def\dpar#1#2{\Frac{\drond #1}{\drond #2}}
+
+
+\def\suites#1#2{({#1}_0,{#1}_1,\ldots,{#1}_{#2})}
+\def\suite#1{\left({#1}_n\right)_n}
+\def\uplet#1#2{({#1}_1,{#1}_2,\ldots,{#1}_{#2})}
+
+\def\Vec#1{\overrightarrow{#1}}
+\def\Frac#1#2{\displaystyle{#1\over #2}}
+\def\*{$*$\ \ }
+
+
+% &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+% quelques op\'erateurs
+%
+
+\def\eq#1{\mathrel{\mathop{\kern 0pt\sim}\limits_{#1}}}
+\def\tableau#1#2#3{#1\mathrel{\mathop{\kern 0pt \longleftrightarrow}\limits_{#2}#3}}
+\def\tend#1{\mathrel{\mathop{\kern 0pt \longrightarrow}\limits_{#1}}}
+\def\llim#1{\mathrel{\mathop{\kern 0pt \lim}\limits_{#1}}}
+\def\ssup#1{\mathrel{\mathop{\kern 0pt \sup}\limits_{#1}}}
+\def\iinf#1{\mathrel{\mathop{\kern 0pt \inf}\limits_{#1}}}
+\def\ninfini{\mathrel{\mathop{\kern 0pt \longrightarrow}\limits_{n\to \infty }}}
+\def\o#1{\mathrel{\mathop{\kern 0pt o}\limits_{#1}}}
+\def\O#1{\mathrel{\mathop{\kern 0pt O}\limits_{#1}}}
+\def\compl_#1{\complement_{#1}\ }
+
+
+\def\tan{\mathop{\rm tan}\nolimits}
+\def\cotan{\mathop{\rm cotan}\nolimits}
+\def\arctan{\mathop{\rm Arctan}\nolimits}
+\def\arccotan{\mathop{\rm Arccotan}\nolimits}
+\def\arccos{\mathop{\rm Arccos}\nolimits}
+\def\arcsin{\mathop{\rm Arcsin}\nolimits}
+\def\argth{\mathop{\rm Argth}\nolimits}
+\def\argcoth{\mathop{\rm Argcoth}\nolimits}
+\def\argch{\mathop{\rm Argch}\nolimits}
+\def\argsh{\mathop{\rm Argsh}\nolimits}
+\def\ln{\mathop{\rm ln}\nolimits}
+\def\sh{\mathop{\rm sh}\nolimits}
+\def\ch{\mathop{\rm ch}\nolimits}
+\def\th{\mathop{\rm th}\nolimits}
+\def\re{\mathop{\rm Re}\nolimits}
+\def\im{\mathop{\rm Im}\nolimits}
+\def\ker{{\mathop{\rm Ker}\nolimits}\,}
+\def\rg{\mathop{\rm rg}\nolimits}
+\def\E{\mathop{\rm E}\nolimits}      % partie enti\`ere
+\def\re{\mathop{\rm Re}\nolimits}
+\def\inf{\mathop{\rm Inf}\limits}
+\def\sup{\mathop{\rm Sup}\limits}
+\def\min{\mathop{\rm Min}\limits}
+\def\max{\mathop{\rm Max}\limits}
+\def\Sum{\displaystyle\sum}
+\def\Prod{\displaystyle\prod}
+\def\Lim{\displaystyle\lim}
+\def\Inf{\displaystyle\inf}
+\def\Sup{\displaystyle\sup}
+\def\Min{\displaystyle\min}
+\def\Max{\displaystyle\max}
+\def\Somdir{\displaystyle\bigoplus}
+\def\Inter{\displaystyle\bigcap}
+\def\Reun{\displaystyle\bigcup}
+\def\Int{\displaystyle\int}
+\def\Oint{\displaystyle\oint}
+\def\Iint{\Int\hskip-2.5mm\Int}
+\def\Iiint{\Int\hskip-2.5mm\Int\hskip-2.5mm\Int}
+\def\si{{\textrm{si}}}
+
+
+% &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+% Nom des ensembles de matrices
+%
+
+\def\MnK{{\mathscr M}_n(\Kk)}
+\def\Mnk{{\mathscr M}_{n,1}(\Kk)}
+\def\MnR{{\mathscr M}_n(\Rr)}
+\def\Mnr{{\mathscr M}_{n,1}(\Rr)}
+\def\MnC{{\mathscr M}_n(\Cc)}
+\def\Mnc{{\mathscr M}_{n,1}(\Cc)}
+\def\mat#1#2#3{{\cal {#1}}_{#2}({\bf #3})}
+\def\C{{\mathscr C}}
+\def\L{{\mathscr L}}
+
+% &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+% abr\'eviations
+%
+
+\def\x{\times}
+\def\d{{\rm{d}}}
+\def\<{\leqslant}
+\def\le{\leqslant}
+\def\>{\geqslant}
+\def\ge{\geqslant}
+\def\virg{,\quad}
+\def\tq{\ / \ }
+\def\qqsoit{\forall\,}
+\def\existe{\exists\,}
+\def\ssi{{\bf{ssi}}\ \ }
+\def\ens{ensemble }
+\def\enss{ensembles }
+\def\elt{\'el\'ement }
+\def\elts{\'el\'ements }
+\def\ev{espace vectoriel }
+\def\evs{espaces vectoriels }
+\def\sev{sous-espace vectoriel }
+\def\sevs{sous-espaces vectoriels }
+\def\pol{polynôme }
+\def\pols{polynômes }
+\def\polcar{polynôme caract\'eristique }
+\def\fct{fonction }
+\def\fcts{fonctions }
+\def\fcont{fonction continue }
+\def\fconts{fonctions continues }
+\def\appl{application }
+\def\appls{applications }
+\def\AL{application lin\'eaire }
+\def\ALS{applications lin\'eaires }
+\def\evdf{espace vectoriel de dimension finie }
+\def\evsdf{espaces vectoriels de dimension finie }
+\def\CNS{condition n\'ecessaire et suffisante }
+\def\CN{condition n\'ecessaire }
+\def\CS{condition suffisante }
+\def\endo{endomorphisme }
+\def\endos{endomorphismes }
+\let\Equ=\Longleftrightarrow
+\let\equ=\Leftrightarrow
+\let\impl=\Rightarrow
+\let\Impl=\Longrightarrow
+\let\fld=\rightarrow
+\let\Fld=\longrightarrow
+\let\flg=\leftarrow
+\let\Flg=\longleftarrow
+\let\donne=\mapsto
+\def\Donne{\,\longmapsto\,}
+\let\dst=\displaystyle
+\let\tst=\textstyle
+\let\sst=\scriptstyle
+\let\vide=\emptyset
+\let\inclus=\subset
+\let\moins=\setminus
+\let\drond=\partial
+\let\ep=\wp
+\let\infini=\infty
+\let\mult=\times
+\let\l=\lambda
+\let\Cap=\bigcap
+\let\Cup=\bigcup
+\let\Oplus=\bigoplus
+\let\ve=\vee
+\let\Ve=\bigvee
+\def\vect{{\textrm{Vect }}}
+\def\dl{d\'eveloppement limit\'e }
+\def\dla{d\'eveloppement limit\'e asymptotique }
+\def\valp{valeur propre }
+\def\valps{valeurs propres }
+\def\vectp{vecteur propre }
+\def\vectps{vecteurs propres }
+\def\sep{sous-espace propre }
+\def\seps{sous-espaces propres }
+\def\ED{\'equation diff\'erentielle }
+\def\PS{produit scalaire }
+\def\oij{(0,\vec{\iota},\vec\jmath)}
+\def\vct#1{\kern 2pt\overrightarrow{\kern -2pt #1}}
+\def\rot{\vct{\rm rot }\it}
+\def\grad{\vct{\rm grad }\it}
+\def\div{\rm div \it}
+\def\evn{espace vectoriel normé }
+\def\evns{espaces vectoriels normés }
+\def\interieur#1{\buildrel\circ\over{#1\,}}
+\def\Interieur#1{\dst\overbrace{#1\,}^\circ}
+\def\adher#1{\overline{#1\,}}
+\def\vois{voisinages }
+\def\voi{voisinage }
+\def\evns{espaces vectoriels normés }
+\def\V{{\cal V}}
+\def\OE{{\cal O}_E}
+\def\dimf{dimension finie}
+\def\fn#1#2#3#4#5{\begin{array}[t]{cccl} #1\ : & #2&\longrightarrow&#3\\ &  #4&\longmapsto &#5\end{array}}
+\def\.{$\bullet$\ \ }
+\def\div{:\!\!\!\!\! -}
+\def\gras#1{\bf #1 \rm}
+\def\ps#1#2{\langle{#1}\, , \,{#2}\rangle}
+
+
+\def\cond#1{\ \left\{\begin{tabular}{l} #1 \end{tabular}\right.}
+\def\condd#1{\ \left.\begin{tabular}{l} #1 \end{tabular}\right\}}
+
+
+
+
+\newcount\qno\qno=0
+\newcount\qqno\qqno=96
+\newcount\qrondno\qrondno=0
+\newcount\sqno\sqno=96
+\newcount\tdno\tdno=0
+\newcount\exno\exno=0
+\newcount\dfno\dfno=0
+\newcount\propno\propno=0
+\newcount\thno\thno=0
+\newcount\corno\corno=0
+\newcount\prno\prno=0
+\newcount\remno\remno=0
+\newcount\metno\metno=0
+
+% NUMERO I,II,III...
+
+
+% GRAND NUMERO 1, 2, 3...
+
+
+% NUMERO 1, 2, 3... (simple ou entour\'e)
+
+\def\q
+{\S\sqno=96\advance\qno by1 {{{{\bf\the\qno$^\circ$)}}}}\normalsize\ \ }
+
+
+
+% NUMERO 1,2,3...
+
+\def\Qq
+{\M\sqno=96\qqno=96\advance\qno by1
+ \large{\bf \the\qno )\ \ }\normalsize\nobreak}
+
+% NUMERO a,b,c...
+
+\def\td
+{\M\sqno=96\qno=0\advance\tdno by1 {\bf \cadreombre{\the\Qno .\the\tdno}}\ \ }
+
+\def\ex{\q}
+
+% NUMERO a, b, c...
+
+\def\sq
+{\M\advance\sqno by1\hskip0,5cm {\bf{(\char\sqno)}}\ \ }
+
+
+\def\entete#1{\TITRE{#1}}
+\def\question{\ex}
+\def\questiontitre{\Q}
+\def\sousquestion{\sq}
+
+% &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+% divers
+%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\def\alin#1#2{\Qqq\titre{#2}}
+\def\prop#1#2{\proposition{#2}}
+\def\theor#1#2{\thm{#2}}
+\def\cor#1#2{\corollaire{#2}}
+\def\defc#1#2{\df{#2}}
+\def\defi#1#2{\df{#2}}
+
+% &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+
+\def\be{\begin{enumerate}}
+\def\ee{\end{enumerate}}
+\def\bi{\begin{itemize}}
+\def\ei{\end{itemize}}
+\def\q{\bf\item\rm}
+\definecolor{gris}{gray}{0.2}
+\definecolor{grisclair}{rgb}{0.8,0.8,0.8}
+\definecolor{vert}{RGB}{15,179,6}
+
+\renewcommand{\labelenumi}{\arabic{enumi}. }
+\renewcommand{\labelitemi}{$\bullet$}
+\renewcommand{\labelitemii}{$\cdot$}
+\renewcommand{\labelitemiii}{$\diamond$}
+\renewcommand{\labelitemiv}{$\ast$}
+
+\renewcommand{\thesection}{\Roman{section}}
+
+\def\prog#1{\par \nopagebreak[4]{\textcolor[rgb]{0.73,0.00,0.00}{{\textbf{\textsc{ Python      }}}}\par \medskip
+		{\color[rgb]{0.7,0.7,0.7} \vrule width 2pt} \hspace{-2pt}
+		{\quad\begin{tabular}{l}   \textcolor{blue}{\begin{tabular}{l} #1 \vskip2pt\end{tabular}}
+				\par\bigskip\rm}}}
+
+
+
