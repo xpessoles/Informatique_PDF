@@ -710,7 +710,7 @@ def creer_dossier_tp(num_tp):
 
 
 ####Traiter TP en générant les .tex
-for tp in info_tp[3:4]:
+for tp in info_tp[6:7]:
 #for tp in info_tp:
      (date,n_cycle,num_activite,name_cycle,name_activite,supports,competences,figures,ref_cours)=tp
      rep=creer_dossier_tp(num_activite)
@@ -733,15 +733,15 @@ for tp in info_tp[3:4]:
 #     genere_support(rep,ds,'ds')
 
 ####Compiler tp
-for k in range(6,7):
-    activite=info_tp[k]
-    #rep=trouver_repertoire(activite)
-    num_tp=activite[2]
-    rep=creer_dossier_tp(num_tp)
-    file=trouver_file_tex(activite,rep,'tp')
-    genere_pdf(file,rep,'tp')
-    #impr_2_page(activite,rep,'tp')
-    os.chdir(path_ref)
+# for k in range(6,7):
+#     activite=info_tp[k]
+#     #rep=trouver_repertoire(activite)
+#     num_tp=activite[2]
+#     rep=creer_dossier_tp(num_tp)
+#     file=trouver_file_tex(activite,rep,'tp')
+#     genere_pdf(file,rep,'tp')
+#     #impr_2_page(activite,rep,'tp')
+#     os.chdir(path_ref)
 
 
 ####Compliler cours et td
