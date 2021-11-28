@@ -354,12 +354,12 @@ def genere_entete(rep,info_activite,type_activite):
                         for support in supports.split(';'):
                             if support[:1]=='F:':
                                 support=support[2:]
-                            texte_entete+='{'+chemin_relatif+'Informatique/exercices/'+support+'/}'
+                            texte_entete+='{'+chemin_relatif+'Informatique/Exercices/'+support+'/}'
                         texte_entete+='}\n'
                 elif '\\graphicspath{{../../style/png/}{images/}' in ligne:
                     texte_entete+='\\graphicspath{{'+chemin_relatif+'style/png/}{images/}'
                     for support in supports.split(';'):
-                        texte_entete+='{'+chemin_relatif+'Informatique/exercices/'+support+'/}'
+                        texte_entete+='{'+chemin_relatif+'Informatique/Exercices/'+support+'/}'
                     texte_entete+='}\n'
                 elif '\\begin{itemize}[label=\\ding{112},font=\\color{ocre}]' in ligne:
                     texte_entete+='\\begin{itemize}[label=\\ding{112},font=\\color{ocre}]\n'
@@ -710,7 +710,7 @@ def creer_dossier_tp(num_tp):
 
 
 ####Traiter TP en générant les .tex
-for tp in info_tp[6:7]:
+for tp in info_tp[6:8]:
 #for tp in info_tp:
      (date,n_cycle,num_activite,name_cycle,name_activite,supports,competences,figures,ref_cours)=tp
      rep=creer_dossier_tp(num_activite)
@@ -733,7 +733,7 @@ for tp in info_tp[6:7]:
 #     genere_support(rep,ds,'ds')
 
 ####Compiler tp
-for k in range(6,7):
+for k in range(7,8):
     activite=info_tp[k]
     #rep=trouver_repertoire(activite)
     num_tp=activite[2]
