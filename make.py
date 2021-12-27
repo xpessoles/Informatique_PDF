@@ -733,7 +733,7 @@ for tp in info_tp[6:8]:
 #     genere_support(rep,ds,'ds')
 
 ####Compiler tp
-for k in range(6,7):
+for k in range(6,9):
     activite=info_tp[k]
     #rep=trouver_repertoire(activite)
     num_tp=activite[2]
