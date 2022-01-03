@@ -1,0 +1,37 @@
+\documentclass[t,10pt]{article}
+% A modifier selon la personne...
+\input{base.tex}
+\input{base_XP.tex}
+%\input{../../../../Style/environment_PTSI.tex}
+\geometry{a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm}
+
+% A modifier pour chaque chapitre...
+\newcommand{\titre}{Ch 12. Fonctions Récursives}
+\newcommand{\numero}{2}
+
+% Prof ou élève...
+% prof : 
+%\newcommand{\phantomchoix}[1]{\textcolor{red}{#1}}
+%\newcommand{\blanc}[1]{\textcolor{red}{#1}}
+% eleve : 
+\newcommand{\phantomchoix}[1]{\phantom{#1}}
+\newcommand{\blanc}[1]{\textcolor{white}{#1}}
+
+\renewcommand{\baselinestretch}{1.2}
+
+\newcommand{\site}{\texttt{changer le nom du site}}
+
+
+
+\begin{document}
+
+\enteteinfo
+
+\graphicspath{{../../../style/png/}{../../../../Informatique/Fiches/Fiche_05_FonctionsRecursives/images/}}
+
+\input{../../../../Informatique/Fiches/Fiche_05_FonctionsRecursives/Fiche_05_FonctionsRecursives.tex}
+
+
+
+
+\end{document}

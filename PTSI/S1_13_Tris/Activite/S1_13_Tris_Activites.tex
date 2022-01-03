@@ -1,0 +1,41 @@
+\documentclass[t,10pt]{article}
+% A modifier selon la personne...
+\input{base.tex}
+\input{base_XP.tex}
+\geometry{a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm}
+
+% A modifier pour chaque chapitre...
+\newcommand{\titre}{Algorithmes de tri -- Activités préparatoires}
+\newcommand{\numero}{2}
+
+% Prof ou élève...
+% prof : 
+%\newcommand{\phantomchoix}[1]{\textcolor{red}{#1}}
+%\newcommand{\blanc}[1]{\textcolor{red}{#1}}
+% eleve : 
+\newcommand{\phantomchoix}[1]{\phantom{#1}}
+\newcommand{\blanc}[1]{\textcolor{white}{#1}}
+
+\renewcommand{\baselinestretch}{1.2}
+
+\newcommand{\site}{\texttt{changer le nom du site}}
+
+
+
+\begin{document}
+
+\enteteinfo
+
+\setlength{\columnseprule}{0.4pt}.
+
+\textbf{Les activités préparatoires sont disponibles aux liens suivants : sujet -- \url{https://bit.ly/3eRFYEB} et corrige -- \url{https://bit.ly/3eIwFa8}.}
+
+\section*{QCM}
+
+\begin{multicols}{2}
+\input{../../../../Informatique/Exercices/S1_08_Tris/09_QCM.tex}
+\end{multicols}
+
+
+
+\end{document}

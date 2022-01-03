@@ -1,0 +1,40 @@
+\documentclass[t,10pt]{article}
+% A modifier selon la personne...
+\input{base.tex}
+\input{base_XP.tex}
+\geometry{a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm}
+
+% A modifier pour chaque chapitre...
+\newcommand{\titre}{TP 8 -- Fonctions récursives}
+\newcommand{\numero}{2}
+
+% Prof ou élève...
+% prof : 
+%\newcommand{\phantomchoix}[1]{\textcolor{red}{#1}}
+%\newcommand{\blanc}[1]{\textcolor{red}{#1}}
+% eleve : 
+\newcommand{\phantomchoix}[1]{\phantom{#1}}
+\newcommand{\blanc}[1]{\textcolor{white}{#1}}
+
+\renewcommand{\baselinestretch}{1.2}
+
+\newcommand{\site}{\texttt{changer le nom du site}}
+
+
+
+\begin{document}
+
+\enteteinfo
+
+\graphicspath{{images}}
+
+\setcounter{numques}{0}
+
+\proffalse
+\graphicspath{{\repStyle/png/}{../../../../Informatique/Exercices/S1_08_Tris/06_TriBulles/images}}
+\input{../../../../Informatique/Exercices/S1_08_Tris/06_TriBulles/06_TriBulles.tex}
+
+\graphicspath{{../../../../Informatique/Exercices/S1_08_Tris/05_TriFilms/images}}
+\input{../../../../Informatique/Exercices/S1_08_Tris/05_TriFilms/05_TriFilms.tex}
+
+\end{document}
