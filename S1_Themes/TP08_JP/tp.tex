@@ -5,69 +5,82 @@
 	
 \subsection*{Ecriture}
 
- - Pour créer un fichier en écriture, on écrira:
+\begin{itemize}
+\item Pour créer un fichier en écriture, on écrira:
+\end{itemize}
 
 \begin{lstlisting}
-	f=open(nom_de_fichier,'w')
+f=open(nom_de_fichier,'w')
 \end{lstlisting}
 
-- on utilisera la chaine de caractère \texttt{'\t'} pour une tabulation (un espace) et la chaine de caractère \texttt{'\n'} pour un passage à la ligne.
-
-- On rajoutera les chaines de caractères avec \texttt{f.write} par exemple:
+\begin{itemize}
+\item on utilisera la chaine de caractère \texttt{'\t'} pour une tabulation (un espace) et la chaine de caractère \texttt{'\n'} pour un passage à la ligne;
+\item on rajoutera les chaines de caractères avec \texttt{f.write} par exemple :
+\end{itemize}
 
 \begin{lstlisting}
-	f.write(''blabla'')
+f.write(''blabla'')
 \end{lstlisting}
 
-- Il ne faudra pas oublier de fermer le fichier avec 
+\begin{itemize}
+\item Il ne faudra pas oublier de fermer le fichier avec 
+\end{itemize}
 
 \begin{lstlisting}
-	f.close()
+f.close()
 \end{lstlisting}
 
 
-\begin{exemple}
-	\ \\[1mm]
-	\texttt{f=open('essai.txt','a')}	\\
-	\texttt{f.write(''3/2\t=1.5\n'')}\\
-	\texttt{f.write(''3\n'')}\\
-	\texttt{f.write(''2\n1\n'')}\\
-	\texttt{f.write(''5\n'')}\\
-	\texttt{f.close()}
+\begin{exemple}~\\
+\begin{lstlisting}
+f=open('essai.txt','a')
+f.write("3/2\t=1.5\n")
+f.write("3\n")
+f.write("2\n1\n")
+f.write("5\n")
+f.close()
+\end{lstlisting}
 \end{exemple}
 
-- On rappelle que l'on peut concaténer des chaines de caractères avec l'opérateur “+”. Par exemple \texttt{''3/2\t=1.5\n''} équivaut à \texttt{''3/2''+''\t''+''=''+''1.5''+''\n''}.
-
+\begin{itemize}
+\item On rappelle que l'on peut concaténer des chaines de caractères avec l'opérateur “+”. Par exemple \texttt{''3/2\t=1.5\n''} équivaut à \texttt{''3/2''+''\t''+''=''+''1.5''+''\n''}.
+\end{itemize}
 
 \subsection*{Lecture}
 
-- Pour ouvrir un fichier en lecture, on écrira:
+\begin{itemize}
+\item Pour ouvrir un fichier en lecture, on écrira:
+\end{itemize}
 
 \begin{lstlisting}
-	f=open(nom_de_fichier,'r')
+f=open(nom_de_fichier,'r')
 \end{lstlisting}
 
-- On peut obtenir la chaine de caractère formée du contenu du fichier avec la méthode \texttt{read()}.
-
-- On peut ensuite créer, grâce à la méthode \texttt{split}, casser la chaine de caractère et obtenir une liste contenant les diverses données.
+\begin{itemize}
+\item On peut obtenir la chaine de caractère formée du contenu du fichier avec la méthode \texttt{read()}.
+\item On peut ensuite créer, grâce à la méthode \texttt{split}, casser la chaine de caractère et obtenir une liste contenant les diverses données.
+\end{itemize}
 
 \begin{lstlisting}
-	c=f.read().split()
+c=f.read().split()
 \end{lstlisting}
 
-- Il ne faudra pas oublier de fermer le fichier avec 
-
+\begin{itemize}
+\item Il ne faudra pas oublier de fermer le fichier avec 
+\end{itemize}
 \begin{lstlisting}
-	f.close()
+f.close()
 \end{lstlisting}
 
-\begin{exemple}
-	\ \\[1mm]
-	\texttt{f=open('essai.txt','r')}	\\
-	\texttt{c=f.read().split()}
+\begin{exemple}~\\
+\begin{lstlisting}
+f=open('essai.txt','r')
+c=f.read().split()
+\end{lstlisting}
 \end{exemple}
 
 renvoie \texttt{['3/2', '=', '1.5', '3', '2', '1', '5']}
+
 
 
 \section*{Manipulation d'image à l'aide de fichiers}
@@ -119,7 +132,7 @@ suivante par un fichier.
 	les valeurs de  la matrice représentant l'image, dans  l'ordre où on
 	les  lirait  normalement si  la  matrice  était  un texte  écrit  en
 	français (c'est-à-dire de gauche à droite puis de haut en bas).
-	\medskip Au final, un fichier d'extension pgm sera de la forme:
+	Au final, un fichier d'extension pgm sera de la forme:
 			
 			\ \hskip5cm P2	
 			
@@ -146,6 +159,8 @@ suivante par un fichier.
 	\item[\textbullet] Les lignes du fichier doivent faire au plus $70$ caractères.
 \end{itemize}
 
+
+
 \bigskip On rappelle qu'on peut convertir une chaîne représentant un nombre
 décimal avec \texttt{int} et réciproquement, convertir un nombre en chaîne
 le représentant avec \texttt{str}.
@@ -156,39 +171,40 @@ Ainsi, l'indice \og ligne \texttt{i} colonne \texttt{j} \fg\ de la matrice repr�
 	La matrice $\begin{pmatrix} 0&1&2 \\ 3&4&5 \end{pmatrix}$ sera représentée par \texttt{[[0,1,2],[3,4,5]]}.
 \end{exemple}
 
+
 \section*{Travail demandé}
 
 Commencez par recopier les fonctions  \texttt{image\_noire}, \texttt{dim} et  \texttt{lit\_valeurs} données ci dessous : ce sont des exemples utiles, utilisez les ! 
 
 \begin{lstlisting}
-	def image_noire(n, p):
-	"""Construit la matrice n*p d'une image noire."""
-	img = [0]*n
-	for i in range(n):
-	img[i] = [0]*p
-	return img
+def image_noire(n, p):
+    """Construit la matrice n*p d'une image noire."""
+    img = [0]*n
+    for i in range(n):
+        img[i] = [0]*p
+    return img
 	
-	def dim(img):
-	"""Donne le couple (n, p) des dimensions de la matrice img. n :
-	nombre de lignes, p : nombre de colonnes. La matrice est supposée
-	avoir au moins une ligne."""
-	n = len(img)
-	p = len(img[0])
-	return (n,p)
-	
+def dim(img):
+    """Donne le couple (n, p) des dimensions de la matrice img. n :
+    nombre de lignes, p : nombre de colonnes. La matrice est supposée
+    avoir au moins une ligne."""
+    n = len(img)
+    p = len(img[0])
+    return (n,p)
 \end{lstlisting}
 
-\eject \begin{lstlisting}
-	
-	def lit_valeurs(nom_de_fichier):
-	"""Lit le contenu du fichier image f et renvoie la liste des
-	valeurs lues (séparées par des blancs) sous forme d'une liste
-	de chaines de caractères. La première valeur est normalement
-	'P2'."""
-	f=open(nom_de_fichier, 'r')
-	c = f.read()
-	return c.split()
+%\eject 
+\begin{lstlisting}
+def lit_valeurs(nom_de_fichier):
+    """Lit le contenu du fichier image f et renvoie la liste des
+    valeurs lues (séparées par des blancs) sous forme d'une liste
+    de chaines de caractères. La première valeur est normalement
+    'P2'."""
+    f=open(nom_de_fichier, 'r')
+    c = f.read()
+    return c.split()
 \end{lstlisting}
+
 
 
 N'hésitez pas à ouvrir l'image \texttt{degrade.pgm} et \texttt{joconde.pgm} dans un éditeur de texte puis dans un lecteur d'images, afin de comprendre le codage des images.
@@ -207,21 +223,21 @@ N'hésitez pas à ouvrir l'image \texttt{degrade.pgm} et \texttt{joconde.pgm} da
 	d'intensité $N$.}
 	
  	Vérifier que l'image produite par
-	\begin{lstlisting}
-		sauve_rectangle_noir(100, 200, 255, 'rectangle_noir.pgm')
-	\end{lstlisting}
-	est bien ce que   vous attendiez grâce à GIMP ou la visionneuse d'images.
+\begin{lstlisting}
+sauve_rectangle_noir(100, 200, 255, 'rectangle_noir.pgm')
+\end{lstlisting}
+	est bien ce que vous attendiez grâce à GIMP ou la visionneuse d'images.
 	
 	\question{\ Écrire une fonction
 	\texttt{sauve\_rectangle\_blanc(n, p, N, nom\_de\_fichier)}
 	sauvant dans le fichier   \texttt{nom\_de\_fichier} un rectangle blanc, de côté $n$ pixels de hauteur et $p$ de
 	largeur, où le blanc est d'intensité $N$.}
 
-De même, vérifiez l'image
-	produite par
-	\begin{lstlisting}
-		sauve_rectangle_blanc(100, 200, 255, 'rectangle_blanc.pgm'). 
-	\end{lstlisting}}
+
+De même, vérifiez l'image produite par
+\begin{lstlisting}
+sauve_rectangle_blanc(100, 200, 255, 'rectangle_blanc.pgm'). 
+\end{lstlisting}
 	
 	\question{\ (Question facultative) Écrire une fonction \texttt{sauve\_echiquier(p, N, nom\_de\_fichier)} produisant
 	dans le fichier \texttt{nom\_de\_fichier} l'image d'un échiquier, où chaque case de
@@ -239,7 +255,7 @@ De même, vérifiez l'image
 	\question{\ Écrire une fonction \texttt{lit\_image(nom\_de\_fichier)}, où
 	la chaîne \texttt{nom\_de\_fichier} représente le nom  d'un fichier PGM et renvoyant un couple \texttt{(img, N)} où \texttt{N} est
 	le niveau d'intensité du blanc de l'image et \texttt{img} la matrice des
-	pixels.} \\ \\
+	pixels.} \\ 
 	\emph{On suppose que le fichier respecte les contraintes données
 		dans l'énoncé et on ne fera aucun effort particulier pour gérer les
 		situations où il ne les respecterait pas. \\
@@ -248,7 +264,6 @@ De même, vérifiez l'image
 		font plus de $70$ caractères. On suppose de plus que le fichier ne
 		contient aucun commentaire.}\\
 
-\medskip
 
 \textbf{Remarque:}
 		On pourra utiliser la fonction \texttt{lit\_valeurs}, que vous trouverez sur le site de classe.
