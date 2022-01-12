@@ -78,18 +78,21 @@ intuitive>>. }
 
 \exer{Problème}
 
-On démontre que sur l'ensemble $\mathbb{N}\times \mathbb{N}$ est dénombrable en numérotant chaque couple $(x,y)\in\mathbb{N}^2$ suivant le procédé suggéré par la figure ci-dessous.
-
-\begin{center}
-\includegraphics[width=.2\linewidth]{fig_01}
-\end{center}
+\begin{minipage}[c]{.7\linewidth}
+On démontre que sur l'ensemble $\mathbb{N}\times \mathbb{N}$ est dénombrable en numérotant chaque couple $(x,y)\in\mathbb{N}^2$ suivant le procédé suggéré par la figure ci-contre.
 
 \question{Rédiger une fonction récursive qui retourne le numéro du point de coordonnées $(x,y)$.}
 
 \question{Rédiger la fonction réciproque, là encore de façon récursive.}
+\end{minipage}\hfill
+\begin{minipage}[c]{.25\linewidth}
+\begin{center}
+\includegraphics[width=\linewidth]{fig_01}
+\end{center}
 
+\end{minipage}
 
-\exer{Flocon de Von Koch}
+\exer{Flocon de Von Koch -- Exercice corrigé}
 
 
 
@@ -124,10 +127,40 @@ correspondant à la matrice de rotation d'angle \texttt{alpha}.}
 \question{Ecrire une fonction \texttt{flocon} d'arguments les points $A$ et $B$ et un entier $n$. Cette fonction tracera 
 le flocon de Von Koch pour l'itération $n$ à partir des points $A$ et $B$.}
 
-\begin{center}
-\includegraphics[width=.95\linewidth]{images/flocon_von_koch}
-\end{center}
+%\begin{center}
+%\includegraphics[width=.95\linewidth]{images/flocon_von_koch}
+%\end{center}
 
-
+\begin{lstlisting}
+import numpy as np
+import matplotlib.pyplot as plt
+def rotation(angle):
+    return np.array([[np.cos(angle),-np.sin(angle)],[np.sin(angle),np.cos(angle)]])
+def koch(a, b, n):
+    R = rotation(np.pi/3)
+    if n == 0:
+        plt.plot([a[0], b[0]], [a[1], b[1]],'b')
+    else:
+        c=np.array([(b[0]-a[0])/3+a[0],(b[1]-a[1])/3+a[1]])
+        d=np.array([2*(b[0]-a[0])/3+a[0],2*(b[1]-a[1])/3+a[1]])
+        vecteur=d-c
+        e=np.dot(rotation(np.pi/3),vecteur)+c
+        koch(a, c, n - 1)
+        koch(c, e, n - 1)
+        koch(e, d, n - 1)
+        koch(d, b, n - 1)     
+def flocon(a,b,n):
+    koch(a,b,n)
+    vecteur=b-a
+    c=np.dot(rotation(-2*np.pi/3),vecteur)+b
+    koch(b,c,n)
+    koch(c,a,n)
+n = 5
+a = np.array([0,0])
+b = np.array([1,0])
+flocon(a, b, n)
+plt.axis('equal')
+plt.show()
+\end{lstlisting}
 
 \end{document}
