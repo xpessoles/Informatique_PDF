@@ -1,0 +1,60 @@
+\documentclass[10pt,fleqn]{article} % Default font size and left-justified equations
+\usepackage[%
+    pdftitle={Modélisation dynamique},
+    pdfauthor={Xavier Pessoles}]{hyperref}
+
+\input{../../../style/packages}
+\input{../../../style/new_style}
+\input{../../../style/macros_SII}
+\input{../../../style/environment}
+\input{info_entete}
+
+\livretfalse
+
+
+
+
+
+\begin{document}
+% Sujet
+%\TPtrue \fichefalse \proffalse \tdfalse \coursfalse \collefalse
+%\corrigefalse
+\graphicspath{{../../../style/png/}{images/}}
+
+
+%%%% Paramétrage du cours %%%%
+\def\xxactivite{Fiche}
+\def\xxauteur{\textsl{É. Durif -- X. Pessoles -- J.-P. Berne}}
+%\fichefalse
+%\proftrue
+%\tdfalse
+%\courstrue
+
+
+
+\def\xxYCartouche{-2.25cm}
+\def\xxYongletGarde{.5cm}
+\def\xxYOnget{.9cm}
+
+\input{info_entete}
+\input{../../../Style/pagegarde_cours.tex}
+%
+
+\setlength{\columnseprule}{.1pt}
+
+\pagestyle{fancy}
+\thispagestyle{plain}
+
+
+\vspace{3.5cm}
+
+\def\columnseprulecolor{\color{ocre}}
+\setlength{\columnseprule}{0.4pt} 
+
+%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\vspace{3cm}
+\input{../../../Informatique/S2_Cours/01_MethodesProgrammation/01_MethodesProgrammation}
+
+\end{document}
