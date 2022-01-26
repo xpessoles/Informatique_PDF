@@ -1,0 +1,454 @@
+\documentclass[t,11pt]{article}
+% A modifier selon la personne...
+\input{base.tex}
+\input{base_XP.tex}
+\geometry{a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm}
+
+% A modifier pour chaque chapitre...
+\newcommand{\titre}{Les algorithmes de tris}
+\newcommand{\numero}{13}
+
+% Prof ou élève...
+% prof : 
+%\newcommand{\phantomchoix}[1]{\textcolor{red}{#1}}
+%\newcommand{\blanc}[1]{\textcolor{red}{#1}}
+% eleve : 
+\newcommand{\phantomchoix}[1]{\phantom{#1}}
+\newcommand{\blanc}[1]{\textcolor{white}{#1}}
+
+\renewcommand{\cache}[1]{\phantomchoix{#1}\hspace*{0.1mm}}
+
+%%% utilisation des algorithmes
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\renewcommand{\algorithmicrequire} {\textbf{\textsc{Entrées:}}}
+\renewcommand{\algorithmicensure}  {\textbf{\textsc{Sorties:}}}
+\renewcommand{\algorithmicwhile}   {\textbf{tantque}}
+\renewcommand{\algorithmicdo}      {\textbf{faire}}
+\renewcommand{\algorithmicendwhile}{\textbf{fin tantque}}
+\renewcommand{\algorithmicend}     {\textbf{fin}}
+\renewcommand{\algorithmicif}      {\textbf{si}}
+\renewcommand{\algorithmicendif}   {\textbf{finsi}}
+\renewcommand{\algorithmicelse}    {\textbf{sinon}}
+\renewcommand{\algorithmicthen}    {\textbf{alors}}
+\renewcommand{\algorithmicfor}     {\textbf{pour}}
+\renewcommand{\algorithmicforall}  {\textbf{pour tout}}
+\renewcommand{\algorithmicdo}      {\textbf{faire}}
+\renewcommand{\algorithmicendfor}  {\textbf{fin pour}}
+\renewcommand{\algorithmicloop}    {\textbf{boucler}}
+\renewcommand{\algorithmicendloop} {\textbf{fin boucle}}
+\renewcommand{\algorithmicrepeat}  {\textbf{répéter}}
+\renewcommand{\algorithmicuntil}   {\textbf{jusqu'à}}
+
+\floatname{algorithm}{Algorithme}
+
+\let\mylistof\listof
+\renewcommand\listof[2]{\mylistof{algorithm}{Liste des algorithmes}}
+
+% pour pallier au problème de niveau des algos
+\makeatletter
+\providecommand*{\toclevel@algorithm}{0}
+\makeatother
+
+\begin{document}
+\entetecoursinfo
+
+
+
+\begin{obje}
+\begin{itemize}
+\item[-] Comprendre et analyser un algorithme de tri ;
+\item[-] Évaluer la complexité d'un algorithme de tri ;
+\item[-] Comparer différents algorithmes de tri.
+\end{itemize}
+\end{obje}
+
+
+\section{Présentation}
+
+
+Un algorithme de tri est un algorithme qui permet d'organiser une collection d'objets selon un ordre déterminé. Le tri permet notamment de faciliter les recherches ultérieures d'un élément dans une liste (recherche dichotomique).
+On s'intéresse ici à des méthodes de tri d'une liste de valeurs numériques. Celle-ci est implémentée sous la forme d'un tableau à une dimension.
+
+
+\begin{minipage}{.65\textwidth}%
+Les algorithmes de tri sont classés suivant plusieurs critères :
+\begin{itemize}
+\item[-] la comparaison des éléments ou non ;
+\item[-] la stabilité ;
+\item[-] la rapidité de traitement (complexité temporelle) ;
+\item[-] l'impact en espace mémoire utilisé (complexité spatiale).
+\end{itemize}
+\end{minipage}%
+\hfill
+\begin{minipage}{.3\textwidth}%
+\includegraphics[width=\textwidth]{images/cartes.png}
+\end{minipage}
+
+\section{Tri par Insertion}
+\subsection{Principe}
+
+Le tri par insertion est le tri que l'on effectue naturellement, par exemple pour trier un jeu de cartes.
+
+Soit un jeu de n cartes. On prend la première dans une main. On saisit la seconde carte et on l'insère avant ou après la première selon le cas.
+A l'étape « i », la $i^{ème}$ carte est insérée à sa place dans le paquet déjà trié.\\
+Pour cela, on peut :
+\begin{itemize}
+\item soit partir de la fin du tas déjà trié et s'arrêter si on rencontre une carte plus petite que la $i^{ème}$ (méthode 1) ;
+\item 	soit partir du début du tas déjà trié et s'arrêter lorsqu'on rencontre une carte plus grande que la $i^{ème}$ (méthode 2).
+\end{itemize}
+	
+Le paquet contient alors « i » cartes triées. On procède ainsi de suite jusqu'à la dernière carte.
+
+Ce tri s'effectue en place, c'est-à-dire qu'il ne demande pas d'autre tableau que celui que l'on trie. 
+Son coût en mémoire est donc constant si on ne compte pas la place occupée par les données.
+
+\newpage
+\texttt{Exemple} : L'objectif de cet exemple est de trier "à la main" la liste L=\verb![!7,6,3,5,8,2,1,3\verb!]! par insertion.
+On choisira comme clef (nouvel élément à trier) le premier élément non trié. 
+
+\begin{python}
+\vspace*{13cm}
+\end{python}
+
+
+\newpage
+\subsection{Algorigramme du tri par insertion}
+
+L'algorithme proposé présente une comparaison avec, en premier, l'élément se situant à droite de la partie triée (méthode 1).
+
+\begin{minipage}{.45\textwidth}%
+\begin{center}
+\includegraphics[width=1\textwidth]{images/algorigramme_insertion.png}
+\end{center}
+\end{minipage}%
+\hfill
+\begin{minipage}{.5\textwidth}%
+\vspace*{0.6cm}
+\begin{python}
+Commentaires
+\vspace*{13cm}
+\end{python}
+\end{minipage}
+
+\vspace{-0.2cm}
+\subsection{Implémentation en python}
+\vspace{-0.2cm}
+
+Tri par insertion :
+\begin{lstlisting}
+def tri_Insertion(t:list)-> None :
+	'''Trie la liste t
+	Entrée : Une liste t
+	Sortie : La liste est modifiée mais n'est pas renvoyée'''
+	for i in range (1 , len(t)) :
+		cle = t[i]
+		k = i-1
+		while ( k >= 0 and t[k] > cle ) :
+			t[k+1]=t[k]
+			k=k-1
+		t[k+1] = cle
+\end{lstlisting}
+
+%---------------------------------------------------------------------------
+\section{Tri rapide (quicksort par Tony Hoare - 1960)}
+%---------------------------------------------------------------------------
+\subsection{Principe}
+%---------------------------------------------------------------------------
+\noindent
+L'algorithme fait partie de la catégorie des algorithmes « diviser pour régner ». C'est un tri comparatif.\\
+\'A chaque appel de la fonction tri, on choisit une valeur "pivot", par exemple le dernier élément.
+On effectue ensuite une partition des éléments à trier :
+\begin{itemize}
+\item un premier groupe est constitué de valeurs strictement inférieures au pivot ;
+\item un deuxième avec les valeurs supérieures.
+\end{itemize}
+Ainsi à chaque appel de la fonction, le nombre de données à traiter est diminué de un. C'est-à-dire que l'on ne traite plus l'élément appelé « pivot » dans les appels ultérieurs de fonction, il est placé à sa place définitive dans le tableau.
+
+\subsection{Algorigramme du tri rapide}
+
+\begin{minipage}{.5\textwidth}%
+\begin{center}
+\includegraphics[width=1\textwidth]{images/algorigramme_rapide.png}
+\end{center}
+\end{minipage}%
+\hfill
+\begin{minipage}{.45\textwidth}%
+\vspace*{0.6cm}
+\begin{python}
+Commentaires
+\vspace*{13cm}
+\end{python}
+\end{minipage}
+
+
+\newpage
+\subsection{Implémentations en python}
+
+
+Tri rapide (méthode avec l'utilisation de deux listes de stockage) :
+\begin{lstlisting}
+def tri_rapide(t:list)-> list :
+	'''Trie la liste t par une méthode récursive
+	Entrée : Une liste t
+	Sortie : La liste est modifiée et est renvoyée '''
+	if len(t) < 2 :
+		return (t)
+	else :
+		x = t[-1]
+		a=[]
+		b=[]
+		for i in range (0,len(t)-1) :
+			if t[i] < x :
+				a.append(t[i])
+			else :
+				b.append(t[i])
+		return (tri_rapide(a) + [x] + tri_rapide(b))
+\end{lstlisting}
+
+
+\textit{Remarque} :\\
+Certains algorithmes de tri rapide prennent pour « pivot » le premier élément, la valeur moyenne du premier et du dernier, ou un positionnement aléatoire dans le tableau. Pour se placer dans le meilleur des cas pour chaque segment de tableau, il faut prendre pour pivot la valeur médiane du tableau de valeurs. Le problème est que cette recherche de pivot idéal a aussi un « coût ».
+
+\vspace*{0.5cm}
+\texttt{Exemple} : L'objectif est de trier "à la main"  la liste L=\verb![!7,6,3,5,8,2,1,3\verb!]! avec l'algorithme de tri rapide.
+
+\begin{python}
+\vspace*{9cm}
+\end{python}
+
+%---------------------------------------------------------------------------
+\section{Tri fusion}
+%---------------------------------------------------------------------------
+\subsection{Principe}
+%------------------------
+\noindent
+La méthode de tri fusion pour un tableau de données est la suivante :
+\begin{itemize}
+\item[-] on coupe en deux parties à peu près égales les données à trier ;
+\item[-] on trie les données de chaque partie par la méthode de tri fusion ;
+\item[-] on fusionne les deux parties en interclassant les données.
+\end{itemize}
+\noindent
+L'algorithme est donc récursif. Il fait partie des algorithmes "diviser pour régner". C'est un tri stable. La récursivité s'arrête car on finit par arriver à des listes composées d'un seul élément et le tri est alors trivial.
+
+\subsection{Algorigramme de la fonction fusion}
+
+\begin{minipage}{.5\textwidth}%
+\begin{center}
+\includegraphics[width=1\textwidth]{images/algorigramme_fusion.png}
+\end{center}
+\end{minipage}%
+\hfill
+\begin{minipage}{.45\textwidth}%
+\vspace*{0.6cm}
+\begin{python}
+Commentaires
+\vspace*{13cm}
+\end{python}
+\end{minipage}
+
+
+\newpage
+%---------------------------------------------------------------------------
+\subsection{Implémentions en python}
+%---------------------------------------------------------------------------
+\noindent
+Afin d'implémenter l'algorithme de tri fusion, nous allons décomposer cet algorithme en trois fonctions : \texttt{placer}, \texttt{fusion} et \texttt{tri\_fusion}.
+
+\begin{lstlisting}
+def placer(L:list,p:int,x:float) :
+    '''Place un élément à sa place dans une liste triée à partir de l'indice p
+    Entrée :
+        L : une liste
+        p : un entier
+        x : un élément
+    Sorties :
+        La liste est modifiée mais n'est pas renvoyée
+        k la valeur de l'indice de la liste où l'élément a été placé'''
+    k=p
+    while (k<len(L) and x>L[k]) :
+        k=k+1
+    L.insert(k,x)
+    return (k)
+
+def fusion(a:list,b:list) :
+    '''Fusionne les deux listes
+    Entrée :
+        deux listes a et b
+    Sortie :
+        La liste b modifiée'''
+    p=0
+    for x in a :
+        p=placer(b,p,x)+1
+    return (b)
+
+def tri_fusion(t) :
+    '''Trie la liste t
+    Entrée :
+        Une liste
+    Sortie :
+        La liste est modifiée'''
+    if len(t)<2 :
+        return (t)
+    else :
+        m=len(t)//2
+        return (fusion(tri_fusion(t[:m]),tri_fusion(t[m:])))
+\end{lstlisting}
+
+
+\newpage
+\section{Méthodes de Python}
+
+\subsection{sort et sorted}
+Les listes Python ont une méthode native \texttt{list.sort()} qui modifie les listes elles-mêmes et renvoie \textbf{None}.
+\vspace{-0.5cm}
+\begin{pythonshell}
+\invite a=[25,94,89,113,67]\\
+\invite a.sort()\\
+\invite a\\
+\verb![!25,67,89,94,113\verb!]!
+\end{pythonshell}
+
+Il y a également une fonction native \texttt{sorted()} qui construit une nouvelle liste triée depuis un itérable (liste de listes, tuple, dictionnaires).
+
+\begin{pythonshell}
+\invite sorted([25,94,89,113,67])\\
+\verb![!25,67,89,94,113\verb!]!
+\end{pythonshell}
+
+\vspace{-0.5cm}
+On utilise l'indice de la "colonne" à trier en utilisant la fonction \texttt{lambda} associée à \texttt{key} :
+\vspace{-0.5cm}
+\begin{pythonshell}
+\invite etudiants=[('Julie','PTS1',15),('Elio','PTS2',14),('Jules','PTS1',17),
+
+('Adam','PTS2',16)]\\
+\invite sorted(etudiants, key=\textbf{lambda} etudiants : etudiants[2])\\
+\verb![!('Elio','PTS2',14),('Julie','PTS1',15),('Adam','PTS2',16),('Jules','PTS1',17)\verb!]!
+\\
+\\
+\invite etudiants  \indente \# etudiants est inchangé\\
+\verb![!('Julie','PTS1',15),('Elio','PTS2',14),('Jules','PTS1',17),('Adam','PTS2',16)\verb!]!
+\end{pythonshell}
+
+\vspace{-0.5cm}
+Sans indication particulière, le tri se fait sur la première valeur puis sur la suivante dans le cas où les premières valeurs sont identiques :
+\vspace{-0.5cm}
+
+\begin{pythonshell}
+\invite couple=[(3,3),(3,6),(3,1)]\\
+\invite sorted(couple)\\
+\verb![!(3, 1), (3, 3), (3, 6)\verb!]!\\
+\# le tri est dit stable
+\end{pythonshell}
+
+
+\newpage
+%---------------------------------------------------------------------------
+\section{Complexité d'un algorithme de tri}
+%---------------------------------------------------------------------------
+\subsection{Définitions}
+%---------------------------------------------------------------------------
+
+%\begin{ordre}
+%Soient $f$ et $g$ deux fonctions positives d'une même variable entière $n$. La fonction $f$ est dite avoir un ordre de grandeur au plus égal à celui de la fonction $g$ s'il existe un entier
+%strictement positif $k$ et un entier $N$ tels que, pour tout $n \geq N$, on ait $f(n) \leq k \times g(n)$. 
+%On écrira $f = O(g)$. Par exemple, les fonctions $f(n) = 3 n^{2} - 5 n + 4$ et
+%$g(n) = n^{2}$ ont même ordre de grandeur.
+%\end{ordre}
+
+
+\begin{comp}
+On considère un algorithme $A$. On appelle complexité de $A$ tout ordre de grandeur du
+nombre d'opérations élémentaires effectuées pendant le déroulement de l'algorithme. On
+exprime ce nombre d'opérations en fonction de paramètres entiers associés aux instances à
+traiter ; on pourra par exemple exprimer la complexité d’un tri en fonction du nombre de
+données à trier. 
+\end{comp}
+
+\noindent
+Néanmoins, il se peut qu’avec deux jeux de données différents correspondant
+aux mêmes paramètres, le nombre d’opérations effectuées ne soit pas le même. Par exemple,
+un algorithme de tri pourra être plus rapide s’il s’agit de trier des données déjà triées que s’il
+s’agit de données très désordonnées. On peut alors s’intéresser à :
+
+\begin{itemize}
+\item la complexité \textbf{dans le pire des cas} : les paramètres avec lesquels on exprime la
+complexité étant fixés, on considère le plus grand nombre d’opérations
+élémentaires effectuées sur l’ensemble des instances correspondant à ces
+paramètres ; on cherche ainsi un majorant de la complexité qui puisse être atteint
+dans certains cas ; c’est ce qu’on fait le plus généralement ;
+\item la complexité \textbf{dans le meilleur des cas} : les paramètres avec lesquels on exprime la
+complexité étant fixés, on considère le plus petit nombre d’opérations élémentaires
+effectuées sur l’ensemble des instances correspondant à ces paramètres ; cette
+complexité peut venir compléter la précédente mais ne sera jamais suffisante pour
+l’utilisateur ;
+\item la complexité \textbf{en moyenne} \textit{(pour information)}: les paramètres avec lesquels on exprime la complexité
+étant fixés, il faut alors faire la moyenne des nombres d’opérations élémentaires effectuées, moyenne portant sur tous les jeux de données correspondant à ces paramètres. Ce calcul est généralement difficile et souvent même délicat à
+formuler car il faut connaître la probabilité de chacun des jeux de données pour effectuer un calcul pertinent de cette moyenne.
+\end{itemize}
+
+%---------------------------------------------------------------------------
+\subsection{Illustration}
+%---------------------------------------------------------------------------
+\noindent
+Il existe plusieurs types d'algorithmes de tri que l'on peut classer en comparatifs (ce que l'on verra dans ce cours) et non comparatifs.
+Un algorithme comparatif est basé sur des comparaisons successives entre les données pour déterminer la permutation correspondant à l'ordre croissant des données.
+On va chercher ici à évaluer la complexité théorique des tris comparatifs en se basant sur le nombre de comparaisons.
+\noindent
+Prenons un exemple:
+on considère un algorithme pour
+trier trois données a, b et c décrit par l’arbre ci-dessous ; cet algorithme correspond au fonctionnement du tri insertion que nous verrons plus loin :
+\begin{center}
+\includegraphics[width=.85\textwidth]{images/C2.png}
+\end{center}
+
+\noindent
+Cet arbre signifie : la première comparaison faite est « a < b ? ». Si la réponse est oui, la
+comparaison suivante est « b < c ? », si la réponse est non c'est « a < c ? ». Lorsqu’une permutation est déterminée, on est dans ce que l'on appelle une feuille de l'arbre. On voit qu'on peut avoir plus
+ou moins de chance ; pour deux des permutations, on fait deux comparaisons, pour les quatre
+autres, on fait trois comparaisons. Le plus grand nombre de comparaisons est 3, le meilleur est
+2 et le nombre moyen de comparaisons est : $(2 \times 2 + 4 \times 3) / 6 \approx 2,67$.
+
+%---------------------------------------------------------------------------
+\subsection{Synthèse}
+%-----------------------------------------------------------------
+Les résultats de la complexité de chaque tri seront démontrés dans le chapitre sur la complexité,
+\begin{center}
+\begin{tabular}{|c|c|c|c|}\hline
+ \large{\textsf{\textbf{}}} & \large{\textsf{\textbf{Tri par insertion}}}\footnote{}. & \large{\textsf{\textbf{Tri rapide}}} & \large{\textsf{\textbf{Tri fusion}}}\\
+\hline
+\large{\textsf{\textbf{Pire des cas}}} & liste triée & liste triée\footnote{} & $C(n)=O(n \times log(n))$ \\
+ & $C(n)=O(n^2)$ & $C(n)=O(n^2)$. &\\
+\hline
+\large{\textsf{\textbf{Cas moyen}}} & $C(n)=O(n^2)$ & $C(n)=O(n \times log(n))$ &  $C(n)=O(n \times log(n))$\\
+\hline 
+\large{\textsf{\textbf{Meilleur des cas}}} & liste triée & liste triée\footnote{} & $C(n)=O(n \times log(n))$\\
+\large{\textsf{\textbf{}}} & $C(n)=O(n)$ & $C(n)=O(n \times log(n))$. & \\
+\hline
+
+
+\end{tabular}\\
+\end{center}
+
+
+
+1. dépend de l'algorithme choisi : méthode 1 ou méthode 2 ;\\
+2. lorsque le pivot est le premier ou dernier élément du tableau trié ;\\
+3. lorsque le pivot est pris au milieu du tableau trié (valeur médiane).
+\vspace{1cm}
+
+Références :\\
+Sébastien Grange, Support de cours de PT, Lycée Mimart, St-Etienne\\
+Christophe Lambert, Support de cours de PT et PT*, Lycée la Martinière Monplaisir, Lyon\\
+Patrick Beynet, Support de cours de TSI2, Lycée Rouvière, Toulon\\
+
+Animation : \url{https://interstices.info/les-algorithmes-de-tri/}
+
+
+
+
+
+
+\end{document}
