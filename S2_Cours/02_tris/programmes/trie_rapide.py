@@ -21,13 +21,13 @@ def tri_rapide(a,g,d):
         print(a)
         tri_rapide(a,g,m)
         tri_rapide(a,m+1,d)
-        
-        
-        
 
-    
+
+
+
+
 #Programme principal
-a=[5,14,11,8,17]
+a=[5,14,11,8,17,7]
 #a=[4,6,3,7,5]
 #a=[7,6,4,3,2,1]
 tri_rapide(a,0,len(a))
