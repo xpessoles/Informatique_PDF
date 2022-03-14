@@ -68,6 +68,20 @@
 }%
 {\endMakeFramed}%
 
+\newenvironment{corrige}[1][\hsize]%
+{%
+    \def\FrameCommand%
+    {%
+\rotatebox{90}{\textit{\textsf{Corrigé}}} 
+        {\color{black}\vrule width 3pt}%
+        \hspace{0pt}%must no space.
+        \fboxsep=\FrameSep\colorbox{gris_c}%
+    }%
+    \MakeFramed{\hsize#1\advance\hsize-\width\FrameRestore}%
+}%
+{\endMakeFramed}%
+
+
 
 %% Questions et exercices
 \newcounter{numques}%Création d'un compteur qui s'appelle numques
