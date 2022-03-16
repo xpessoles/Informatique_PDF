@@ -1,0 +1,45 @@
+%%%% Paramétrage du cours %%%%
+\def\xxactivite{\ifprof TP -- Corrigé  \else  TP 11 \fi}
+\def\xxauteur{\textsl{É. Durif -- X. Pessoles -- J.-P. Berne}}
+%\fichefalse
+%\proftrue
+%\tdfalse
+%\courstrue
+
+
+
+\def\xxYCartouche{-2.25cm}
+\def\xxYongletGarde{.5cm}
+\def\xxYOnget{.9cm}
+
+\input{info_entete}
+
+
+
+\def\xxfigures{
+%\includegraphics[width=.6\linewidth]{fig_00}
+}%figues de la page de garde
+
+
+\input{../../../style/pagegarde_info_tp}
+
+\setlength{\columnseprule}{.1pt}
+
+\pagestyle{fancy}
+\thispagestyle{plain}
+
+
+\vspace{3.5cm}
+
+\def\columnseprulecolor{\color{ocre}}
+\setlength{\columnseprule}{0.4pt} 
+
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\setcounter{exo}{0}
+\vspace{3cm}
+\input{../../../Informatique/Exercices/33_systemes/decomposition_LU.tex}
+
+
+
+
