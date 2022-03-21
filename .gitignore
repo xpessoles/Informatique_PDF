@@ -17,3 +17,4 @@ Exercices/Exercices_Full_PDF.bcf
 *.log
 *.idx
 *.out
+*.synctex(busy)
