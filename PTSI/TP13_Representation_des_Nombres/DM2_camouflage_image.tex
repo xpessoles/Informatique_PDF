@@ -1,0 +1,578 @@
+
+\documentclass[10pt]{article}
+
+%----------------------------------------------------------------------------------------
+%	Packages francais
+%----------------------------------------------------------------------------------------
+\usepackage[utf8]{inputenc} 
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+%\input{./style/new_style.tex}
+%\input{./style/macros_SII.tex}
+
+%----------------------------------------------------------------------------------------
+%	Titre du document
+%----------------------------------------------------------------------------------------
+\newcommand{\DocMatiere}{Informatique} % Matiere du document
+\newcommand{\DocTitle}{Manipulation d'images} % Titre du document
+\newcommand{\DocType}{DM} % Type d'activité
+\newcommand{\DocNumber}{} % Numero du projet
+\newcommand{\DocCorrige}{Non} % Affiche le corrigé
+\newcommand{\DocDate}{} % Date
+\newcommand{\DocAuthorName}{Informatique PT - PT*} % Nom de l'auteur
+%----------------------------------------------------------------------------------------
+% Reglages des marges
+%----------------------------------------------------------------------------------------
+\usepackage{geometry}
+\geometry{a4paper}
+\geometry{top=2.5cm, bottom=2.5cm, left=2cm , right=2cm}
+%----------------------------------------------------------------------------------------
+%	Packages classiques
+%----------------------------------------------------------------------------------------
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{graphicx} % Required to insert images
+\usepackage{subfigure}
+\RequirePackage{algorithm}
+\RequirePackage{algorithmic}
+
+%----------------------------------------------------------------------------------------
+%	Packages Maths
+%----------------------------------------------------------------------------------------
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{stmaryrd}
+%----------------------------------------------------------------------------------------
+%	Packages divers
+%----------------------------------------------------------------------------------------
+\usepackage{enumerate} % choix style enumeration
+\usepackage[table]{xcolor}
+\usepackage{enumitem}
+\usepackage{amssymb} 	
+\usepackage{xargs}
+\usepackage{xinttools}
+\usepackage{tikz}
+\usepackage{multicol}
+\usepackage{url}
+%----------------------------------------------------------------------------------------
+%	Mise en forme code python
+%----------------------------------------------------------------------------------------
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{8} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{8} % for normal
+% Custom colors
+\usepackage{color}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mysoftgray}{rgb}{0.8,0.8,0.8}
+\definecolor{grisclair}{rgb}{0.95,0.95,0.95}
+%\definecolor{ocre}{rgb}{49,133,156} % Couleur ''bleue''
+%\definecolor{violetf}{rgb}{112,48,160} % Couleur ''violet''
+
+\usepackage{listings}
+
+% Python style for highlighting
+\newcommand\pythonstyle{\lstset{
+language=Python,
+%backgroundcolor=\color{grisclair},
+%frame=single,
+%frame=tb,              % Any extra options here
+%numbers=left, % where to put the line-numbers; possible values are (none, left, right)
+%numbersep=5pt, % how far the line-numbers are from the code
+%numberstyle=\color{blue},
+%stepnumber=1,
+basicstyle=\tt,
+otherkeywords={self},             % Add keywords here
+keywordstyle=\ttb\color{deepblue},
+emph={MyClass,__init__},          % Custom highlighting
+emphstyle=\ttb\color{deepred},    % Custom highlighting style
+stringstyle=\color{deepgreen},
+showstringspaces=true,            % 
+showtabs=true,
+tabsize=5,
+showspaces=false,  % indique les espace dans le code
+commentstyle=\color{olive},
+breaklines=true
+}}
+
+
+% Python environment
+\lstnewenvironment{python}[1][]
+{
+\pythonstyle
+\lstset{#1}
+}
+{}
+
+
+% Python for external files
+\newcommand\pythonexternal[1]{{
+\pythonstyle
+\lstinputlisting{#1}}}
+
+% Python for inline
+\newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}} 
+%-------------------listing et python------------------------------
+
+
+% commandes d'espaces % Les espaces verticaux et horizontaux.
+\newcommand{\sk}{\smallskip}
+\newcommand{\mk}{\medskip}
+\newcommand{\bk}{\bigskip}
+\newcommand{\vk}{\vskip 1.5 cm}
+\newcommand{\hk}{\hskip 1 cm\relax}
+
+
+%----------------------------------------------------------------------------------------
+%	Mise en page du document
+%----------------------------------------------------------------------------------------
+\linespread{1.1} % Line spacing
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{\DocMatiere} % Top left header
+\chead{\DocTitle} % Top center header
+\rhead{\DocType \ \DocNumber} % Top right header
+\lfoot{\DocAuthorName}% Bottom left footer
+\cfoot{Page\ \thepage\ /\ \pageref{LastPage}} % Bottom center footer
+\rfoot{\DocDate} % Bottom right footer
+\renewcommand\headrulewidth{0.4pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+
+
+%question exo
+\newcounter{cexo}
+\newenvironment{qexo}{
+\refstepcounter{cexo}
+\vspace{3 pt}
+\noindent
+\begin{minipage}[t]{0.15\textwidth}
+\textbf{\noindent Question \arabic{cexo}. }
+\end{minipage}\noindent
+\begin{minipage}[t]{0.85\textwidth}}{\vspace{3 pt}
+\end{minipage}}%\vspace{2 pt}
+	
+	
+%	%objectifs , attention une virgule crée un tiret
+%\newlength{\LongObj}
+%\settowidth{\LongObj}{\textbf{ Objectif(s) }}
+%\newlength{\largeurObj}
+%\setlength{\largeurObj}{0.9\textwidth - \LongObj}
+%\newcommand{\Obj}[1]{%\vspace{45 pt}%~\\ 
+%\noindent
+%\rule[4.5 pt]{0.1\textwidth}{0.4pt}\textbf{ Objectif(s) }\rule[4.5 pt]{\largeurObj}{0.4pt}
+%\begin{itemize}[noitemsep,topsep=3pt]
+%\foreach \x in {#1} {\item \textit{\x}}
+%\end{itemize}
+%\noindent\rule[4.5 pt]{1\textwidth}{0.4pt} \vspace{-1\baselineskip }
+%}
+	
+%titre
+\newenvironment{rem}{\par\vspace{10pt} % Vertical white space above the remark and (\small pour smaller font size)
+\begin{list}{}{
+\leftmargin=35pt % Indentation on the left
+\rightmargin=25pt}\item\ignorespaces % Indentation on the right
+\makebox[-2.5pt]{\begin{tikzpicture}[overlay]
+\node[draw=ocre!60,line width=1pt,circle,fill=ocre!25,font=\sffamily\bfseries,inner sep=2pt,outer sep=0pt] at (-15pt,0pt){\textcolor{ocre}{R}};\end{tikzpicture}} % Orange R in a circle
+\advance\baselineskip -1pt}{\end{list}\vskip5pt} % Tighter line spacing and white space after remark
+
+%titre
+\newenvironment{obj}{\par\vspace{10pt} % Vertical white space above the remark and (\small pour smaller font size)
+\begin{list}{}{
+\leftmargin=35pt % Indentation on the left
+\rightmargin=25pt}\item\ignorespaces % Indentation on the right
+\makebox[-2.5pt]{\begin{tikzpicture}[overlay]
+\node[draw=deepblue!60,line width=1pt,circle,fill=deepblue!25,font=\sffamily\bfseries,inner sep=2pt,outer sep=0pt] at (-15pt,0pt){\textcolor{deepblue}{Obj}};\end{tikzpicture}} % Orange R in a circle
+\advance\baselineskip -1pt}{\end{list}\vskip5pt} % Tighter line spacing and white space after remark
+
+%----------------------------------------------------------------------------------------
+%	Repertoire images
+%----------------------------------------------------------------------------------------
+\graphicspath{{figures/}}
+
+
+%----------------------------------------------------------------------------------------
+%	Début du document
+%----------------------------------------------------------------------------------------
+\begin{document}
+
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE & TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+\begin{center}
+\vspace{1cm}\textbf{\Large \DocType \ \DocNumber: \DocTitle}
+\end{center}
+
+%----------------------------------------------------------------------------------------
+%	Consignes
+%----------------------------------------------------------------------------------------
+
+\section{Consignes}
+Ce DM nécessite une heure à deux heures de travail. Il sera corrigé via l'outil de test \texttt{pytest}. Il faut donc respecter absolument le nom des fonctions ainsi que l'ordre des variables. Enfin votre script devra absolument se nommer \textbf{DM\_2\_nom\_prenom} (sans espace, sans accent). Le DM est à déposer dans le moodle {\texttt{ENT/Moodle/Mes cours/informatique PT}} pour le mercredi 29 décembre minuit.\\
+
+
+%Les bibliothèques \texttt{math}, \texttt{numpy}, \texttt{matplotlib.pyplot} et \texttt{random} doivent être importées grâce aux instructions :
+%\begin{python}
+%import math
+%import numpy as np
+%import random
+%import matplotlib.pyplot as plt
+%\end{python}
+Ce sujet utilise la syntaxe des annotations pour préciser le types des arguments et du résultat des fonctions à
+écrire. Ainsi :% \enteteBoite{def maFonction(n:int, x:float, d:str) -> np.ndarray:}
+\begin{center}
+\texttt{def maFonction(n:int, x:float, d:str) -> np.ndarray :}
+\end{center}
+signifie que la fonction \texttt{maFonction} prend trois arguments, le premier est un entier, le deuxième un nombre à virgule flottante et le troisième une chaine de caractères et qu'elle renvoie un tableau \texttt{numpy}.\\
+
+
+
+%----------------------------------------------------------------------------------------
+%	Début du doc
+%----------------------------------------------------------------------------------------
+
+Ce travail est une approche sur le codage couleur des images que nous allons exploiter dans le but de cacher une image \textbf{secret} dans une image que nous appelerons \textbf{masque}...
+
+Ainsi cachée, l'image \textbf{secret} devra pouvoir être décamouflée par le destinataire de l'image.
+
+
+\begin{figure}[!h]
+   \begin{minipage}[c]{.46\linewidth}
+			\begin{center}
+      \includegraphics[width=.6\linewidth]{images/masque}
+			\caption{\textbf{masque}\label{fig1}}
+			\end{center}
+   \end{minipage} \hfill
+   \begin{minipage}[c]{.46\linewidth}
+	\begin{center}
+      \includegraphics[width=.6\linewidth]{images/secret}
+			\caption{\textbf{secret}\label{fig1}}
+	\end{center}
+   \end{minipage}
+\end{figure}
+
+Ces deux images doivent avoir le même nombre de pixels.
+
+\section{Préambule sur les images}
+
+Chaque image sera stockée sous forme d'un tableau (array) à 3 dimensions. Les deux premières dimensions sont les coordonnées x et y des pixels, et la troisième dimension contient les niveaux des trois couleurs RGB (Red, Green, Blue) ainsi que le niveau de transparence, chacun étant codé sur \textbf{un octet}.
+
+Exemple du codage de (42)$_{10}$ sur un octet :
+\begin{center}
+\includegraphics[width=.3\linewidth]{images/codage}
+\end{center}
+
+Chacune des trois couleurs est représentée par un entier compris entre 0 et 255, ce qui permet d'obtenir plus de 16 millions de couleurs différentes.
+
+L’idée de départ dans le camouflage d'images est que pour chacun de ces entiers un codage entre 0 et 255 n’est peut-être pas nécessaire. En effet, pour chaque entier codé sur 8 bits, les 4 bits de poids fort donnent quasiment toute l’information soit un codage entre $0$ et $240$, les autres servant à apporter des nuances entre $0$ et $15$.
+
+On va alors tronquer l’information de chacune de ces valeurs et ne garder que l’information principale de chaque image. Puis l’information principale de l’image à cacher sera alors dissimulée sur les bits de poids faibles de l’image \textbf{masque}.
+
+\vspace{0.5cm}
+Les images avec l’extension png « portable network graphics » sont enregistrées sous forme de tableau avec différents formats. Le format retenu pour le DM est \textbf{uint8} qui code sur 8 bits chaque couleur.
+
+%\begin{py}
+\begin{python}
+>>> array([[[142, 140, 155, 255], [157, 156, 155, 255] ,[189, 188, 187, 255],..., [ 5, 4, 5, 255], [ 6, 5, 6, 255], [ 9, 8, 9, 255]]], dtype=uint8)
+\end{python}
+%\end{py}
+
+Les 4 valeurs de chaque liste correspondent aux trois couleurs RGB (red, green, blue) et à la transparence (pas toujours présent et non utilisé ici). On note généralement ce codage RGBa.
+
+\begin{center}
+\includegraphics[width=0.6\linewidth]{images/tableau_couleur}
+\end{center}
+
+\section{Ouverture d'une image}
+On utilise les bibliothèques \texttt{matplotlib.pyplot}, \texttt{numpy} et  \texttt{matplotlib.image} (pour l’ouverture et l’écriture d’images).
+\begin{itemize}
+\item En tout premier lieu, créer un dossier DM\_images dans lequel vous mettrez tous les fichiers nécessaires à ce DM (notamment les images fournies et votre script) ;
+\item Importer comme suit les bibliothèques :
+%\begin{py}
+\begin{python}
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
+\end{python}
+%\end{py}
+On propose d’utiliser la fonction \texttt{lit\_image(fichier:str)} donnée dans le fichier \texttt{DM\_camouflage\_image.py}.
+\item Ouvrir \texttt{DM\_camouflage\_image.py} et prendre connaissance de la structure de cette fonction. L'explication de la 3ème ligne est donnée en annexe.
+%\begin{py}
+\begin{python}
+def lit_image(nom_fichier):
+    img=mpimg.imread(nom_fichier)
+    img=(img*255).round().astype(np.uint8)
+    return img
+    
+img=lit_image('masque.png')
+plt.figure()
+plt.imshow(img)
+plt.show()
+\end{python}
+%\end{py}
+\item Pour lancer le script sous Pyzo, vous devez choisir l'exécution à partir de l'onglet du fichier. Par un clic droit, sélectionner "Run File as script" pour la première exécution de votre programme. Tous les fichiers utiles doivent être dans le même dossier.
+\end{itemize}
+
+
+\section{Affichage d'une image}
+
+Testez ce morceau de programme :
+%\begin{py}
+\begin{python}
+img = lit_image("masque.png")  #lecture de l'image
+plt.figure()
+plt.imshow(img)  #affichage de l'image
+plt.show()
+\end{python}
+%\end{py}
+
+La variable \textbf{img} contient alors l'image sous forme matricielle.
+
+\begin{itemize}
+\item Dans le shell (interpréteur), taper l’instruction :  img
+\item Retrouver les éléments décrits ci-dessus.
+\end{itemize}
+
+\section{Taille d'une image}
+La méthode shape donne les dimensions de l'image en pixels. La profondeur étant la taille du pixel (3 couleurs et une transparence) : \textbf{(largeur, hauteur, profondeur) = img.shape}
+
+\begin{itemize}
+
+\item Testez cette instruction dans le shell :
+%\begin{py}
+\begin{python}
+img.shape
+\end{python}
+%\end{py}
+\end{itemize}
+
+L’instruction \texttt{imsave} permet de sauvegarder une image dans un fichier.
+\begin{itemize}
+\item Testez cette instruction dans le shell :
+%\begin{py}
+\begin{python}
+mpimg.imsave('fichier.png', img)
+\end{python}
+%\end{py}
+
+\end{itemize}
+
+
+\section{Modification de l'apparence d'une image en agissant sur les couleurs}
+
+\begin{qexo}
+\'Ecrire une fonction \texttt{rouge(img:np.ndarray)->np.ndarray:} ayant pour argument la forme matricielle de l'image \texttt{img} et qui renvoie la forme matricielle de l'image monochrome rouge correspondante.
+
+\textit{Indication} : pour obtenir une image monochrome rouge : on annule les composantes bleues et vertes de tous les Pixels.
+
+Vous pouvez alors sauvegarder votre image rouge sous le nom « rouge.png ».
+\end{qexo}
+
+\vspace{0.5cm}
+\textbf{IMPORTANT} : N'oubliez pas de créer une copie indépendante de l'image matricielle prise en argument en utilisant l'instruction :
+%\begin{py}
+\begin{python}
+img2 = np.array(img)
+\end{python}
+%\end{py}
+
+\begin{qexo}
+\'Ecrire une fonction \texttt{monochrome(img:np.ndarray,c:str)->np.ndarray:} ayant pour arguments la forme matricielle de l'image et une chaine de caractère \texttt{c} (qui peut prendre les valeurs ‘R’, ‘G’, ’B’ ou ‘grey’), et qui renvoie une copie de l'image monochrome de la couleur demandée (sous sa forme matricielle).
+
+Quand \texttt{c} prend la valeur ‘grey’, on retournera l'image en niveaux de gris obtenue comme expliqué ci-dessous.
+\end{qexo}
+
+\vspace{0.5cm}
+Une image grise est une image pour laquelle chaque pixel a les mêmes valeurs de couleurs (R, G et B).
+Par exemple \verb![100, 100, 100]! est un pixel gris. 
+Pour convertir une image couleur en niveaux de gris, chaque couleur du pixel prend la valeur moyenne des valeurs initiales.\\
+Ex : \verb![100, 120, 10]! devient \verb![76, 76, 76]!.
+
+\section{Camouflage d'une image}
+
+\begin{qexo}
+Afficher la valeur de la couleur d’un pixel en décimal puis en binaire.
+Pour la valeur Rouge du Pixel (20,40) de l’image img, tapez dans l’interpréteur (Shell) : 
+%\begin{py}
+\begin{python}
+>>> img[20,40,0]
+>>> bin(img[20,40,0])
+\end{python}
+%\end{py}
+\end{qexo}
+
+\begin{itemize}
+\item Vérifier que le codage de la couleur se fait bien sur 8 bits.
+\textit{Remarque} : si le code binaire obtenu débute par des zéros, les zéros situés à gauche du premier $1$ sont automatiquement tronqués, ce qui explique dans certains cas la visualisation sur moins de $8$ bits. 
+\item Copier votre test dans votre script.
+\end{itemize}
+
+Nous pourrons utiliser dans ce DM les opérateurs booléens suivants :
+\begin{center}
+\includegraphics[width=0.6\linewidth]{images/operations}
+\end{center}
+
+L'opération \& logique effectue un et logique des bits pris un à un :
+\begin{center}
+\includegraphics[width=0.6\linewidth]{images/et_logique}
+\end{center}
+
+\begin{itemize}
+\item Tester dans le shell les instructions suivantes (img contient une image sous forme matricielle)
+%\begin{py}
+\begin{python}
+>>> a = img[20,40,0]
+>>> a
+>>> bin(a)
+>>>b = a & 0b11110000
+>>>b
+>>>bin(b)
+>>>c= a & 0b00001111
+>>>bin(c)
+\end{python}
+%\end{py}
+
+\item Copier le résultat de ce test en commentaire dans votre programme. Indiquer ce que font les instructions  a \& 0b11110000 et  b \& 0b00001111.
+\end{itemize}
+
+
+L'opération décalage de bit $<<$ ou $>>$.
+
+Cette opération effectue un décalage de bits vers la gauche ou vers la droite.
+\begin{itemize}
+\item Tester dans le shell les instructions suivantes (img contient une image sous forme matricielle)
+%\begin{py}
+\begin{python}
+>>> a=img[20,40,0]
+>>> bin(a)
+>>>b = a >> 3
+>>>bin(b)
+>>>c = a << 5
+>>>bin(c)
+\end{python}
+%\end{py}
+
+\item Copier le résultat de ce test en commentaire dans votre programme. Indiquer ce que font les instructions  a$>>$3 et c$<<$5.
+\item Sur le même principe, tester l’opération somme (+) sur les entiers 144 et 13. Observer l’effet sur les représentations binaires.
+\end{itemize}
+
+L’opération de camouflage consiste à placer les 4 bits de poids forts de l’image \textbf{secret} à la place des 4 bits de poids faibles de l’image \textbf{masque}. 
+
+Avant de pouvoir camoufler l’image \texttt{secret.png} dans l’image \texttt{masque.png}, on propose de “libérer” les 4 bits de poids faibles de l’image \texttt{masque.png}.
+
+
+\begin{qexo}
+\'Ecrire une fonction \texttt{reduit\_4bits(img:np.ndarray)->np.ndarray:} ayant pour argument la forme matricielle de l’image à traiter et qui renvoie une copie de cette image dont les 4 bits de poids faibles de chaque couleur de chaque pixel ont été remplacés par des $0$. On utilisera l’une des opérations définies ci-dessus.
+
+Tester la fonction avec \texttt{masque.png}. 
+
+Afficher l’image de base et l’image modifiée. Voit-on une différence ?
+
+\end{qexo}
+
+
+\begin{qexo}
+\'Ecrire une fonction \texttt{cache\_image(im\_masque:np.ndarray, im\_secret:np.ndarray)} ayant pour arguments les formes matricielles de l’image masque et  de l’image à cacher. Cette fonction renvoie une image sous forme matricielle, dans laquelle les 4 premiers bits sont les bits de poids forts de l’image masque et les 4 derniers bits sont les bits de poids forts de l’image secret.
+
+Vous utiliserez votre fonction \texttt{réduit\_4bits}, ainsi que les opérations décrites ci-dessus.
+
+Tester votre fonction en camouflant \texttt{secret.png} dans \texttt{masque.png}. 
+
+Observez le résultat en affichant l’image obtenue. L’image masque est-elle modifiée visuellement ? Vérifier que les valeurs RGB ont bien été modifiées.
+\end{qexo}
+
+\section{Décamouflage d'une image}
+
+\begin{qexo}
+\'Ecrire une fonction \texttt{trouver\_image(img:np.ndarray)} ayant pour argument la forme matricielle de l’image à traiter qui renvoie l’image cachée par le protocole précédent. 
+
+Vérifier que vous arrivez à retrouver l’image \texttt{secret} cachée précédemment.
+
+Cette image a-t-elle été modifiée visuellement ?
+
+\end{qexo}
+
+
+\begin{qexo}
+Trouver l’image cachée dans l’image \texttt{image\_a\_trouver.png} que l’on sauvegardera sous le nom \texttt{image\_trouvee.png}.
+\end{qexo}
+
+
+
+\newpage
+\begin{center}
+\vspace{1cm}\textbf{\Large ANNEXE}
+\end{center}
+
+\section*{Compléments sur les images .png}
+
+
+Le format des images proposées est float32, ce qui signifie un codage des couleurs sur 32 bits, soit $2^{32}$ ou 4 294 967 296 couleurs.
+
+La lecture de la matrice d’une image .png donne par exemple :
+\begin{python}
+array([[[0.55686277, 0.54901963, 0.60784316, 1. ],
+[0.6156863, 0.61176473, 0.60784316, 1.],
+[0.74117649, 0.73725492, 0.73333335, 1.],
+..., 
+[0.01960784, 0.01568628, 0.01960784, 1.],
+[0.02352941, 0.01960784, 0.02352941, 1.],
+[0.03529412, 0.03137255, 0.03529412, 1.]]], dtype=float32)
+\end{python}
+
+Pour passer du type float32 au type uint8, il faut passer du codage entre 0 et 1 au codage sur 8 bits entre 0 et 255, la méthode est la suivante :
+\begin{itemize}
+\item multiplier chaque valeur par 255 ;
+\item arrondir le résultat à l’entier le plus proche ;
+\item définir le nouveau type int8.
+\end{itemize}
+
+
+Cela est réalisé par l'instruction sur la représentation matricielle de l'image :
+img = (img * 255).round().astype(np.uint8)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

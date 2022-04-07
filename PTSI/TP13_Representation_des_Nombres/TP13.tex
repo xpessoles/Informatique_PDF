@@ -1,0 +1,99 @@
+\documentclass[t,11pt]{article}
+% A modifier selon la personne...
+\input{base.tex}
+\input{base_XP.tex}
+\usepackage{stmaryrd}
+\geometry{a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm}
+%----------------------------------------------------------------------------------------
+%	Mise en forme code python
+%----------------------------------------------------------------------------------------
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{8} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{8} % for normal
+% Custom colors
+\usepackage{color}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mysoftgray}{rgb}{0.8,0.8,0.8}
+\definecolor{grisclair}{rgb}{0.95,0.95,0.95}
+%\definecolor{ocre}{rgb}{49,133,156} % Couleur ''bleue''
+%\definecolor{violetf}{rgb}{112,48,160} % Couleur ''violet''
+
+\usepackage{listings}
+
+% Python style for highlighting
+\newcommand\pythonstyle{\lstset{
+language=Python,
+%backgroundcolor=\color{grisclair},
+%frame=single,
+%frame=tb,              % Any extra options here
+%numbers=left, % where to put the line-numbers; possible values are (none, left, right)
+%numbersep=5pt, % how far the line-numbers are from the code
+%numberstyle=\color{blue},
+%stepnumber=1,
+basicstyle=\tt,
+otherkeywords={self},             % Add keywords here
+keywordstyle=\ttb\color{deepblue},
+emph={MyClass,__init__},          % Custom highlighting
+emphstyle=\ttb\color{deepred},    % Custom highlighting style
+stringstyle=\color{deepgreen},
+showstringspaces=true,            % 
+showtabs=true,
+tabsize=5,
+showspaces=false,  % indique les espace dans le code
+commentstyle=\color{olive},
+breaklines=true
+}}
+
+% Python environment
+\lstnewenvironment{py}[1][]
+{
+\pythonstyle
+\lstset{#1}
+}
+{}
+
+
+
+
+% Python for external files
+\newcommand\pythonexternal[1]{{
+\pythonstyle
+\lstinputlisting{#1}}}
+
+% Python for inline
+\newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}} 
+%-------------------listing et python------------------------------
+
+
+% commandes d'espaces % Les espaces verticaux et horizontaux.
+\newcommand{\sk}{\smallskip}
+\newcommand{\mk}{\medskip}
+\newcommand{\bk}{\bigskip}
+\newcommand{\vk}{\vskip 1.5 cm}
+\newcommand{\hk}{\hskip 1 cm\relax}
+% A modifier pour chaque chapitre...
+\newcommand{\titre}{Représentation des nombres}
+\newcommand{\numero}{13}
+
+% Prof ou élève...
+% prof : 
+%\newcommand{\phantomchoix}[1]{\textcolor{red}{#1}}
+%\newcommand{\blanc}[1]{\textcolor{red}{#1}}
+% eleve : 
+\newcommand{\phantomchoix}[1]{\phantom{#1}}
+\newcommand{\blanc}[1]{\textcolor{white}{#1}}
+
+\renewcommand{\baselinestretch}{1}
+\newcommand{\site}{\texttt{ENT/Moodle/cours"infoPTSI"}}
+
+\begin{document}
+\entetetpinfo
+
+\input{../../../Informatique/Exercices/S2_05_RepresentationNombres/01_observations.tex}
+\input{../../../Informatique/Exercices/S2_05_RepresentationNombres/02_mantisse.tex}
+\input{../../../Informatique/Exercices/S2_05_RepresentationNombres/03_nombresaleatoires.tex}
+
+\end{document}
