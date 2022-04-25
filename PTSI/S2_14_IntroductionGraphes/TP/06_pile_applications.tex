@@ -1,0 +1,209 @@
+\subsection*{Exercices d'application sur les piles}
+
+Dans les exercices qui suivent, on utilisera des \textbf{piles}. Les piles sont des structures de données basées sur le principe LIFO (Last In First Out : le dernier rentré dans la pile sera le premier à en sortir).
+
+Les opérations élémentaires qu'on peut réaliser sur les piles sont les suivantes : 
+\begin{itemize}
+\item savoir si une pile est vide; 
+\item empiler un nouvel élément sur la pile;
+\item récupérer l'élément au sommet de la pile tout en le supprimant. On dit que l'on dépile;
+\item accéder à l'élément situé au sommet de la pile sans le supprimer de la pile;
+\item on peut connaitre le nombre d'éléments présents dans la pile.
+\end{itemize}
+
+Pour implémenter les piles on utilisera le module \texttt{deque}. Chacun des éléments de la pile peut être un objet de type différent.
+
+\begin{lstlisting} 
+from collections import deque
+
+# Créer une pile vide
+pile = deque() 
+
+# Tester si une pile est vide
+len(pile) == 0
+
+# Ajouer l'élément Truc au sommet de la pile
+pile.append("Truc")
+
+# Supprimer (et renvoyer) le sommet d'une pile non vide
+sommet = pile.pop()
+\end{lstlisting}
+
+
+\textbf{Seules ces fonctions éléméntaires seront utilisées dans les exercices suivants.}
+
+\exer{La parenthèse inattendue}
+Dans cet exercice, on souhaite savoir si une chaîne de caractères est bien parenthésée ou non. 
+Une chaîne bien parenthésée est une chaîne vide ou la concaténation de chaînes bien parenthésées. 
+\begin{exemple}
+Chaînes bien parenthésées :
+\begin{itemize}
+\item \texttt{"()"},\texttt{"()()"},\texttt{"(())"} et \texttt{"(()())"}.
+\end{itemize}
+Chaînes mal parenthésées :
+\begin{itemize}
+\item \texttt{")("},\texttt{"(("},\texttt{"(()"} et \texttt{"())"}.
+\end{itemize}
+\end{exemple} 
+
+\question{Implémenter la fonction \texttt{parentheses} répondant aux spécifications suivantes : }
+
+\begin{lstlisting} 
+def parenthese(s):
+    "
+    Retourne les couples d'indice parenthèse 
+    ouvrante, parenthèse fermante.
+    Entrée :
+     * s(str) : chaîne de caractères bien 
+     parenthésée constituée uniquement 
+     de parenthèses.
+    Sortie : 
+     * Affichage des couples d'indices.
+    "
+\end{lstlisting}
+\ifprof
+\begin{corrige}
+~\\
+\begin{lstlisting} 
+def parentheses(s):
+    p = creer_pile(len(s))
+    for i in range(len(s)):
+    if s[i] == '(':
+        empiler(p, i)
+    else:
+        if est_vide(p):
+            return False
+        j = depiler(p)
+        print((j, i))
+    return est_vide(p)
+\end{lstlisting}
+\end{corrige}
+\else
+\fi
+
+\question{Réaliser un programme permettant de savoir si une chaîne de caractères est bien parenthésée. La structure de pile est-elle nécessaire ?}
+\ifprof
+\begin{corrige}
+\end{corrige}
+\else
+\fi
+
+\question{Adapter le premier programme pour qu'il puisse traiter des chaînes constituées de parenthèses, de crochets, ou d'accolades. Un mot est alors bien parenthésé si la parenthèse fermante qui correspond à chaque parenthèse ouvrante est du même type.}
+\ifprof
+\begin{corrige}
+\end{corrige}
+\else
+\fi
+
+\question{Adapter le programme pour qu’il puisse traiter des mots constitués de parenthèses et
+d’autres caractères, qui n’interfèrent pas avec les parenthèses.}
+\ifprof
+\begin{corrige}
+\end{corrige}
+\else
+\fi
+
+\question{Écrire une version récursive de la fonction \texttt{parentheses}.}
+\ifprof
+\begin{corrige}
+\end{corrige}
+\else
+\fi
+
+%%%%%%%%%%%%%%
+
+\exer{Inversion}
+\subparagraph*{}
+\setcounter{exo}{0}
+
+\question{Écrire une fonction qui intervertit les deux éléments situés au sommet d’une pile de taille
+au moins égale à 2.}
+\ifprof
+\begin{corrige}
+\end{corrige}
+\else
+\fi
+
+
+%%%%%%%%%%%%%%
+
+\exer{Dépile le n\ieme}
+\setcounter{exo}{0}
+
+\question{Écrire une fonction qui dépile et renvoie le troisième élément d’une pile de taille au moins
+égale à 3. Les premier et deuxième éléments devront rester au sommet de la pile.}
+\ifprof
+\begin{corrige}
+\end{corrige}
+\else
+\fi
+
+%%%%%%%%%%%%%%
+
+\exer{Lire  le n\ieme}
+\setcounter{exo}{0}
+
+\question{Écrire une fonction qui permet de lire (sans l’extraire) le n-ième élément d’une pile. On
+prévoira le cas où la pile n’est pas de taille suffisante pour qu’un tel élément existe.}
+\ifprof
+\begin{corrige}
+\end{corrige}
+\else
+\fi
+
+%\section*{Exercice}
+%\setcounter{exo}{0}
+%\subparagraph*{}
+%\textit{Programmer les fonctions sommet et taille uniquement à l’aide de empiler, depiler et
+%est_vide, indépendamment de la réalisation de pile choisie.
+%Que peut-on dire de la complexité en temps et en espace de cette fonction taille ?}
+%\ifprof
+%\begin{corrige}
+%\end{corrige}
+%\else
+%\fi
+
+%%%%%%%%%%%%%%
+
+\exer{Inversion des extrêmes}
+
+\setcounter{exo}{0}
+\question{Écrire une fonction qui prend une pile non vide en argument et place l’élément situé à
+son sommet tout au fond de la pile, en conservant l’ordre des autres éléments.
+Quelle est sa complexité en temps et en espace ?}
+\ifprof
+\begin{corrige}
+\end{corrige}
+\else
+\fi
+
+%%%%%%%%%%%%%%
+
+\exer{Inversion de la pile}
+\setcounter{exo}{0}
+
+\question{Écrire une fonction similaire à \texttt{reversed}, qui prend une pile en argument et renvoie une autre pile constituée des mêmes éléments placés dans l’ordre inverse.}
+
+\question{Si l’on s’autorise à détruire la pile fournie, quelle est la complexité en temps et en espace de cette fonction ? Et si on ne s’y autorise pas ?}
+\ifprof
+\begin{corrige}
+\end{corrige}
+\else
+\fi
+
+%%%%%%%%%%%%%%
+
+\exer{Tu coupes ?}
+\setcounter{exo}{0}
+
+\question{Écrire une fonction couper qui prend une pile et la coupe en enlevant de son sommet un
+certain nombre d’éléments (tirés au hasard) qui sont renvoyés dans une seconde pile.}
+
+\begin{exemple}
+Si la pile initiale est \texttt{[1, 2, 3, 4, 5]}, et que le nombre d’éléments retiré vaut 2, alors la pile ne contient plus que \texttt{[1, 2, 3]} et la pile renvoyée contient \texttt{[5,4]}.
+\end{exemple}
+\ifprof
+\begin{corrige}
+\end{corrige}
+\else
+\fi

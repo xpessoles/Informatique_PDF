@@ -1,0 +1,86 @@
+%%%ENTETES%%%
+%%%%%%%%%%%
+\newcommand{\entetedebut}{
+{\noindent \textbf{PTSI2 -- 2019/2020 -- Maths} \hfill Lycée La Martinière-Monplaisir -- Lyon \vspace{2mm}}
+\hrule
+\begin{center} 
+}
+\newcommand{\entetedebutinfo}{
+{\noindent \textbf{PTSI -- 2021/2022 -- Info} \hfill Lycée La Martinière-Monplaisir -- Lyon \vspace{2mm} }
+\hrule
+\begin{center} 
+}
+
+\newcommand{\entetefin}{
+\end{center}
+\hrule
+\vspace*{0.5cm}
+}
+
+\newcommand{\entetedebutsnow}{
+\begin{tikzpicture}[decoration=Koch snowflake]
+\draw (0,0)--(12,0)node[midway,above]
+}
+
+\newcommand{\entetefinsnow}{
+\draw decorate{ decorate{ decorate{ decorate{ (12,0)--(17,0) }}}};
+\end{tikzpicture}
+\vspace*{1cm}
+}
+%%% Lorqu'on utilise les entetes koch snowflake, il faut juste mettre tout le titre entre { } et un point-virgule à la fin, car on est dans un tikzpicture.
+\newcommand{\entetecours}{
+\entetedebut
+\textbf{\textsf{\Large Ch \numero. \titre.}}
+\entetefin
+}
+\newcommand{\entetecoursinfo}{
+\entetedebutinfo
+\textbf{\textsf{\Large Ch \numero. \titre.}}
+\entetefin
+}
+
+
+\newcommand{\entete}{
+\entetedebut
+\textbf{\textsf{\Large \titre.}}
+\entetefin
+}
+\newcommand{\enteteinfo}{
+\entetedebutinfo
+\textbf{\textsf{\Large \titre.}}
+\entetefin
+}
+
+
+\newcommand{\entetetd}{
+\entetedebut
+\textbf{\textsf{\Large TD \numero. \titre.}}
+\entetefin
+}
+
+\newcommand{\entetetp}{
+\entetedebut
+\textbf{\textsf{\Large TP \numero. \titre.}}
+\entetefin
+}
+
+\newcommand{\entetetpinfo}{
+\entetedebutinfo
+\textbf{\textsf{\Large TP \numero. \titre.}}
+\entetefin
+}
+
+
+
+\newcommand{\enteteindic}{
+\entetedebut
+\textbf{\textsf{\Large Indications et solutions pour le TD \numero.}}
+\entetefin
+}
+
+
+\newcommand{\entetecor}{
+\entetedebut
+\textbf{\textsf{\Large Corrigés pour le TD \numero.}}
+\entetefin
+}

@@ -1,0 +1,40 @@
+\documentclass[t,10pt]{article}
+% A modifier selon la personne...
+\input{base.tex}
+\input{base_XP.tex}
+\geometry{a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm}
+\usepackage{stmaryrd}
+
+% A modifier pour chaque chapitre...
+\newcommand{\titre}{TP 9 -- Tris}
+\newcommand{\numero}{2}
+
+% Prof ou élève...
+% prof : 
+%\newcommand{\phantomchoix}[1]{\textcolor{red}{#1}}
+%\newcommand{\blanc}[1]{\textcolor{red}{#1}}
+% eleve : 
+\newcommand{\phantomchoix}[1]{\phantom{#1}}
+\newcommand{\blanc}[1]{\textcolor{white}{#1}}
+
+\renewcommand{\baselinestretch}{1.2}
+
+\newcommand{\site}{\texttt{changer le nom du site}}
+
+
+
+\begin{document}
+
+\enteteinfo
+
+\graphicspath{{images}}
+
+\setcounter{numques}{0}
+
+\proffalse
+
+\input{04_Implementation_graphes_matrice.tex}
+\input{05_Implementation_graphes_liste.tex}
+\input{06_pile_applications.tex}
+
+\end{document}
