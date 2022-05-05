@@ -1,0 +1,73 @@
+\documentclass[10pt,fleqn]{article} % Default font size and left-justified equations
+\usepackage[%
+    pdftitle={Modélisation dynamique},
+    pdfauthor={Xavier Pessoles}]{hyperref}
+
+\input{../../../style/packages}
+\input{../../../style/new_style}
+\input{../../../style/macros_SII}
+\input{../../../style/environment}
+\input{info_entete}
+
+\livretfalse
+
+
+\begin{document}
+% Sujet
+%\TPtrue \fichefalse \proffalse \tdfalse \coursfalse \collefalse
+%\corrigefalse
+\graphicspath{{../../../style/png/}{images/}}
+
+
+%%%% Paramétrage du cours %%%%
+\def\xxactivite{Applications}
+\def\xxauteur{\textsl{É. Durif -- X. Pessoles -- J.-P. Berne}}
+%\fichefalse
+%\proftrue
+%\tdfalse
+%\courstrue
+
+
+
+\def\xxYCartouche{-2.25cm}
+\def\xxYongletGarde{.5cm}
+\def\xxYOnget{.9cm}
+
+\input{info_entete}
+\input{../../../Style/pagegarde_TD.tex}
+%
+
+\setlength{\columnseprule}{.1pt}
+
+\pagestyle{fancy}
+\thispagestyle{plain}
+
+
+\vspace{3.5cm}
+
+\def\columnseprulecolor{\color{ocre}}
+\setlength{\columnseprule}{0.4pt} 
+
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\proftrue
+\vspace{3cm}
+%\subsection{Recherche de maximum d'un tableau}
+\setcounter{numques}{0}
+%/Users/emiliendurif/Documents/prepa/MPSI/ipt_mpsi_lamartin/Informatique/Exercices/06_complexite/COM-008.tex
+\input{../../../Informatique/Exercices/06_complexite/COM-008}
+%\subsection{Appartenance d'un élément dans un tableau}
+\setcounter{numques}{0}
+\input{../../../Informatique/Exercices/06_complexite/COM-009}
+%\subsection{Recherche d'un mot dans une chaine}
+\setcounter{numques}{0}
+\input{../../../Informatique/Exercices/06_complexite/COM-010}
+%\subsection{Conversion d'entier en binaire}
+\setcounter{numques}{0}
+\input{../../../Informatique/Exercices/06_complexite/COM-011}
+
+
+
+
+
+\end{document}
