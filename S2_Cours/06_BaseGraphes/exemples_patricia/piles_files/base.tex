@@ -1,0 +1,587 @@
+\NeedsTeXFormat{LaTeX2e}
+
+
+
+
+\RequirePackage{geometry}
+\usepackage{beamerarticle}
+%\usepackage{boxedminipage,multicol,pifont}
+\renewcommand{\d}{\textrm{d}}
+\renewcommand{\baselinestretch}{1.3}
+\newcommand{\longueur}{6cm}
+\RequirePackage{amsmath,amssymb}
+\RequirePackage{amsfonts}
+\RequirePackage{graphicx}
+%\RequirePackage{mesmacros}
+\usepackage[T1]{fontenc} 
+\usepackage[utf8]{inputenc}
+\usepackage[frenchb]{babel}
+\usepackage{pifont}
+\usepackage{lmodern}
+
+\RequirePackage{comment}
+\RequirePackage{multicol}
+
+\RequirePackage{colortbl}
+\RequirePackage{fancybox}
+\usepackage{colortbl}
+
+
+\RequirePackage{tikz,tkz-tab,tkz-fct,tkz-base,tkz-euclide}
+%\RequirePackage{tikz,tkz-base,tkz-euclide}
+
+%\RequirePackage{graphe}
+\RequirePackage{framed}
+
+\usepackage{ulem}
+\normalem
+
+
+\input{Mestitres.tex}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\parindent=0pt
+
+\newlength{\myline}
+
+
+\newcommand{\graphetext}[3]{
+\setlength{\myline}{\linewidth}
+\addtolength{\myline}{-1cm}
+\addtolength{\myline}{-#1}
+\begin{tabular}{ll}
+\parbox[c]{#1}{\includegraphics[width=#1]{#2}}&
+\parbox[c]{\myline}{#3}
+\end{tabular}}
+\newcommand{\tikztexte}[3]{
+\setlength{\myline}{\linewidth}
+\addtolength{\myline}{-1cm}
+\addtolength{\myline}{-#1}
+\begin{tabular}{ll}
+\parbox[c]{#1}{#2}&
+\parbox[c]{\myline}{#3}
+\end{tabular}}
+\newcommand{\textgraphe}[3]{
+\setlength{\myline}{\linewidth}
+\addtolength{\myline}{-.5cm}
+\addtolength{\myline}{-#1}
+\begin{tabular}{ll}
+\parbox[c]{\myline}{#2}&
+\parbox[c]{#1}{\includegraphics[width=#1]{#3}}
+\end{tabular}}
+\newcommand{\textetikz}[3]{
+\setlength{\myline}{\linewidth}
+\addtolength{\myline}{-.5cm}
+\addtolength{\myline}{-#1}
+\begin{tabular}{ll}
+\parbox[c]{\myline}{#2}&
+\parbox[c]{#1}{#3}
+\end{tabular}}
+\newcommand{\p}{\pause}
+
+
+%%%NUMEROTATION DES PARTIES%%%
+\renewcommand{\thesection}{\hspace{-0.6cm}\arabic{section}}
+\renewcommand{\thesubsection}{\hspace{-0.4cm}\arabic{section}.\alph{subsection}}
+\renewcommand{\thesubsubsection}{\hspace{0cm}\arabic{section}.\alph{subsection}.\roman{subsubsection}}
+
+%% Pour l'entete prof
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhead[L]{}
+\fancyhead[R]{}
+\fancyhead[C]{\blanc{\texttt{\tiny{\phantom{version prof - }version prof -  version prof - version prof - version prof - version prof - version prof - version prof - version prof}}}}
+
+
+\definecolor{shadecolor}{gray}{0.9}
+
+\newcommand{\espace}[1]{\vspace*{#1cm}}
+\newcommand{\commentaire}[1]{}
+\newcommand{\pourmoi}[1]{}
+\newcommand{\bonly}[1]{}
+\newcommand{\bexcept}[1]{#1}
+
+\newcommand{\eleveonly}[1]{#1}
+
+\newcommand{\gris}[1]{\textcolor{white}{#1}}
+
+
+
+
+%%%%%%%%%%%%%%%%%%Numerotation%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\labelenumi}{\textbf{\arabic{enumi}${}^\circ$)}}
+\renewcommand{\labelenumii}{\textbf{\alph{enumii})}}
+%\renewcommand{\thesection}{\Roman{section}}
+%\renewcommand{\thesubsection}{\Alph{subsection})}
+%\renewcommand{\thesubsubsection}{\arabic{subsubsection})}
+
+%\renewenvironment{itemiz}%
+%{\begin{itemize}\renewcommand{\labelitemi}{\ding{51}}}
+%{\end{itemize}}
+
+
+%\newenvironment{itemiz}[1][84]% 117 81 71
+%{\begin{dinglist}{#1}}
+%{\end{dinglist}}
+
+%\newenvironment{itemiz}[1][]
+%{\begin{itemize} \itemsep5pt 
+ %\renewcommand{\labelitemi}{\bubul}}
+%{\end{itemize}}
+
+\newenvironment{itemiz}[1][]%
+{ \begin{list}%
+	{\bubul}%
+	{%\setlength{\labelwidth}{30pt}%
+	 \setlength{\leftmargin}{20pt}%
+	 \setlength{\itemsep}{4pt}}}%
+{ \end{list} }
+
+
+%%%%%%%%%%%%%%%%%%%%%%%Les encadrÃ©s%%%%%%%%%%%%%%%%
+\newenvironment{python}
+{\vspace{-0.2cm}\begin{shaded}\ttfamily}
+{\normalfont\end{shaded}\vspace{0.2cm}}
+
+\newenvironment{pythonshell}
+{\begin{shaded}
+\textit{Python shell}\\
+\ttfamily}
+{\normalfont\end{shaded}\vspace{0.2cm}}
+
+
+
+
+%\newenvironment{defn}[1][]{\vspace{.2cm}
+%\begin{minipage}{\linewidth}
+%{\bf DÃ©finition\vphantom{p} : #1}
+%\newline
+%\noindent
+%\begin{boxedminipage}{\linewidth}}{
+%\end{boxedminipage}\vspace{.5cm}\end{minipage}}
+
+%\newenvironment{defn}[1][]{\vspace{.2cm}
+%\begin{minipage}{\linewidth}
+%{\bf DÃ©finition\vphantom{p} : #1}
+%\newline
+%\noindent
+%\begin{boxedminipage}{\linewidth}}{
+%\vspace{.05cm}\end{boxedminipage}\vspace{0.2cm}\end{minipage}}
+
+\newcommand{\debutprop}{\newline
+\hspace*{5mm}
+\begin{tikzpicture}
+  \node[rectangle,inner sep=0pt,outer sep=10pt]%
+  (A)  \bgroup
+    \begin{minipage}{0.9\linewidth}
+    }
+    
+\newcommand{\finprop}{
+    \end{minipage}
+    \egroup;
+\draw (A.north west) -- (A.south west) ;
+\draw (A.south west) -- (A.south east) ;
+%\draw (A.north west) -- (A.north east) ;
+%\draw (A.north east) -- (A.south east) ;
+\end{tikzpicture}\\
+}
+
+\newenvironment{defn}[1][]
+{\textbf{Définition\vphantom{p} : #1}\debutprop
+      }
+     {\finprop
+}
+
+
+%\newenvironment{cor}[1][]{\vspace{.2cm}
+%\begin{minipage}{\linewidth}
+%{\bf Corollaire\vphantom{p} : #1}
+%\newline
+%\noindent
+%\begin{boxedminipage}{\linewidth}}{
+%\vspace{.05cm}\end{boxedminipage}\vspace{0.2cm}\end{minipage}}
+
+\newenvironment{cor}[1][]
+{\textbf{Corollaire\vphantom{p} : #1}\debutprop}
+     {\finprop}
+
+%\newenvironment{lemme}[1][]{\vspace{.2cm}
+%\begin{minipage}{\linewidth}
+%{\bf Lemme\vphantom{p} : #1}
+%\newline
+%\noindent
+%\begin{boxedminipage}{\linewidth}}{
+%\vspace{.05cm}\end{boxedminipage}\vspace{0.2cm}\end{minipage}}
+
+\newenvironment{lemme}[1][]
+{\textbf{Lemme\vphantom{p} : #1}\debutprop}
+     {\finprop}
+
+
+%\newenvironment{theo}[1][]{\vspace{.2cm}
+%\begin{minipage}{\linewidth}
+%{\bf ThÃ©orÃšme \vphantom{p}: #1}
+%\newline
+%\noindent
+%\begin{boxedminipage}{\linewidth}}{
+%\vspace{.05cm}\end{boxedminipage}\vspace{0.2cm}\end{minipage}}
+
+\newenvironment{theo}[1][]
+{\textbf{Théorème\vphantom{p} : #1}\debutprop}
+     {\finprop}
+     
+     \newenvironment{theodefn}[1][]
+{\textbf{Théorème-définition\vphantom{p} : #1}\debutprop}
+     {\finprop}
+
+
+%\newenvironment{propdef}[1][]{\vspace{.2cm}
+%\begin{minipage}{\linewidth}
+%{\bf Proposition et dÃ©finition : #1}
+%\newline
+%\noindent
+%\begin{boxedminipage}{\linewidth}}{
+%\vspace{.05cm}\end{boxedminipage}\vspace{0.2cm}\end{minipage}}
+
+\newenvironment{propdef}[1][]
+{\textbf{Proposition-définition\vphantom{p} : #1}\debutprop}
+     {\finprop}
+
+%\newenvironment{prop}[1][]{\vspace{.2cm}\noindent
+%\begin{minipage}{\linewidth}{\bf Proposition : #1}
+%\newline
+%\noindent
+%\begin{boxedminipage}{\linewidth}}{
+%\vspace{.05cm}\end{boxedminipage}\vspace{0.2cm}\end{minipage}}
+
+\newenvironment{prop}[1][]
+{\textbf{Proposition\vphantom{p} : #1}\debutprop}
+     {\finprop}
+
+\newenvironment{rem}[1][]{\vspace{.2cm}\noindent\begin{minipage}{\linewidth}{\bf Remarque : #1}\newline\noindent}{\end{minipage}\vspace{.5cm}}
+\newenvironment{meth}[1][]{\vspace{.2cm}\noindent\begin{minipage}{\linewidth}{\bf MÃ©thode : #1}\newline\noindent}{\end{minipage}\vspace{.5cm}}
+\newenvironment{rems}[1][]{\vspace{.2cm}\noindent\begin{minipage}{\linewidth}{\bf Remarques : #1}\noindent}{\end{minipage}\vspace{0.5cm}}
+\newenvironment{remnum}[1]{\vspace{.2cm}\noindent\begin{minipage}{\linewidth}{\bf Remarque #1 : }\newline\noindent}{\end{minipage} \vspace{.5cm}}
+\newenvironment{exe}[1][]{\vspace{0.2cm}\noindent\begin{minipage}{\linewidth}{\bf Exemple : #1}\newline\noindent}{\end{minipage}\vspace{.5cm}}
+\newenvironment{exes}[1][]{\vspace{0.2cm}\noindent\begin{minipage}{\linewidth}{\bf Exemples : #1}\noindent}{\end{minipage}\vspace{0.5cm}}
+\newenvironment{exenum}[1]{\vspace{.2cm}\noindent\begin{minipage}{\linewidth}{\bf Exemple #1 : }\newline\noindent}{\end{minipage}\vspace{.5cm}}
+\newenvironment{nota}[1][]{\vspace{.2cm}\noindent\begin{minipage}{\linewidth}{\bf Notation : #1}\newline\noindent}{\end{minipage}\vspace{.5cm}}
+\newcounter{ndem}
+\setcounter{ndem}{0}
+\newcommand{\dem}{\stepcounter{ndem}{\includegraphics{crayon5} \ \textbf{Démonstration} \thendem }\vspace{.5cm}}
+
+
+
+%%% numerotation des questions exo
+\newcounter{cexo}
+\newenvironment{qexo}{
+\refstepcounter{cexo}
+\vspace{3 pt}
+\noindent
+\begin{minipage}[t]{0.15\textwidth}
+\textbf{\noindent Question \arabic{cexo}. }
+\end{minipage}\noindent
+\begin{minipage}[t]{0.85\textwidth}}{\vspace{3 pt}
+\end{minipage}}%\vspace{2 pt}
+
+
+\usepackage{multicol}
+\usepackage{ulem}
+\normalem
+
+\parindent=0pt
+
+\RequirePackage{framed}
+
+\graphicspath{{images_archi_materielle/}{images_archi_logicielle/}}
+\newcommand{\FIG}[1]{\textsc{Figure} {\upshape\ref{#1}}}
+\usepackage{numprint} %affichage de nombres correctement avec \numprint{}
+
+%\usepackage{picins}    %permet d'insérer une image à coté d'un texte \parpic[r]{\includegraphics{}}texte...
+\usepackage{tikz}
+\usetikzlibrary{calc}
+% Unités
+\usepackage[locale = FR]{siunitx}
+\sisetup{inter-unit-product = \ensuremath{{}\cdot{}}}
+\usepackage{numprint} %affichage de nombres correctment avec \numprint{}
+\usepackage{multirow}
+\definecolor{gris_c}{gray}{0.9}
+\definecolor{gris_f}{gray}{0.25}
+\definecolor{gris_tc}{gray}{0.96}
+\definecolor{gris_ttc}{gray}{0.98}
+
+%%% activite
+\newenvironment{activite}[1][\hsize]%
+{%
+    \def\FrameCommand%
+    {%
+\rotatebox{90}{\textit{\textsf{REMARQUE}}} 
+        {\color{blue}\vrule width 3pt}%
+        \hspace{0pt}%must no space.
+        \fboxsep=\FrameSep\colorbox{gris_c}%
+    }%
+    \MakeFramed{\hsize#1\advance\hsize-\width\FrameRestore}%
+}%
+{\endMakeFramed}%
+
+
+%%% objectif
+\newenvironment{objectif}[1][\hsize]%
+{%
+    \def\FrameCommand%
+    {%
+\rotatebox{90}{\textit{\textsf{OBJECTIF}}} 
+        {\color{blue}\vrule width 3pt}%
+        \hspace{0pt}%must no space.
+        \fboxsep=\FrameSep\colorbox{gris_c}%
+    }%
+    \MakeFramed{\hsize#1\advance\hsize-\width\FrameRestore}%
+}%
+{\endMakeFramed}%
+
+%%%%exos TP Info
+
+
+
+\newtheorem{Exc}{Exercice}
+\def\exotp#1{\futurelet\testchar\MaybeOptArgmyexoo}
+\def\MaybeOptArgmyexoo{\ifx[\testchar \let\next\OptArgmyexoo
+                        \else \let\next\NoOptArgmyexoo \fi \next}
+\def\OptArgmyexoo[#1]{\begin{Exc}[#1]\normalfont}
+\def\NoOptArgmyexoo{\begin{Exc}\normalfont}
+\newcommand{\finexotp}{\end{Exc}}
+
+\theoremstyle{definition}
+\newtheorem{exo}{Exercice}
+
+\usetikzlibrary{decorations.fractals}
+\usetikzlibrary{matrix}
+
+\newcommand{\cache}[1]{\phantomchoix{#1}\hspace{1.5cm}}
+\newcommand{\Cache}[1]{\vspace*{0.2cm}\phantomchoix{\begin{minipage}{\linewidth}{#1}\end{minipage}}\vspace*{0.5cm}}
+
+\newcommand{\indente}{\hspace*{1cm}}
+\newcommand{\invite}{{>}{>}{>} }
+
+
+\renewcommand{\vec}[1]{\overrightarrow{#1}}
+\newcommand{\B}{\mathcal{B}}
+\renewcommand{\P}{\mathcal{P}}
+\renewcommand{\epsilon}{\varepsilon}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\re}{\mathcal{R}}
+
+\newcommand{\un}{{1\!\mbox{l}}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\U}{\mathbb{U}}
+\newcommand{\cc}{\small{\mathbb{c}}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\K}{\mathbb{K}}
+% Commande \tend :
+% bla \tend{n}{l} bli :
+%
+%      bla   ->   bli
+%          n -> l
+%
+%\newcommand{\tend}[2]{{\atop\stackrel{\displaystyle\longrightarrow}{\scriptstyle{{#1} \rightarrow {#2}}}}}
+\newcommand{\tend}[2]{\underset{#1 \rightarrow #2}{\longrightarrow}}
+\renewcommand{\o}[1]{\underset{#1}{o}}
+%\renewcommand{\O}[1]{\underset{#1}{O}}
+\DeclareMathOperator{\Det}{Det}
+
+\newcommand{\Max}[1]{\underset{#1}{\max}\ }
+\newcommand{\Min}[1]{\underset{#1}{\min}\ }
+\newcommand{\Inf}[1]{\underset{#1}{\inf}\ }
+\newcommand{\Sup}[1]{\underset{#1}{\sup}\ }
+\newcommand{\Lim}[1]{\underset{#1}{\lim}\ }
+\newcommand{\Sim}[1]{\underset{#1}{\sim}\ }
+\def\det{\mathop{\operator@font det}\nolimits}
+\def\Tr{\mathop{\operator@font Tr}\nolimits}
+\def\Card{\mathop{\operator@font Card}\nolimits}
+%\def\Ker{\mathop{\operator@font Ker}\nolimits}
+\newcommand{\Ker}{\textrm{Ker}}
+\newcommand{\Vect}{\textrm{Vect}}
+\def\rg{\mathop{\operator@font rg}\nolimits}
+\def\Im{\mathop{\operator@font Im}\nolimits}
+\def\Re{\mathop{\operator@font Re}\nolimits}
+%\def\Arg{\mathop{\operator@font Arg}\nolimits}
+\def\Argsh{\mathop{\operator@font Argsh}\nolimits}
+\def\Argch{\mathop{\operator@font Argch}\nolimits}
+\def\Argth{\mathop{\operator@font Argth}\nolimits}
+%\def\cotan{\mathop{\operator@font cotan}\nolimits}
+\def\Arctan{\mathop{\operator@font Arctan}\nolimits}
+\def\Arccos{\mathop{\operator@font Arccos}\nolimits}
+\def\Arcsin{\mathop{\operator@font Arcsin}\nolimits}
+\def\Argcoth{\mathop{\operator@font Argcoth}\nolimits}
+%\def\sh{\mathop{\operator@font sh}\nolimits}
+\def\coth{\mathop{\operator@font coth}\nolimits}
+\def\tanh{\mathop{\operator@font th}\nolimits}
+%\def\ch{\mathop{\operator@font ch}\nolimits}
+\def\div{\mathop{\operator@font div}\nolimits}
+\def\rot{\mathop{\overrightarrow{\operator@font rot}}\nolimits}
+\def\grad{\mathop{\overrightarrow{\operator@font grad}}\nolimits}
+
+\def\card{\mathop{\operator@font card}\nolimits}
+\newcommand{\scal}[2]{\langle #1 | #2 \rangle}
+\newcommand{\norme}[1]{\| #1 \|}
+%\newcommand{\ang}[1]{\sphericalangle #1}
+
+\newcommand{\fonc}[4]{\begin{array}[t]{rcl}
+#1&\rightarrow&#2\\
+#3&\mapsto&#4\end{array}}
+
+%\newcommand{\soupoint}[1]{\d}
+\renewcommand{\d}{\,\textrm{d}}
+%\renewcommand{\d}{\operatorname{d}\!}
+\newcommand{\der}[3][]{\dfrac{\textrm{d}^{#1} #2}{\textrm{d} #3^{#1}}}
+\newcommand{\derpar}[3][]{\dfrac{\partial^{#1} #2}{\partial #3^{#1}}}
+\newcommand{\dercroise}[3]{\dfrac{\partial^{2}#1}{\partial#2\partial#3}}
+\newcommand{\doubleint}{\int\!\!\!\int}
+\newcommand{\tripleint}{\int\!\!\!\int\!\!\!\int}
+
+\newcommand{\D}[1]{\displaystyle{#1}}
+
+\renewcommand{\bar}{\overline}
+
+
+
+
+%%%Delphine%%%
+%%%COMMANDES PRATIQUES%%%
+%%%GENERAL%%%
+\newcommand{\bubul}{$\bullet$ }
+\newcommand{\qqsoit}{\forall \,}
+\newcommand{\ilex}{\exists \,}
+\newcommand{\di}{\displaystyle}
+\newcommand{\ep}{\varepsilon}
+\renewcommand{\l}{\lambda}
+\newcommand{\ssi}{\Longleftrightarrow}
+%\newcommand{\sensdirect}{\fbox{$\Rightarrow$} }
+%\newcommand{\sensindirect}{\fbox{$\Leftarrow$} }
+\newcommand{\li}{\begin{itemize}}
+\newcommand{\finli}{\end{itemize}}
+\newcommand{\syst}{\left\{\begin{array}{l}}
+\newcommand{\finsyst}{\end{array} \right.}
+\newcommand{\va}{|}
+\newcommand{\plrs}{\begin{eqnarray*}}
+\newcommand{\finplrs}{\end{eqnarray*}}
+\newcommand{\Arg}{\text{Arg}}
+\newcommand{\ent}[1]{\left\lfloor #1\right\rfloor}
+
+%%%PROBAS%%%
+%\DeclareMathOperator{\card}{Card}
+%\newcommand{\E}{\mathbb{E}}    
+%\renewcommand{\P}{\mathbb{P}}  
+\newcommand{\cov}{\text{cov}}  
+
+%%%ANALYSE%%%
+\providecommand{\abs}[1]{\left\lvert#1\right\rvert} %valeur absolue
+\providecommand{\fonction}[5]
+    {\begin{array}[t]{cccl}#1  : & #2&\rightarrow&#3\\{} & #4&\mapsto&#5\end{array}}
+\providecommand{\eq}[2]{\underset{#1 \rightarrow #2}{\sim}}
+\providecommand{\tend}[2]{\underset{#1 \rightarrow #2}{\longrightarrow}}
+\providecommand{\limite}[2]{\displaystyle \lim_{#1 \rightarrow #2}}
+\providecommand{\dl}[2]{\underset{#1 \rightarrow #2}{=}}
+%\renewcommand{\d}{\operatorname{d}}
+\newcommand{\drond}{\partial}
+\renewcommand{\i}{\operatorname{i}}
+\newcommand{\ch}{\operatorname{ch}}
+\newcommand{\sh}{\operatorname{sh}}
+\renewcommand{\th}{\operatorname{th}}
+\newcommand{\cotan}{\operatorname{cotan}}
+\renewcommand{\arctan}{\operatorname{Arctan}}
+\renewcommand{\arcsin}{\operatorname{Arcsin}}
+\renewcommand{\arccos}{\operatorname{Arccos}}
+\newcommand{\argth}{\operatorname{argth}}
+\newcommand{\argsh}{\operatorname{argsh}}
+\newcommand{\argch}{\operatorname{argch}}
+\renewcommand{\Re}{\text{Re}}
+\renewcommand{\Im}{\text{Im}}
+
+%%%ALGEBRE%%%
+\providecommand{\norm}[1]{\left\rVert#1\right\rVert} %norme
+\providecommand{\sdo}[0]{\text{\odplus}} % somme directe orthogonale
+\renewcommand{\ker}{\operatorname{Ker}}
+%\newcommand{\Ker}{\operatorname{Ker}}
+%\renewcommand{\o}{\operatorname{o}}
+\renewcommand{\O}{\operatorname{O}}
+\newcommand{\trans}{\,{}^{\text{t}}} % transposÃ©e
+\DeclareMathOperator{\tr}{tr}  %trace
+%\DeclareMathOperator{\im}{\text{Im}}
+\newcommand{\im}{\operatorname{Im}}
+\DeclareMathOperator{\id}{id}
+\providecommand{\mat}[1]{\underset{#1}{\text{mat}}}
+\DeclareMathOperator{\vect}{\text{Vect}}
+%\DeclareMathOperator{\rg}{\text{rg}}
+
+
+%%%MAPLE%%%
+\newenvironment{prog}{ \color{red}\ttfamily}{\color{black}}
+\newcommand{\maple}{\begin{prog}}
+\newcommand{\finmaple}{\end{prog}}
+\newenvironment{reponse}{ \begin{center}  \color{blue} \em}{\end{center}\color{black}}
+\newcommand{\rep}{\begin{reponse}}
+\newcommand{\finrep}{\end{reponse}}
+
+
+%%%GEOMETRIE%%%
+\providecommand{\vecteur}[1]{\overrightarrow{#1}}
+
+%%DIVERS%%
+%\newcommand{\s}{ $ }
+%\newcommand{\ds}{ $$ }
+\newcommand{\itbul}{\item[\bubul]}
+
+%\usepackage{tikz,tkz-tab}
+%\usepackage[babel=true,kerning=true]{microtype}
+
+\tikzset{math3d/.style={x={(-0.353cm,-0.353cm)},z={(0cm,1cm)},y={(1cm,0cm)}}}
+
+\tikzset{
+xmin/.store in=\xmin, xmin/.default=-3, xmin=-3,
+xmax/.store in=\xmax, xmax/.default=3, xmin=3,
+ymin/.store in=\ymin, ymin/.default=-3, ymin=-3,
+ymax/.store in=\ymax, ymax/.default=-3, ymax=-3,
+}
+\newcommand{\grille}{\draw[help lines] (\xmin,\ymin) grid (\xmax,\ymax);}
+
+\newcommand{\axes}{%
+\draw[->] (\xmin,0)--(\xmax,0);
+\draw[->] (0,\ymin)--(0,\ymax);
+\draw[->][very thick] (0,0)--(1,0);
+%\draw (1 , 0) node[below] {$1$};
+%\draw (0.5 , 0) node[below] {$\vec{i}$};
+\draw (0.5 , 0) node[below] {$\vec{\imath}$};
+\draw[->] [very thick](0,0)--(0,1);
+%\draw (0,0.5) node[left] {$\vec{j}$};
+\draw (0 , 0.5) node[left] {$\vec{\jmath}$};
+%\draw (0,1) node[left] {$1$};
+%\draw (0,0) node[below left]{$O$};
+}
+
+\newcommand{\axesbis}{%
+\draw[->] (\xmin,0)--(\xmax,0)node[below]{$x$};
+\draw[->] (0,\ymin)--(0,\ymax)node[left]{$y$};
+}
+
+\newcommand{\fenetre}
+{\clip (\xmin,\ymin) rectangle (\xmax,\ymax);}
+
+\newcommand{\repere}{%
+\tikzset{xaxe style/.style={-}}
+\tikzset{yaxe style/.style={-}}
+\tkzInit[xmin=\xmin,xmax=\xmax,ymin=\ymin,ymax=\ymax]
+\tkzDrawX[noticks]\tkzDrawY[noticks]
+\tkzRep
+}
+
+\newcommand{\attention}{\raisebox{-2pt}{\includegraphics[width=5mm]{/Users/Delphine/1.BOULOT/2019_2020_PTSI_info/attention}}\ }

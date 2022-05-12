@@ -1,0 +1,86 @@
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+    }
+
+%%% Python
+\usepackage{listingsutf8}
+\lstset{language=Python,
+  inputencoding=utf8/latin1,
+  breaklines=true,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{purple!40!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+  upquote = true,
+  columns=fullflexible,
+  backgroundcolor=\color{gray!10},frame=leftline,rulecolor=\color{gray}}  
+  
+
+\lstset{
+     literate=%
+         {é}{{\'e}}1    
+         {è}{{\`e}}1    
+         {ê}{{\^e}}1    
+         {à}{{\`a}}1    
+         {ô}{{\^o}}1    
+         {ù}{{\`u}}1    
+}
+
+%%% Exemple
+\newenvironment{exemple}[1][\hsize]%
+{%
+    \def\FrameCommand%
+    {%
+\rotatebox{90}{\textit{\textsf{Exemple}}} 
+        {\color{blue}\vrule width 3pt}%
+        \hspace{0pt}%must no space.
+        \fboxsep=\FrameSep\colorbox{gris_c}%
+    }%
+    \MakeFramed{\hsize#1\advance\hsize-\width\FrameRestore}%
+}%
+{\endMakeFramed}%
+
+
+\newenvironment{defi}[1][]
+{\textbf{Définition\vphantom{p} : #1}\debutprop}
+     {\finprop}
+     
+\newenvironment{theoreme}[1][]
+{\textbf{Théorème\vphantom{p} : #1}\debutprop}
+     {\finprop}
+     
+\newenvironment{propriete}[1][]
+{\textbf{Propriété\vphantom{p} : #1}\debutprop}
+     {\finprop}     
+
+\newenvironment{comp}[1][]
+{\textbf{Complexité\vphantom{p} : #1}\debutprop}
+     {\finprop}
+
+\newenvironment{obje}[1][]
+{\textbf{Objectifs\vphantom{p} : #1}\debutprop}
+     {\finprop}
+
+\newenvironment{ordre}[1][]
+{\textbf{Ordre de grandeurs\vphantom{p} : #1}\debutprop}
+     {\finprop}
+
+\newenvironment{methode}[1][]
+{\textbf{Méthode\vphantom{p} : #1}\debutprop}
+     {\finprop}
+
+%% Questions et exercices
+\newcounter{numques}%Création d'un compteur qui s'appelle numques
+\setcounter{numques}{0}%initialisation du compteur
+\newcommand{\question}[1]{%Création d'une macro ayant un paramètre
+\addtocounter{numques}{1}%chaque fois que cette macro est appelée, elle ajoute 1 au compteur numexos
+\textbf{Question\, \textcolor{black}{\thenumques}\,}\,\textit{#1}\\{\vspace{0cm}}}
+
+

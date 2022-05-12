@@ -1,0 +1,19 @@
+\documentclass[t,11pt]{article}
+% A modifier selon la personne...
+\input{base.tex}
+\input{base_XP.tex}
+\geometry{a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm}
+
+% A modifier pour chaque chapitre...
+\newcommand{\titre}{Piles et files}
+\newcommand{\numero}{19}
+
+% Prof ou élève...
+% prof : 
+\newcommand{\phantomchoix}[1]{\textcolor{red}{#1}}
+\newcommand{\blanc}[1]{\textcolor{red}{#1}}
+% eleve : 
+%\newcommand{\phantomchoix}[1]{\phantom{#1}}
+%\newcommand{\blanc}[1]{\textcolor{white}{#1}}
+
+\input{piles_files.tex}

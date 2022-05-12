@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
+   width="361.3125pt"
+   height="291.5625pt"
+   sodipodi:docname="Konigsberg_graph.svg"
+   version="1.0">
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs5" />
+  <sodipodi:namedview
+     inkscape:window-height="991"
+     inkscape:window-width="1920"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base"
+     borderlayer="top"
+     inkscape:showpageshadow="false"
+     inkscape:zoom="0.70710678"
+     inkscape:cx="282.80429"
+     inkscape:cy="238.66231"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:current-layer="svg2"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <g
+     id="g2234"
+     transform="translate(-10.125,-8.625)">
+    <g
+       id="g2223">
+      <use
+         x="0"
+         y="0"
+         xlink:href="#path2197"
+         id="use2221"
+         transform="matrix(1,0,0,-1.004901,0,403.7825)"
+         width="500"
+         height="400" />
+      <path
+         style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:6.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="M 35,201.61924 H 469"
+         id="path2195" />
+      <path
+         style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:6.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="M 462,191.99999 261,32.999992 c 0,0 -33,-9 -90,-9 -57,0 -108,13 -120,66 C 39,142.99999 35,197.99999 35,197.99999 c 0,0 60.936066,-14.0377 121,-57 68.02919,-48.659661 93,-98.999998 93,-98.999998"
+         id="path2197"
+         sodipodi:nodetypes="ccsscsc" />
+    </g>
+    <g
+       id="g2228">
+      <circle
+         style="fill:#007fff;fill-opacity:1;fill-rule:evenodd;stroke:#000070;stroke-width:3.75;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="path1308"
+         transform="translate(0,1.5)"
+         cx="35"
+         cy="200"
+         r="23" />
+      <use
+         x="0"
+         y="0"
+         xlink:href="#path1308"
+         id="use2183"
+         transform="translate(432)"
+         width="500"
+         height="400" />
+      <use
+         x="0"
+         y="0"
+         xlink:href="#path1308"
+         id="use2185"
+         transform="translate(219.5,-168)"
+         width="500"
+         height="400" />
+      <use
+         x="0"
+         y="0"
+         xlink:href="#path1308"
+         id="use2187"
+         transform="translate(219.5,171)"
+         width="500"
+         height="400" />
+    </g>
+  </g>
+</svg>
