@@ -1,0 +1,17 @@
+\babel@toc {french}{}
+\babel@toc {french}{}
+\contentsline {section}{\numberline {\hspace {-0.6cm}1}Introduction}{1}{section.1}%
+\contentsline {section}{\numberline {\hspace {-0.6cm}2}graphes et représentation}{2}{section.2}%
+\contentsline {subsection}{\numberline {\hspace {-0.4cm}2.a}Définitions}{2}{subsection.2.1}%
+\contentsline {subsection}{\numberline {\hspace {-0.4cm}2.b}Représentation graphique}{3}{subsection.2.2}%
+\contentsline {subsection}{\numberline {\hspace {-0.4cm}2.c}Caractéristiques d'un graphe orienté ou non orienté}{4}{subsection.2.3}%
+\contentsline {section}{\numberline {\hspace {-0.6cm}3}Implémentation}{5}{section.3}%
+\contentsline {subsection}{\numberline {\hspace {-0.4cm}3.a}Liste d'adjacence}{5}{subsection.3.1}%
+\contentsline {subsection}{\numberline {\hspace {-0.4cm}3.b}Dictionnaire d'adjacence}{6}{subsection.3.2}%
+\contentsline {subsection}{\numberline {\hspace {-0.4cm}3.c}Matrice d'adjacence}{6}{subsection.3.3}%
+\contentsline {section}{\numberline {\hspace {-0.6cm}4}Graphe pondéré}{7}{section.4}%
+\contentsline {subsection}{\numberline {\hspace {-0.4cm}4.a}Vocabulaire}{7}{subsection.4.1}%
+\contentsline {subsection}{\numberline {\hspace {-0.4cm}4.b}Matrice de pondération}{7}{subsection.4.2}%
+\contentsline {section}{\numberline {\hspace {-0.6cm}5}Applications}{8}{section.5}%
+\contentsline {subsection}{\numberline {\hspace {-0.4cm}5.a}Exemple d'implémentation d'après un sujet de l'XENS 2015}{8}{subsection.5.1}%
+\contentsline {subsection}{\numberline {\hspace {-0.4cm}5.b}Graphe d'intervalles : Énigme de Claude BERGE}{10}{subsection.5.2}%
