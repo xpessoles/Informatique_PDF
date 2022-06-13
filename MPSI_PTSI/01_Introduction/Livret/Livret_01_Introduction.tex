@@ -1,0 +1,49 @@
+\documentclass[10pt,fleqn]{article} % Default font size and left-justified equations
+\usepackage[%
+    pdftitle={Introduction à l'algorithmique et à la programmation},
+    pdfauthor={Xavier Pessoles}]{hyperref}
+
+\newcommand{\repRel}{../../../..}
+\input{\repRel/Style/packages}
+\input{\repRel/Style/new_style}
+\input{\repRel/Style/macros_SII}
+\input{\repRel/Style/environment}
+
+
+\newcommand{\macrocomp}{macro_competences}
+\newcommand{\comp}{competences}
+\newcommand{\td}{fichier_td}
+\newcommand{\repExo}{dossier}
+\newcommand{\repStyle}{\repRel/Style}
+
+\def\xxYCartouche{-2.25cm}
+\def\xxYongletGarde{.5cm}
+\def\xxYOnget{.9cm}
+
+\begin{document}
+
+\def\xxcompetences{}
+\def\xxfigures{}
+
+\graphicspath{{\repStyle/png/}{\repRel/PSI_Cy_01_ModelisationSystemes/Ch_01_Generalites/Cours/images/}}
+
+%\setlength{\columnseprule}{.1pt}
+
+%% MODELISER
+% Page de garde
+
+\livrettrue
+\input{\repStyle/Info_01_Entete}
+\input{\repRel/Informatique/Cours/01_Bases/01_Bases.tex}
+%
+%\newpage
+%\proffalse
+%\renewcommand{\repExo}{Application_01_ROV}
+%\graphicspath{{\repStyle/png/}{\repRel/PSI_Cy_01_ModelisationSystemes/Ch_01_Generalites/\repExo/images/}}
+%\input{\repRel/PSI_Cy_01_ModelisationSystemes/Ch_01_Generalites/\repExo/Cy_01_Ch_01_\repExo.tex}
+
+
+\end{document}
+
+
+
