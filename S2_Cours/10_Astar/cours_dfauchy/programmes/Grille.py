@@ -126,7 +126,8 @@ S = (lD,cD)
 
 Distances = np.inf*np.ones([Nl,Nc])
 Distances[lD,cD] = 0
-
+Provenances = {}
+Image_Anim=Image.copy()
 
 lS,cS = lD,cD
 it = 0
@@ -136,20 +137,20 @@ while len(Reste) > 0 and S!=Arrivee and Distances[lS,cS]!=np.inf:
     Min = np.inf
     for s in Reste:
         l,c = s
-        d = f(l,c) ###
+        d = f(l,c,lA,cA) ###
         if d <= Min:
             Min = d
             S = s
     lS,cS = S
     # Mise à jour de Reste
     del Reste[S]
-    '''
+
     # Affichage animation
     Image_Anim[lS,cS] = Rouge
     Chemin = "Animations/A star/"+str(it)+".png"
     Affiche_Save(22,Image_Anim,True,Chemin)
     #Affiche(22,Image_Anim,True)
-    '''
+
     # Voisins ← Dico des stations de Reste voisines de S
     Voisins = Dico_Voisins[S]
     for V in Voisins:

@@ -1,0 +1,496 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{longtable,booktabs}
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\author{}
+\date{}
+
+\begin{document}
+
+\emph{\textbf{TD 11-3}}
+
+\emph{\textbf{A star}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  A star
+\end{enumerate}
+
+Contexte
+
+On souhaite trouver le plus court chemin à réaliser sur une image en
+noir et blanc entre un départ et une arrivée. Les pixels noirs seront
+des obstacles, les blancs des cases accessibles. Voici des exemples de
+chemins que vous pourrez trouver dans la dernière partie de ce TD~:
+
+\includegraphics[width=4.1039in,height=1.48575in]{media/image1.png}
+
+\includegraphics[width=2.73377in,height=2.63687in]{media/image2.png}
+
+Nous allons donc~:
+
+\begin{itemize}
+\item
+  Importer des fonctions d'affichage prédéfinies
+\item
+  Réaliser la grille/image de départ
+\item
+  Créer un dictionnaire représentant le graphe du domaine d'étude
+\item
+  Trouver le plus court chemin à l'aide de l'algorithme de Dijkstra
+\item
+  Faire de même avec l'algorithme A-star
+\item
+  Comparer performances de ces algorithmes
+\end{itemize}
+
+Pour rappel~:
+
+\begin{itemize}
+\item
+  L'algorithme de Dijkstra permet de trouver le plus court chemin dans
+  un graphe en «~avançant~» par «~arcs de cercles~» depuis le départ,
+  jusqu'à atteindre l'arrivée.
+\item
+  L'algorithme A-star privilégie dans ses choix, les cases dont
+  l'heuristique (distance depuis le début + distance à vol d'oiseau
+  jusqu'à l'arrivée) est la plus faible. Dans ce TD, il cherchera donc
+  toujours à se diriger vers l'arrivée.
+\end{itemize}
+
+Prise en main du code élèves
+
+Afin d'assurer un fonctionnement rapide sur tous les ordinateurs, je
+vous mets à disposition un dossier à télécharger COMPLETEMENT, soit le
+dossier contenant tous les fichiers et images, et non les fichiers pris
+séparément.
+
+\includegraphics[width=1.62987in,height=0.84816in]{media/image3.png}
+
+Sans ouvrir le dossier, faite juste «~Télécharger -- Téléchargement
+direct~» puis mettez ce dossier dans votre répertoire personnel.
+
+\href{https://www.dropbox.com/sh/pe158jwai7yqkol/AAA3N3sptIYvkH64A90r2DUqa?dl=0}{\textbf{LIEN}}
+
+Si le téléchargement est sous forme de Rar, Zip\ldots{} Pensez à
+dézipper l'archive afin d'avoir le dossier voulu~!
+
+Vous avez à disposition 5 fichiers Python~:
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+\begin{minipage}[b]{0.47\columnwidth}\raggedright
+11-3 - 1 - Affichage\strut
+\end{minipage} & \begin{minipage}[b]{0.47\columnwidth}\raggedright
+Import des librairies numpy et matplotlib
+
+Création de 3 fonctions d'affichage~:
+
+Affiche(fig,im,grille)~: Affiche l'image d'étude
+
+Affiche\_Save(fig,im,grille,chemin)~: Enregistre l'image pour créer des
+animations (sans affichage sinon bug de redimensionnement)
+
+Affiche\_Degrade(Fig,Tab)~: Affiche avec un dégradé les distances de
+chaque pixel depuis le départ sur une nouvelle image\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+11-3 - 2 - Grille - Elèves & Code prérempli à compléter pour créer la
+grille de départ\tabularnewline
+11-3 - 3 - Dico - Elèves & A compléter\tabularnewline
+11-3 - 4 - Dijkstra -- Elèves & A compléter\tabularnewline
+11-3 - 4 - A star - Elèves & A compléter\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Télécharger et exécuter les fichiers Affichage et Grille dans l'ordre
+\end{enumerate}
+
+A ce stade, vous devriez voir apparaître le domaine d'étude sous la
+forme suivante~:
+
+\includegraphics[width=2.61039in,height=2.61039in]{media/image4.png}
+
+La grille est remplie de cases blanches (accessibles), on voit
+apparaître le point de départ en rouge, le point d'arrivée en bleu et
+une case obstacle en noir.
+
+Création de la grille de départ
+
+Vous travaillerez dans le fichier nommé «~11-3 - 2 - Grille -
+Elèves.py~».
+
+On souhaite réaliser la grille de départ suivante~:
+
+\includegraphics[width=6.3in,height=6.26875in]{media/image5.png}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\item
+  Compléter/Modifier le code afin de réaliser cette image de départ
+\end{enumerate}
+
+Réalisation du dictionnaire des voisins
+
+~
+
+Les mouvements possibles pour se déplacer d'une case à l'autre sont les
+8 directions~:
+
+\begin{itemize}
+\item
+  ↑→↓← de distance \(1\)
+\item
+  ↖↗↘↙ de distance \(\sqrt{2}\)
+\end{itemize}
+
+On souhaite réaliser un dictionnaire nommé «~Dico\_Voisins~»
+représentant le graphe du système tel que~:
+
+\begin{itemize}
+\item
+  Les clés sont des tuples de type (ligne,colonne) de chaque pixel pour
+  chaque case/pixel accessible (pas noire). Exemple d'une portion des
+  clés du dictionnaire~:
+\end{itemize}
+
+\includegraphics[width=5.78261in,height=0.88409in]{media/image6.png}
+
+\begin{itemize}
+\item
+  Les valeurs associées à chaque clé/case sont des listes contenant des
+  sous listes (une par case voisine accessible) de deux éléments du type
+  {[}clé case,distance{]}. Exemple~:
+\end{itemize}
+
+\includegraphics[width=4.94655in,height=0.43511in]{media/image7.png}
+
+Vous travaillerez dans le fichier nommé «~11-3 - 3 - Dico - Elèves.py~».
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Créer une fonction Test\_Pix(P1,P2) qui renvoie le booléen répondant à
+  la question «~Le pixel P1 est égal au pixel P2~»
+\end{enumerate}
+
+Vérifier~:
+
+\includegraphics[width=3.30435in,height=0.91278in]{media/image8.png}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\item
+  Mettre en place le code permettant de créer le dictionnaire
+  Dico\_Voisins contenant pour valeurs de chaque case accessible des
+  listes vides
+\end{enumerate}
+
+Remarque~: Penser qu'une case accessible est «~non noire~», et
+non\ldots{} blanche.
+
+Vous devriez voir~:
+
+\includegraphics[width=2.64454in,height=1.16522in]{media/image9.png}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\item
+  Mettre en place la fonction Couples\_Voisins(l,c) qui, pour la case à
+  la ligne l et la colonne c, ajoute dans sa liste dans Dico\_Voisins,
+  les couples {[}Case\_i,Di{]} des cases voisins accessibles (max 8
+  cases possibles)
+\end{enumerate}
+
+Remarque~:
+
+\begin{itemize}
+\item
+  On évitera le test «~in Dico\_Voisins~» pour vérifier qu'une case est
+  accessible, qui coûte bien plus cher que de vérifier la couleur non
+  noire d'un pixel
+\item
+  Penser que sur tous les bords de l'image, il n'y a plus 8
+  voisins\ldots{} Cela se traduira par des conditions sur li et ci des
+  cases voisines «~Case\_i~»
+\end{itemize}
+
+Vérifier~:
+
+\includegraphics[width=5.37203in,height=0.8in]{media/image10.png}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Mettre en place les lignes de code permettant de remplir Dico\_Voisins
+\end{enumerate}
+
+Vérifier~:
+
+\includegraphics[width=6.3in,height=1.73056in]{media/image11.png}
+
+Mise en place de l'algorithme de Dijkstra
+
+Vous travaillerez dans le fichier nommé «~11-3 - 4 - Dijkstra -
+Elèves.py~».
+
+Ce fichier contient un paragraphe d'initialisation~:
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+\begin{minipage}[b]{0.47\columnwidth}\raggedright
+Distances\strut
+\end{minipage} & \begin{minipage}[b]{0.47\columnwidth}\raggedright
+Array aux mêmes dimensions que l'image traitée, tel que
+Distances{[}l,c{]} est la distance du chemin menant à la case concernée
+depuis le départ
+
+Il est initialisé avec des valeurs infinies\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+Reste & Copie du dictionnaire Dico\_Voisins. On enlèvera les cases
+traitées de ce dictionnaire et l'algorithme se terminera au plus tard,
+quand ce dictionnaire est vide\tabularnewline
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
+Provenances\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
+Dictionnaire des provenances de chaque case. Initialisé vide, il
+contiendra à la fin de la réalisation de l'algorithme des clés et
+valeurs qui seront respectivement le nom de la case concernée et la case
+qui a permis d'y accéder lors de l'exécution de l'algorithme.
+
+Par exemple, si Provenances{[}(1,1){]}=(0,0), c'est que pour atteindre
+la case (1,1) avec un chemin depuis le départ de longueur
+Distances{[}1,1{]}, la case précédente de ce chemin est (0,0)\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+Pour rappel, départ et arrivée ont été définies précédemment
+(ld,cd,la,ca).
+
+Nous allons maintenant programmer l'algorithme de Dijkstra
+(rappelez-vous le TD 11-1~), dont nous allons rappeler les grandes
+étapes.
+
+Tant que \textbf{S} n'est pas l'arrivée, qu'il reste des stations dans
+\textbf{Reste} et que Distance{[}lS,cS{]} est différente de l'infini
+(cette condition permet de gagner du temps si \textbf{Arrivee} n'est pas
+accessible depuis \textbf{Depart})
+
+\begin{itemize}
+\item
+  \textbf{S} ← Station parmi \textbf{Reste} ayant la distance minimum
+  dans \textbf{Distances}
+\item
+  Mise à jour de \textbf{Reste} (retirer S)
+\item
+  \textbf{Voisins} ← Dictionnaire des stations de \textbf{Reste}
+  voisines de \textbf{S}
+\item
+  Traitement des voisins~: Pour chaque voisin V, si la distance
+  Depart→S→V \textless{} Depart→V actuellement stockée dans
+  \textbf{Distances}~:
+
+  \begin{itemize}
+  \item
+    Mise à jour de \textbf{Distances} avec cette nouvelle distance
+  \item
+    Mise à jour de \textbf{Provenances}~afin d'indiquer que S est le
+    prédécesseur de V
+  \end{itemize}
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \item
+    Mettre en place cet algorithme
+  \end{enumerate}
+\end{itemize}
+
+On remarquera que si la case arrivée n'est pas accessible, Reste sera
+vide, mais en plus, Distances{[}la,ca{]} sera toujours infinie.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\item
+  Mettre en place le code permettant soit d'afficher que le chemin
+  n'existe pas, soit de remonter le chemin menant à l'arrivée, en
+  affichant dans la console les cases empruntées, la distance parcourue,
+  et le nombre d'itérations réalisées.
+\end{enumerate}
+
+Vérifier~:
+
+\includegraphics[width=6.3in,height=1.70208in]{media/image12.png}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\item
+  Mettre en place le code permettant d'afficher le chemin trouvé en vert
+  sur l'image
+\end{enumerate}
+
+\includegraphics[width=2.496in,height=2.43467in]{media/image13.png}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\item
+  En utilisant la fonction Affiche\_Degrade, afficher les distances des
+  pixels depuis le départ et les pixels traités par l'algorithme
+\end{enumerate}
+
+\includegraphics[width=3.22535in,height=2.52765in]{media/image14.png}
+
+Mise en place de l'algorithme de A-star
+
+Vous travaillerez dans le fichier nommé «~11-3 - 5 - A star -
+Elèves.py~».
+
+Dijkstra choisissait \(s\) comme la station la plus proche du départ. On
+propose de prendre en compte l'heuristique «~Distances à vol d'oiseau~»
+entre \(s\) et l'arrivée.
+
+\[f\left( s \right) = d\left( s \right) + d^{'}\left( s,s_{\text{fin}} \right)\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\item
+  Créer la fonction f(Case) renvoyant le calcul attendu
+\item
+  Copier/coller le code Dijkstra et modifier ce qu'il faut afin de
+  réaliser l'algorithme A star
+\item
+  Comparer les algorithmes Dijkstra et A star
+\end{enumerate}
+
+Pour aller plus loin
+
+Vous avez à disposition trois images :
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+Labyrinthe petit & Labyrinthe grand & Réseau\tabularnewline
+\midrule
+\endhead
+\includegraphics[width=1.07976in,height=1.34758in]{media/image15.png} &
+\includegraphics[width=1.90184in,height=0.63598in]{media/image16.png} &
+\includegraphics[width=1.65571in,height=1.57097in]{media/image17.png}\tabularnewline
+\bottomrule
+\end{longtable}
+
+Vous trouverez dans le dossier télécharger en début de TD les 3 images
+ci-dessus, partagées sous les formats BMP (ouverture avec matplotlib) et
+array (ouverture avec numpy en cas de bug matplotlib).
+
+Pour chacun de ces 3 cas~:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{7}
+\item
+  Créer un nouveau fichier «~11-2 -- 2 -- Nom\_à\_choisir.py~»
+\item
+  ~Sous Python, ouvrir l'image et l'afficher
+\item
+  Créer une fonction f\_NB(im) qui renvoie une nouvelle image en noir et
+  blanc ({[}0,0,0{]} ou {[}255,255,255{]}) à partir de l'image im
+\end{enumerate}
+
+Attention~: les labyrinthes seront aussi transformés en nior et blanc
+(je n'ai pas vérifié chaque pixel pour être certain que les triplets
+sont bien composés uniquement de 0 ou de 255.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{10}
+\item
+  Transformer l'image en noir et blanc et l'afficher
+\item
+  Choisir et ajouter les points de départ et d'arrivée sur l'image
+\item
+  Faire tourner les algorithmes Dijkstra et A-star
+\item
+  Apprécier les résultats et comparer l'efficacité des algorithmes
+\end{enumerate}
+
+\end{document}
