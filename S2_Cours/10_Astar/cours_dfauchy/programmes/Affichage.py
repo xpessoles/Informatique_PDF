@@ -26,6 +26,29 @@ def Affiche(fig,im,grille):
     plt.show()
     plt.pause(0.00001)
 
+
+def Affiche_distance(fig,im,grille,f,Arrivee):
+    (la,ca)=Arrivee
+    Nl,Nc = im.shape[0:2]
+    plt.figure(fig)
+    plt.imshow(im)
+    plt.axis('scaled')
+    plt.xlim([-0.5,Nc-0.5])
+    plt.ylim([Nl-0.5,-0.5])
+    plt.grid(grille)
+    if grille==True:
+        Lx = [str(i) for i in range(Nc+1)]
+        Ly = [str(i) for i in range(Nl+1)]
+        plt.xticks(np.arange(-0.5,Nc+0.5,1),Lx)
+        plt.yticks(np.arange(-0.5,Nl+0.5,1),Ly)
+        for i in range(Nl):
+            for j in range(Nc):
+                plt.text(j,i,str(f(i,j,la,ca)))
+    else:
+        plt.axis('off')
+    plt.show()
+    plt.pause(0.00001)
+
 def Affiche_Save(fig,im,grille,chemin): # Nécessaire pour éviter bug redimensionnement
     Nl,Nc = im.shape[0:2]
     plt.figure(fig)
@@ -55,3 +78,5 @@ def Affiche_Degrade(Fig,Tab):
     plt.ylim([Nl-0.5,-0.5])
     plt.show()
     plt.pause(0.00001)
+
+

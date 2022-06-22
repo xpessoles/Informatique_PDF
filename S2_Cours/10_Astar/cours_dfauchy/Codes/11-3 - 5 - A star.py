@@ -21,6 +21,11 @@ def f(l,c):
     heuristique = d_deb + d_fin
     return heuristique
 
+def f_fin(l,c):
+    d_fin = sqrt((l-la)**2+(c-ca)**2)
+    heuristique = d_fin
+    return heuristique
+
 # Itérations
 
 S = (ld,cd)
