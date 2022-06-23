@@ -5,25 +5,26 @@
 ## Création de l'image
 
 # Initialisation
-
-Nl,Nc = 50,50
+import numpy as np
+#from 11-Affichage import *
+Nl,Nc = 5,9
 Image = 255*np.ones((Nl,Nc,3),dtype='uint8')
 
 # Obstacles
 
 Noir = [0,0,0]
 
-for l in range(3,47):
-    Image[l,46] = Noir
+for l in range(1,4):
+    Image[l,4] = Noir
 
-for c in range(25,47):
-    Image[46,c] = Noir
+for c in range(4,6):
+    Image[1,c] = Noir
 
 # Depart - Arrivee
 
 '''ATTENTION: partir d'un point blanc'''
-ld,cd = 0,0
-la,ca = Nl-1,Nc-1
+ld,cd = 3,7
+la,ca = 0,1
 Rouge = [255,0,0]
 Image[ld,cd] = Rouge
 Bleu = [0,0,255]
