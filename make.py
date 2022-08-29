@@ -11,7 +11,7 @@ Mois=['Janvier','Fevrier','Mars','Avril','Mai','Juin','Juillet','Aout','Septembr
 #RAZ du fichier log
 f=open('log.txt','w')
 
-path=r"../Informatique/progression_2021_2022_Info_MPSI.xls"#chemin de la progression
+path=r"../Informatique/progression_2022_2023_Info_MPSI.xls"#chemin de la progression
 path_classe=''
 path_site='pdf'#Chemin pour exporter les pdf vers site
 path_site_ds='/Users/emiliendurif/Dropbox/cpge/ipt_mpsi_ds'#Chemin pour exporter les pdf vers site
@@ -60,8 +60,8 @@ def lire_semanier(path):
     for f in feuilles:
         if "Semanier" in f:
             fs=classeur.sheet_by_name(f)
-    col_date,col_num_cycle,col_name_cycle,col_num_cours,col_num_tp,col_name_cours,col_name_tp,col_supports_TD,col_supports_tp,col_competences_cours,col_competences_tp,col_figures,col_ref_cours\
-    =1,2,3,4,6,5,7,10,10,11,12,15,16
+    col_date,col_num_cycle,col_name_cycle,col_num_cours,col_num_tp,col_name_cours,col_name_tp,col_supports_TD,col_supports_tp,col_competences_cours,col_competences_tp,col_figures,col_ref_cours,col_source_cours\
+    =1,2,3,4,6,5,7,10,10,11,12,15,16,18
     nligne=40#Derniere ligne où figure une donnée
     delta_td=1#position du jour des TD dans la semaine
     delta_cours=2#position du jour des cours dans la semaine
@@ -81,6 +81,7 @@ def lire_semanier(path):
             d_tp=d_s+datetime.timedelta(delta_tp)#Date du TD
             if fs.cell_value(k,col_num_cours)!='':
                 num_cours=int(fs.cell_value(k,col_num_cours)) #Numero du chapitre
+                source_cours=fs.cell_value(k,col_source_cours)
             else:
                 num_cours=0
             if num_cours<10:
@@ -105,7 +106,7 @@ def lire_semanier(path):
                 figures=fs.cell_value(k,col_figures)
                 date_cours=str(d_cours.day)+' '+Mois[d_cours.month-1]+' '+str(d_cours.year)
                 ref_cours=str(n_cycle)+'-'+str(num_cours)
-                info_cours.append((date_cours,n_cycle,num_cours,name_cycle,name_cours,supports,competences,figures,ref_cours))
+                info_cours.append((date_cours,n_cycle,num_cours,name_cycle,name_cours,supports,competences,figures,ref_cours,source_cours))
             # #Gestion des TP
             if n_tp not in liste_tp:
                 name_tp=fs.cell_value(k,col_name_tp)
@@ -710,7 +711,7 @@ def creer_dossier_tp(num_tp):
 
 
 ####Traiter TP en générant les .tex
-for tp in info_tp[1:15]:
+for tp in info_tp[1:14]:
 #for tp in info_tp:
      (date,n_cycle,num_activite,name_cycle,name_activite,supports,competences,figures,ref_cours)=tp
      rep=creer_dossier_tp(num_activite)
@@ -733,7 +734,7 @@ for tp in info_tp[1:15]:
 #     genere_support(rep,ds,'ds')
 
 ####Compiler tp
-for k in range(14,15):
+for k in range(1,10):
     activite=info_tp[k]
     #rep=trouver_repertoire(activite)
     num_tp=activite[2]
