@@ -1,0 +1,54 @@
+\documentclass[10pt,fleqn]{article} % Default font size and left-justified equations
+\usepackage[%
+    pdftitle={Introduction à l'algorithmique et à la programmation},
+    pdfauthor={Xavier Pessoles}]{hyperref}
+
+\newcommand{\repRel}{../../../..}
+\input{\repRel/Style/packages}
+\input{\repRel/Style/new_style}
+\input{\repRel/Style/macros_SII}
+\input{\repRel/Style/environment}
+
+
+\newcommand{\macrocomp}{macro_competences}
+\newcommand{\comp}{competences}
+\newcommand{\td}{fichier_td}
+\newcommand{\repExo}{dossier}
+\newcommand{\repStyle}{\repRel/Style}
+
+\def\xxYCartouche{-2.25cm}
+\def\xxYongletGarde{.5cm}
+\def\xxYOnget{.9cm}
+
+\begin{document}
+
+\livrettrue
+\graphicspath{{\repStyle/png/}}
+\input{\repStyle/Info_01_Entete}
+\graphicspath{{\repStyle/png/}{\repRel/Informatique/Semestre_01/01_Bases/Cours/images/}}
+%\input{\repRel/Informatique/Semestre_01/01_Bases/Cours/01_Bases.tex}
+
+
+\def\xxcompetences{}
+\def\xxfigures{}
+\def\xxchapitre{}
+\def\xxtitreexo{Traitement d'images}
+\def\xxsourceexo{}
+\def\xxactivite{TP 05 \ifprof  -- Corrigé \else \fi}
+\input{\repRel/Style/pagegarde_TD}
+
+
+\proffalse
+\vspace{5cm}
+\pagestyle{fancy}
+\thispagestyle{plain}
+
+\graphicspath{{\repStyle/png/}{\repRel/Informatique/Exercices/S1_07_Images/01_TraitementPGM/}}
+\input{\repRel/Informatique/Exercices/S1_07_Images/01_TraitementPGM.tex}
+
+
+
+\end{document}
+
+
+
